@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="only light">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The bill arrives long before the recovery does.</title>
+<meta name="description" content="A 2-minute check on your critical illness cover. Six questions, then a licensed adviser calls with a clear read on where you actually stand.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="The bill arrives long before the recovery does.">
+<meta property="og:description" content="Six questions. Two minutes. A clear read on where your cover actually stands.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="/assets/lp/critical-illness.webp">
+<link rel="stylesheet" href="/assets/brand.css">
+<link rel="stylesheet" href="/assets/funnel-page.css">
+</head>
+<body>
+
+<!-- Netlify parses this at BUILD time. A JS-built form is invisible to it and
+     every submission is silently dropped. Leave it in the markup. -->
+<form name="lp-critical-illness" method="POST" data-netlify="true"
+      netlify-honeypot="company" id="lp-form" hidden>
+  <input type="hidden" name="form-name" value="lp-critical-illness">
+  <p hidden><label>Leave this empty <input name="company"></label></p>
+  <input type="hidden" name="name">
+  <input type="hidden" name="phone">
+  <input type="hidden" name="consent">
+  <input type="hidden" name="cover_today">
+  <input type="hidden" name="family_history">
+  <input type="hidden" name="runway">
+  <input type="hidden" name="depends">
+  <input type="hidden" name="budget">
+  <input type="hidden" name="timing">
+  <input type="hidden" name="lead_score">
+  <input type="hidden" name="priority">
+</form>
+
+<main class="lp">
+
+  <section class="lp-art" style="--focal:62% 38%">
+    <img src="/assets/lp/critical-illness.webp"
+         srcset="/assets/lp/critical-illness-sm.webp 640w, /assets/lp/critical-illness.webp 1024w"
+         sizes="(max-width:900px) 100vw, 50vw"
+         alt="A woman sitting alone on a bench by a hospital window">
+
+    <header class="lp-brand">
+      <!-- KENNETH: swap the mark and the firm name for the client's. -->
+      <span class="lp-mark">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M2 14h4l2.5-7 3.5 12 3-9 2 4h5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="lp-brand-name">Meridian Advisory<small>Licensed financial advisers</small></span>
+      <span class="lp-secure">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v6c0 4.4-3 8-7 9-4-1-7-4.6-7-9V6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Private &amp; secure
+      </span>
+    </header>
+
+    <div class="lp-say">
+      <span class="lp-eyebrow">Free 2-minute check</span>
+      <h1 class="lp-h1">The bill arrives <span class="em">long before the recovery does.</span></h1>
+      <p class="lp-sub">Treatment is only half of it. The mortgage keeps coming, the income often doesn't. Six questions, and a licensed adviser calls with a clear read on where your cover actually stands.</p>
+      <div class="lp-trust">
+        <span class="lp-chip"><i></i>2 minutes</span>
+        <span class="lp-chip"><i></i>No obligation</span>
+        <span class="lp-chip"><i></i>Nothing to buy on the call</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="lp-panel">
+    <div class="lp-progress">
+      <div class="lp-track"><i></i></div>
+      <div class="lp-count">1 of 7</div>
+    </div>
+    <div class="lp-steps"></div>
+    <div class="lp-actions">
+      <button type="button" class="lp-back" style="display:none">Back</button>
+      <button type="button" class="lp-next">Continue</button>
+    </div>
+    <p class="lp-foot">
+      Meridian Advisory — licensed financial advisers. Your details are collected and used in line with the
+      <a href="/pdpa">PDPA</a>. This check is general guidance, not financial advice.
+    </p>
+  </section>
+
+</main>
+
+<script>
+window.FUNNEL = {
+  name: 'critical-illness',
+  submitLabel: 'Get my assessment',
+
+  consent: 'I agree to be contacted by Meridian Advisory by phone or WhatsApp about this assessment. ' +
+           'I understand my details are handled in line with the PDPA and I can opt out at any time.',
+
+  steps: [
+    { type:'choice', name:'cover_today',
+      q:'Do you have critical illness cover today?',
+      hint:'Anything beyond what your employer provides.',
+      opts:[
+        { label:'No, nothing',              value:'None',           score:4 },
+        { label:'Only through work',        value:'Employer only',  score:3 },
+        { label:'Yes, a private policy',    value:'Private policy', score:1 },
+        { label:"I'm honestly not sure",    value:'Not sure',       score:3 }
+      ] },
+
+    { type:'choice', name:'family_history',
+      q:'Has anyone close to you had a serious illness?',
+      hint:'Parents, siblings, or your own history.',
+      opts:[
+        { label:'Yes, in my immediate family', value:'Immediate family', score:3 },
+        { label:'Yes, myself',                 value:'Self',             score:4 },
+        { label:'No',                          value:'No',               score:1 },
+        { label:'Prefer not to say',           value:'Not disclosed',    score:1 }
+      ] },
+
+    { type:'choice', name:'runway',
+      q:'If you couldn\u2019t work for 12 months, could you cover the bills?',
+      hint:'Mortgage, school fees, everything.',
+      opts:[
+        { label:'Comfortably',            value:'Comfortably',    score:1 },
+        { label:'For a few months',       value:'A few months',   score:3 },
+        { label:'No \u2014 not for long', value:'Not for long',   score:4 },
+        { label:"I've never worked it out", value:'Never checked',score:3 }
+      ] },
+
+    { type:'choice', name:'depends',
+      q:'Who depends on your income?',
+      hint:'The people who would feel it if it stopped.',
+      opts:[
+        { label:'Just me',                 value:'Just me',              score:1 },
+        { label:'My partner',              value:'Partner',              score:2 },
+        { label:'My partner and children', value:'Partner and children', score:4 },
+        { label:'Children and parents',    value:'Children and parents', score:4 }
+      ] },
+
+    { type:'multi', name:'budget',
+      q:'What matters most to you?',
+      hint:'Pick everything that applies, then Continue.',
+      opts:[
+        { label:'Covering the mortgage if I can\u2019t work', value:'Mortgage' },
+        { label:'Keeping the children\u2019s school fees going', value:'School fees' },
+        { label:'Paying for treatment without touching savings', value:'Treatment costs' },
+        { label:'Leaving my family something if the worst happens', value:'Legacy' },
+        { label:'Just understanding what I already have', value:'Understand existing' }
+      ] },
+
+    { type:'choice', name:'timing',
+      q:'When would you want this sorted?',
+      hint:'Be honest — it decides who calls you, and how quickly.',
+      opts:[
+        { label:'As soon as possible',   value:'ASAP',         score:4 },
+        { label:'Within a month',        value:'This month',   score:3 },
+        { label:'Within a few months',   value:'This quarter', score:2 },
+        { label:'Just looking for now',  value:'Researching',  score:1 }
+      ] },
+
+    { type:'form',
+      q:'Where should we send your assessment?',
+      hint:'A licensed adviser calls within one working day and talks you through it. No sequence, no spam.' }
+  ],
+
+  done: {
+    title: 'Your assessment is ready.',
+    body: 'A licensed adviser will call you within <b>one working day</b> to go through what you have, what you don\u2019t, and what actually matters for someone in your position.',
+    steps: [
+      '<b>What happens next.</b> A real person calls — not a sequence.',
+      '<b>What it costs.</b> Nothing. There is nothing to buy on the call.',
+      '<b>Prefer a specific time?</b> Tell the adviser when they reach you.'
+    ]
+  }
+};
+</script>
+<script src="/assets/funnel-page.js"></script>
+</body>
+</html>

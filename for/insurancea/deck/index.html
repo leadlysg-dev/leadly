@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leadly · Insurance — Presentation</title>
+<meta name="robots" content="noindex,nofollow">
+<script src="/assets/leadly-data.js"></script>
+<link rel="stylesheet" href="/assets/brand.css">
+<link rel="stylesheet" href="/assets/leadly-animations.css">
+<style>
+/* ── Presenter deck on the 2026 brand: white slides, heavy all-caps, one green.
+      All colour/type/radius/space via brand.css tokens. Demo slides mount the
+      shared /animations components. ── */
+html,body{ height:100%; overflow:hidden; overscroll-behavior:none; background:var(--canvas); }
+
+.deck{ position:fixed; inset:0; background:var(--canvas); }
+.slide{ position:absolute; inset:0; display:none; padding:clamp(28px,5vw,72px) clamp(24px,6vw,88px);
+  opacity:0; transition:opacity .3s var(--ease); }
+.slide.on{ display:flex; flex-direction:column; justify-content:center; opacity:1; }
+.inner{ width:100%; max-width:1180px; margin:0 auto; }
+
+.eyebrow{ margin-bottom:20px; }
+h1{ font-size:clamp(36px,5.6vw,76px); line-height:.96; font-weight:900; letter-spacing:var(--tracking-display);
+  text-transform:uppercase; color:var(--text-1); margin:0; }
+h1 .serif{ display:block; font-size:1em; color:var(--accent-ink); }
+h2{ font-size:clamp(26px,3.4vw,44px); line-height:1.1; font-weight:800; letter-spacing:var(--tracking-h); margin:0 0 18px; color:var(--text-1); }
+.serif{ font-weight:900; letter-spacing:var(--tracking-display); text-transform:uppercase; }
+.sub{ font-size:clamp(16px,1.5vw,21px); line-height:1.55; color:var(--text-2); max-width:60ch; margin-top:20px; }
+
+/* cover */
+.cover{ position:relative; isolation:isolate; }
+.cover-bg{ position:absolute; inset:0; z-index:-2; overflow:hidden; }
+.cover-bg img{ width:100%; height:100%; object-fit:cover; object-position:62% center; }
+.cover-scrim{ position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(90deg, var(--canvas) 0%, color-mix(in srgb, var(--canvas) 86%, transparent) 34%,
+    color-mix(in srgb, var(--canvas) 40%, transparent) 66%, color-mix(in srgb, var(--canvas) 66%, transparent) 100%); }
+.logo-lg{ font-weight:800; font-size:clamp(28px,3vw,40px); letter-spacing:-.02em; margin-bottom:auto; color:var(--text-1); }
+
+/* statement slides */
+.stmt .serif{ display:block; font-size:clamp(32px,5.2vw,66px); line-height:1.06; max-width:19ch; color:var(--text-1); }
+
+/* reasons */
+.grid4{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:34px; }
+.rcard{ border-top:2px solid var(--ink); padding-top:16px; }
+.rcard .tag{ display:inline-block; font-size:11px; font-weight:700; letter-spacing:var(--tracking-eyebrow);
+  text-transform:uppercase; color:var(--danger); margin-bottom:10px; }
+.rcard h3{ font-size:clamp(15px,1.3vw,18px); line-height:1.35; font-weight:700; margin-bottom:8px; color:var(--text-1); }
+.rcard p{ font-size:clamp(13px,1.1vw,15px); line-height:1.5; color:var(--text-3); }
+
+/* system list */
+.sys{ display:grid; gap:10px; margin-top:30px; }
+.sys-row{ display:grid; grid-template-columns:52px 210px 1fr; gap:20px; align-items:center;
+  border-bottom:1px solid var(--feature-line); padding:16px 4px; }
+.sys-row .n{ font-size:24px; font-weight:900; letter-spacing:var(--tracking-display); color:var(--accent-ink); }
+.sys-row h3{ font-size:clamp(15px,1.3vw,18px); font-weight:700; color:var(--text-1); }
+.sys-row p{ font-size:clamp(13px,1.05vw,15px); line-height:1.5; color:var(--text-3); }
+
+/* pricing — one offer */
+.offer{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,320px); gap:clamp(24px,4vw,56px); align-items:start; margin-top:30px; }
+.offer-list{ list-style:none; margin:0; padding:0; border-top:1px solid var(--feature-line); }
+.offer-list li{ font-size:clamp(13px,1.15vw,16px); line-height:1.5; color:var(--text-2);
+  padding:13px 0; border-bottom:1px solid var(--feature-line); }
+.offer-list b{ color:var(--text-1); }
+.offer-card{ background:var(--tint); border:1px solid var(--tint-line); border-radius:var(--r-tint);
+  padding:clamp(22px,2.4vw,34px); display:flex; flex-direction:column; justify-content:center; }
+.offer-card .oc-eye{ font-size:11px; font-weight:700; letter-spacing:var(--tracking-eyebrow); text-transform:uppercase; color:var(--accent-ink); margin-bottom:12px; }
+.offer-card .oc-price{ font-size:clamp(40px,4.6vw,60px); font-weight:900; line-height:1; letter-spacing:var(--tracking-display); color:var(--text-1); }
+.offer-card .oc-per{ font-size:15px; color:var(--text-2); margin-top:6px; }
+.offer-card .oc-per b{ color:var(--accent-ink); }
+.offer-card .oc-fine{ font-size:13px; line-height:1.5; color:var(--text-3); margin-top:16px; }
+
+/* qualifier */
+.q-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,64px); align-items:center; }
+.q{ background:var(--surface); border:1px solid var(--line-strong); border-radius:var(--r-xl); padding:clamp(22px,2.4vw,32px); box-shadow:var(--shadow-sm); }
+.q-bar{ height:3px; background:var(--line); border-radius:var(--r-pill); overflow:hidden; margin-bottom:20px; }
+.q-bar i{ display:block; height:100%; width:0; background:var(--accent); transition:width .3s var(--ease); }
+.q-step{ display:none; } .q-step.on{ display:block; }
+.q-n{ font-size:11px; font-weight:700; letter-spacing:var(--tracking-eyebrow); text-transform:uppercase; color:var(--text-3); margin-bottom:8px; }
+.q-q{ font-size:clamp(17px,1.7vw,22px); line-height:1.35; font-weight:800; margin-bottom:16px; color:var(--text-1); }
+.opts{ display:grid; gap:8px; }
+.opt{ display:flex; align-items:center; gap:11px; padding:11px 14px; border:1px solid var(--line-strong); border-radius:var(--r-sm); cursor:pointer; font-size:clamp(13px,1.1vw,15px); background:var(--surface-2); color:var(--text-1); }
+.opt:hover{ border-color:var(--text-3); }
+.opt.sel{ border-color:var(--accent); background:var(--tint); }
+.tick{ flex:none; width:17px; height:17px; border-radius:50%; border:1.5px solid var(--line-strong); position:relative; }
+.opt.multi .tick{ border-radius:var(--r-xs); }
+.opt.sel .tick{ border-color:var(--accent); background:var(--accent); }
+.opt.sel .tick::after{ content:""; position:absolute; inset:0; margin:auto; width:5px; height:9px; border:solid var(--on-accent); border-width:0 2px 2px 0; transform:rotate(45deg) translate(-1px,-1px); }
+.money{ display:grid; gap:11px; }
+.money label{ font-size:12px; color:var(--text-3); display:block; margin-bottom:4px; }
+.in{ position:relative; }
+.in span{ position:absolute; left:13px; top:50%; transform:translateY(-50%); color:var(--text-3); font-size:14px; }
+.in input{ padding-left:36px; }
+.hrs{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.q-nav{ display:flex; gap:9px; margin-top:18px; }
+.btn-p{ flex:1; justify-content:center; }
+
+/* result */
+.res{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,64px); align-items:center; }
+.res.res-solo{ grid-template-columns:1fr; max-width:560px; }
+.res-you{ background:var(--danger-soft); border:1px solid var(--danger); border-radius:var(--r-xl); padding:clamp(24px,3vw,40px); text-align:center; }
+.res .k{ font-size:12px; font-weight:700; letter-spacing:var(--tracking-eyebrow); text-transform:uppercase; color:var(--text-3); margin-bottom:10px; }
+.res .v{ font-size:clamp(44px,6vw,80px); font-weight:900; line-height:1.03; letter-spacing:var(--tracking-display); color:var(--danger); }
+.res .s{ font-size:14px; color:var(--text-3); margin-top:8px; }
+.gapline{ margin-top:26px; padding:15px 18px; border-radius:var(--r-sm); background:var(--surface-2); border:1px solid var(--line); font-size:15px; line-height:1.5; color:var(--text-2); }
+.gapline b{ color:var(--text-1); }
+
+/* promise — two benefits */
+.ben{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px; }
+.ben-c{ background:var(--surface); border:1px solid var(--line); border-radius:var(--r-xl); padding:clamp(20px,2.2vw,32px); display:flex; flex-direction:column; box-shadow:var(--shadow-sm); }
+.ben-c .bnum{ font-size:12px; font-weight:700; letter-spacing:var(--tracking-eyebrow); text-transform:uppercase; color:var(--accent-ink); margin-bottom:12px; }
+.ben-c h3{ font-size:clamp(17px,1.7vw,23px); line-height:1.2; font-weight:800; letter-spacing:var(--tracking-tight); color:var(--text-1); margin-bottom:10px; }
+.ben-c p{ font-size:clamp(13px,1.1vw,15px); line-height:1.55; color:var(--text-2); }
+.ben-c b{ color:var(--text-1); }
+.ben-c .ev{ margin-top:16px; padding-top:16px; border-top:1px solid var(--line); }
+.ben-c .ev .big{ font-size:clamp(30px,3.4vw,44px); font-weight:900; color:var(--accent-ink); letter-spacing:var(--tracking-display); line-height:1; }
+.ben-c .ev p{ margin-top:8px; }
+.ben-c .ev cite{ display:block; font-style:normal; font-size:11.5px; color:var(--text-3); margin-top:6px; }
+
+/* objections */
+.obj{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:28px; }
+.obj-c{ border-top:1px solid var(--feature-line); padding-top:16px; }
+.obj-c .qq{ font-size:clamp(14px,1.2vw,16px); font-weight:700; margin-bottom:9px; color:var(--text-1); }
+.obj-c .aa{ font-size:clamp(13px,1.05vw,15px); line-height:1.5; color:var(--text-3); }
+
+/* demo slides */
+.slide.demoslide{ justify-content:flex-start; padding-top:clamp(24px,5vh,56px); overflow-y:auto; }
+.slide.demoslide .inner{ display:flex; flex-direction:column; }
+.slide.demoslide .eyebrow{ margin-bottom:12px; }
+.slide.demoslide h2{ font-size:clamp(24px,3vw,38px); margin-bottom:8px; }
+.slide.demoslide .sub{ margin-top:0; margin-bottom:6px; font-size:clamp(14px,1.4vw,18px); }
+.slide.demoslide [data-leadly-anim]{ margin-top:20px; }
+
+/* chrome */
+.hud{ position:fixed; left:0; right:0; bottom:0; z-index:60; display:flex; align-items:center; justify-content:space-between; padding:14px clamp(20px,4vw,40px); pointer-events:none; }
+.hud .l,.hud .r{ display:flex; align-items:center; gap:12px; pointer-events:auto; }
+.count{ font-size:12px; font-weight:600; color:var(--text-3); letter-spacing:var(--tracking-eyebrow); }
+.arrow{ width:34px; height:34px; border-radius:50%; border:1px solid var(--line-strong); background:var(--surface); color:var(--text-2); cursor:pointer; font-size:15px; display:grid; place-items:center; }
+.arrow:hover{ border-color:var(--text-3); color:var(--text-1); }
+.prog{ position:fixed; top:0; left:0; height:2px; background:var(--accent); z-index:70; transition:width .3s var(--ease); }
+.tip{ position:fixed; top:16px; right:clamp(20px,4vw,40px); z-index:60; font-size:11px; font-weight:600; color:var(--text-3); letter-spacing:var(--tracking-eyebrow); }
+
+/* presenter notes */
+.notes{ position:fixed; left:0; right:0; bottom:0; z-index:80; background:var(--surface); border-top:1px solid var(--line-strong);
+  box-shadow:0 -12px 34px rgba(16,24,40,.12); padding:18px clamp(20px,4vw,40px) 56px; display:none; max-height:42vh; overflow-y:auto; }
+.notes.on{ display:block; }
+.notes .h{ font-size:11px; font-weight:700; letter-spacing:var(--tracking-eyebrow); text-transform:uppercase; color:var(--accent-ink); margin-bottom:9px; }
+.notes p{ font-size:15px; line-height:1.6; color:var(--text-2); max-width:90ch; }
+.notes p+p{ margin-top:9px; }
+.notes b{ color:var(--text-1); }
+
+@media (max-width:900px){
+  .grid4{ grid-template-columns:1fr 1fr; gap:10px; }
+  .offer, .ben, .num-grid, .q-wrap, .res, .obj{ grid-template-columns:1fr; gap:22px; }
+  .sys-row{ grid-template-columns:38px 1fr; gap:12px; }
+  .sys-row p{ grid-column:2; }
+  .slide{ padding:24px 20px 68px; overflow-y:auto; justify-content:flex-start; padding-top:56px; }
+  .hrs{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<div class="tip">← → to navigate · N for notes</div>
+
+<div class="deck" id="deck">
+
+  <!-- 1 · COVER -->
+  <section class="slide cover on" data-note="<b>Say nothing for two seconds.</b> Let them look at it.<p>Then: &ldquo;Before I tell you anything about us — can I ask you one question?&rdquo;</p><p>Do not pitch. Do not introduce the company. The next slide is the whole call.</p>">
+    <div class="cover-bg"><picture>
+      <source media="(max-width:640px)" srcset="/assets/funnel-mobile.webp">
+      <source media="(max-width:1100px)" srcset="/assets/funnel-1024.webp">
+      <img src="/assets/funnel-1440.webp" alt="">
+    </picture></div>
+    <div class="cover-scrim"></div>
+    <div class="inner" style="display:flex;flex-direction:column;height:100%;justify-content:space-between">
+      <div class="logo-lg">Leadly</div>
+      <div>
+        <span class="eyebrow">For insurance advisory teams · Singapore</span>
+        <h1>Qualified leads.<span class="serif">Not more leads.</span></h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · THE QUESTION -->
+  <section class="slide" data-note="<b>Ask it, then stop talking.</b><p>&ldquo;What are you actually paying for a single lead? Not your ad spend — everything. The agency, the freelancer, the bought lists, the hours your people spend chasing.&rdquo;</p><p>Most of them have never worked it out. Some will guess low. <b>Don't correct them.</b> Say: &ldquo;Let's find out properly — it takes ninety seconds.&rdquo; Then go to the next slide.</p>">
+    <div class="inner">
+      <span class="eyebrow">The only question that matters</span>
+      <h1>What are you paying<span class="serif">for a single lead?</span></h1>
+      <p class="sub">Not the ad spend. Everything — the agency, the freelancer, the bought lists, and the hours your team burns chasing people who were never going to buy.</p>
+    </div>
+  </section>
+
+  <!-- 3 · LIVE QUALIFIER -->
+  <section class="slide" data-note="<b>Fill this in WITH them. Out loud. Do not do it for them.</b><p>&ldquo;Right — let's do it together. Ad spend, roughly?&rdquo; … &ldquo;Agency fees?&rdquo; … &ldquo;And how many hours a month does someone spend chasing these leads? What's that person worth an hour?&rdquo;</p><p>The act of them saying the numbers out loud is what makes the next slide land. <b>If you fill it in silently, you have wasted the slide.</b></p><p>Q5 — the five pieces — is the one that hurts. Go slowly there.</p>">
+    <div class="inner">
+      <div class="q-wrap">
+        <div>
+          <span class="eyebrow">Ninety seconds</span>
+          <h2>Let's work it out together.</h2>
+          <p class="sub">Same questionnaire your leads would answer — except you're answering it about your own business.</p>
+        </div>
+        <div class="q">
+          <div class="q-bar"><i id="qbar"></i></div>
+
+          <div class="q-step on" data-s="1">
+            <div class="q-n">1 of 6</div><div class="q-q">How many advisors need a steady flow of leads?</div>
+            <div class="opts" data-k="advisors" data-m="single">
+              <div class="opt" data-v="Just me" data-sc="1"><span class="tick"></span>Just me</div>
+              <div class="opt" data-v="2-5" data-sc="2"><span class="tick"></span>2 – 5</div>
+              <div class="opt" data-v="6-15" data-sc="3"><span class="tick"></span>6 – 15</div>
+              <div class="opt" data-v="16+" data-sc="4"><span class="tick"></span>16+</div>
+            </div>
+          </div>
+
+          <div class="q-step" data-s="2">
+            <div class="q-n">2 of 6</div><div class="q-q">Where do your leads come from today?</div>
+            <div class="opts" data-k="sources" data-m="multi">
+              <div class="opt multi" data-v="Referrals"><span class="tick"></span>Referrals &amp; warm network</div>
+              <div class="opt multi" data-v="Purchased lists"><span class="tick"></span>Purchased cold lists</div>
+              <div class="opt multi" data-v="Agency runs ads"><span class="tick"></span>An agency runs our ads</div>
+              <div class="opt multi" data-v="Freelancer runs ads"><span class="tick"></span>A freelancer runs our ads</div>
+              <div class="opt multi" data-v="We run ads ourselves"><span class="tick"></span>We run ads ourselves</div>
+              <div class="opt multi" data-v="No consistent source"><span class="tick"></span>No consistent source</div>
+            </div>
+          </div>
+
+          <div class="q-step" data-s="3">
+            <div class="q-n">3 of 6</div><div class="q-q">What do you spend a month getting leads?</div>
+            <div class="money">
+              <div><label>Ad spend</label><div class="in"><span>S$</span><input type="number" id="m_ads" placeholder="0" inputmode="numeric"></div></div>
+              <div><label>Agency or freelancer fees</label><div class="in"><span>S$</span><input type="number" id="m_fees" placeholder="0" inputmode="numeric"></div></div>
+              <div><label>Lead lists purchased</label><div class="in"><span>S$</span><input type="number" id="m_lists" placeholder="0" inputmode="numeric"></div></div>
+              <div><label>Staff hours chasing leads &amp; hourly cost</label>
+                <div class="hrs">
+                  <input type="number" id="m_hrs" placeholder="Hours / month" inputmode="numeric">
+                  <div class="in"><span>S$</span><input type="number" id="m_rate" placeholder="Per hour" inputmode="numeric"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="q-step" data-s="4">
+            <div class="q-n">4 of 6</div><div class="q-q">How many new leads does that produce?</div>
+            <div class="opts" data-k="leads" data-m="single">
+              <div class="opt" data-v="Under 10" data-n="6"><span class="tick"></span>Under 10</div>
+              <div class="opt" data-v="10-30" data-n="20"><span class="tick"></span>10 – 30</div>
+              <div class="opt" data-v="30-60" data-n="45"><span class="tick"></span>30 – 60</div>
+              <div class="opt" data-v="60+" data-n="75"><span class="tick"></span>60+</div>
+              <div class="opt" data-v="Not sure" data-n="0"><span class="tick"></span>Honestly, not sure</div>
+            </div>
+          </div>
+
+          <div class="q-step" data-s="5">
+            <div class="q-n">5 of 6</div><div class="q-q">Which of these do you have today?</div>
+            <div class="opts" data-k="features" data-m="multi">
+              <div class="opt multi" data-v="Qualified before advisor"><span class="tick"></span>Leads qualified before they reach an advisor</div>
+              <div class="opt multi" data-v="Seconds to team"><span class="tick"></span>New leads reach your team within seconds</div>
+              <div class="opt multi" data-v="Shared call list"><span class="tick"></span>One shared, live call list</div>
+              <div class="opt multi" data-v="30/60 follow-up"><span class="tick"></span>Automatic follow-up at 30 and 60 days</div>
+              <div class="opt multi" data-v="Live performance dashboard"><span class="tick"></span>A live dashboard of performance, by ad</div>
+            </div>
+          </div>
+
+          <div class="q-step" data-s="6">
+            <div class="q-n">6 of 6</div><div class="q-q">When would you want this running?</div>
+            <div class="opts" data-k="timing" data-m="single">
+              <div class="opt" data-v="This month" data-sc="4"><span class="tick"></span>This month</div>
+              <div class="opt" data-v="Next month" data-sc="3"><span class="tick"></span>Next month</div>
+              <div class="opt" data-v="This quarter" data-sc="2"><span class="tick"></span>This quarter</div>
+              <div class="opt" data-v="Just researching" data-sc="1"><span class="tick"></span>Just researching</div>
+            </div>
+          </div>
+
+          <div class="q-nav">
+            <button class="btn btn-ghost" id="qback" style="display:none">Back</button>
+            <button class="btn btn-primary btn-p" id="qnext" disabled>Continue</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · THE RESULT -->
+  <section class="slide" data-note="<b>Say the number. Then be quiet.</b><p>&ldquo;So — that's S$[X] a month, all-in, riding on your leads. Did that surprise you?&rdquo;</p><p><b>Do not fill the silence.</b> This is the highest-leverage moment in the call. Let them react.</p><p>⚠️ This is <b>their</b> number only — everything it costs them to put a lead in front of an advisor. Do <b>not</b> quote any Leadly per-lead figure. Our price is one flat line, and it comes later: <b>S$1,200/month + their ad spend.</b> Keep the two apart.</p><p>If they said &lsquo;not sure&rsquo; on lead volume: &ldquo;That's the most common answer we get. It's also the actual problem — you can't improve a number you've never measured.&rdquo;</p>">
+    <div class="inner">
+      <span class="eyebrow">Here's your true all-in cost</span>
+      <div class="res res-solo" style="margin-top:8px">
+        <div class="res-you">
+          <div class="k">Your all-in cost, every month</div>
+          <div class="v" id="r_you">—</div>
+          <div class="s" id="r_basis">Everything it takes to put a lead in front of an advisor</div>
+        </div>
+      </div>
+      <div class="gapline" id="r_gap">Complete the questionnaire on the previous slide.</div>
+    </div>
+  </section>
+
+  <!-- 5 · THE PROMISE (two benefits) -->
+  <section class="slide" data-note="<b>Two things. Say them slowly, one at a time.</b><p>One: &ldquo;Every lead is already qualified — they've answered what your advisors would ask before anyone picks up the phone.&rdquo;</p><p>Two: &ldquo;And it's in your team's hands within two minutes — auto-written to a Google Sheet and pinged to WhatsApp.&rdquo;</p><p><b>Draw the line clearly:</b> the lead is qualified the instant they submit. The two minutes is delivery speed — how fast it reaches a rep — <b>not</b> how long qualifying takes. Don't blur them.</p><p>The 160% is your anchor. 391% and 7× are backup if they push.</p>">
+    <div class="inner">
+      <span class="eyebrow">Our promise</span>
+      <h2>Genuinely qualified. In their hands in two minutes.</h2>
+      <div class="ben">
+        <div class="ben-c">
+          <div class="bnum">Benefit 1</div>
+          <h3>The lead is genuinely qualified.</h3>
+          <p>Every lead has answered what your advisors would ask — the need, the budget, the timing. They arrive <b>already qualified</b>, the instant they submit. Your reps open the call knowing who they're talking to.</p>
+        </div>
+        <div class="ben-c">
+          <div class="bnum">Benefit 2</div>
+          <h3>In your rep's hands within 2 minutes.</h3>
+          <p>The moment a lead submits, their details write to a Google Sheet and ping your team's WhatsApp — in seconds. The lead is <b>already qualified before it arrives</b>; the two minutes is delivery speed, not qualifying time.</p>
+          <div class="ev">
+            <div class="big">160%</div>
+            <p class="sub" style="margin-top:8px">Leads called 60–120 seconds after they come in convert 160% more often than those called later — the exact window this delivers into.</p>
+            <cite>Leads360 / Velocify · 391% within 1 min; contact within the hour ≈ 7× more likely to qualify (HBR, 2011)</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · WHY IT DIDN'T WORK -->
+  <section class="slide" data-note="<b>Do not read these out.</b> Pick the one or two that match what they told you on the qualifier, and talk about those.<p>Then ask: <b>&ldquo;Which of these sounds like you?&rdquo;</b> and let them tell you. Their answer is your close.</p>">
+    <div class="inner">
+      <span class="eyebrow">Why the last one didn't work</span>
+      <h2>The problem was never the leads.</h2>
+      <p class="sub">It was everything that happened between the click and the call.</p>
+      <div class="grid4">
+        <div class="rcard"><span class="tag">Reason 1</span><h3>Nobody filtered anyone</h3><p>A name and a number is not a lead. Your advisor finds out on the call — after they've spent the hour.</p></div>
+        <div class="rcard"><span class="tag">Reason 2</span><h3>The lead went cold</h3><p>Someone raises their hand at 9pm. Your advisor sees it Tuesday. By then they've spoken to three other people.</p></div>
+        <div class="rcard"><span class="tag">Reason 3</span><h3>Nobody followed up twice</h3><p>Most people aren't ready first time. If nothing chases them at 30 and 60 days, you paid for a lead and threw it away.</p></div>
+        <div class="rcard"><span class="tag">Reason 4</span><h3>You couldn't see anything</h3><p>The report was a screenshot. You had no idea which ad produced which lead, or if any of it worked.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · THE SYSTEM -->
+  <section class="slide" data-note="<b>Only talk about the pieces they said they DON'T have.</b><p>If they ticked &lsquo;shared call list&rsquo; on the qualifier, skip Live Call Sheet entirely. Explaining something they already own makes you look like you weren't listening.</p><p>One sentence each. Then move on. The next five slides show each one running live.</p>">
+    <div class="inner">
+      <span class="eyebrow">The system</span>
+      <h2>Five parts. One machine.</h2>
+      <div class="sys" id="sys"></div>
+    </div>
+  </section>
+
+  <!-- 8–12 · LIVE DEMOS (shared components from /animations) -->
+  <section class="slide demoslide" data-note="<b>Let it run a few seconds before you speak.</b><p>&ldquo;This is the exact questionnaire your leads fill in. Watch the profile build on the right as they answer — by the time it reaches your advisor, you already know everything that matters.&rdquo;</p><p>Kicker: &ldquo;That's the product. Not a name and a number.&rdquo;</p>">
+    <div class="inner">
+      <span class="eyebrow">The system · 01 — Smart Qualifier</span>
+      <h2>Not a name and a number.</h2>
+      <p class="sub">The consumer-facing cousin of the questionnaire you just filled in. Your prospects answer it before they ever reach an advisor, so what lands in your team's hands is a person who has already told you what they need.</p>
+      <div data-leadly-anim="smart-qualifier" data-leadly-manual></div>
+    </div>
+  </section>
+
+  <section class="slide demoslide" data-note="<b>Point at the timer.</b><p>&ldquo;The second they finish, the whole team is pinged in one WhatsApp group — every answer attached. Whoever's free calls first, while they're still at their desk.&rdquo;</p><p>Under ten seconds, form to phone. That speed is the 7&#215; HBR stat, made real.</p>">
+    <div class="inner">
+      <span class="eyebrow">The system · 02 — Instant Ping</span>
+      <h2>In your team's WhatsApp in under ten seconds.</h2>
+      <p class="sub">The moment a lead finishes, the whole sales team gets pinged in one group — with every answer already attached. Whoever is free calls first, while the lead is still at their desk.</p>
+      <div data-leadly-anim="instant-ping" data-leadly-manual></div>
+    </div>
+  </section>
+
+  <section class="slide demoslide" data-note="<b>&ldquo;Every lead writes itself into one shared sheet.&rdquo;</b><p>No exports. No &lsquo;send me the latest list&rsquo;. Your team works the top of it; you watch it fill. Point out a status flipping to Booked on its own.</p>">
+    <div class="inner">
+      <span class="eyebrow">The system · 03 — Live Call Sheet</span>
+      <h2>Every lead lands in one sheet. Your team just works it.</h2>
+      <p class="sub">No exports. No "can you send me the latest list." Every lead writes itself in, with all the answers they gave, and updates as your team works it. Fuss-free.</p>
+      <div data-leadly-anim="live-call-sheet" data-leadly-manual></div>
+    </div>
+  </section>
+
+  <section class="slide demoslide" data-note="<b>&ldquo;The ones who ghosted you already cost you money.&rdquo;</b><p>We work them again automatically at 30 and 60 days — nobody has to remember. Watch day 60. Win back even five in a hundred and it pays for itself many times over.</p>">
+    <div class="inner">
+      <span class="eyebrow">The system · 04 — Winback Engine</span>
+      <h2>You already paid for the ones who ghosted you.</h2>
+      <p class="sub">Every lead cost you money, whether they picked up or not. We automate winback campaigns over the WhatsApp API, so they get worked again months later without anyone having to remember. Win back even five in a hundred and, over a year, that pays for itself many times over.</p>
+      <div data-leadly-anim="winback-engine" data-leadly-manual></div>
+    </div>
+  </section>
+
+  <section class="slide demoslide" data-note="<b>&ldquo;Every step is a tracked event — pixel and server-side CAPI.&rdquo;</b><p>It all lands live in Pulse. Not a PDF that arrives after the month it describes is over. This is the same screen we look at.</p>">
+    <div class="inner">
+      <span class="eyebrow">The system · 05 — Leadly Pulse</span>
+      <h2>See exactly where your money goes.</h2>
+      <p class="sub">Every build ships with UTM tagging, the Meta Pixel and server-side Conversions API wired in. Ad click, page view, questionnaire started, questionnaire submitted — every step is a tracked event, and all of it lands live in Pulse. Not a monthly PDF that arrives after the month it describes is over.</p>
+      <div data-leadly-anim="leadly-pulse" data-leadly-manual></div>
+    </div>
+  </section>
+
+  <!-- 13 · WHERE WE STOP -->
+  <section class="slide stmt" style="background:var(--canvas-sunk)" data-note="<b>This is the most persuasive slide in the deck, and it's the one where you promise the least.</b><p>&ldquo;We're not going to tell you we can close your policies. Everyone who's burned you already said that. We're accountable from the ad through to a qualified lead in your advisor's hand. What happens on the phone is your team's craft.&rdquo;</p><p>Say it flatly. <b>No hedging. No smiling.</b> This is where they decide whether to trust you.</p>">
+    <div class="inner">
+      <span class="eyebrow">Where we stop</span>
+      <span class="serif">We own the digital conversion. You own the sale.</span>
+      <p class="sub">We're accountable from the impression through to a qualified lead in your advisor's hand — the part we control, and the part we measure. What happens on the phone is your team's craft.</p>
+    </div>
+  </section>
+
+  <!-- 14 · PRICING -->
+  <section class="slide" data-note="<b>Say the price like a fact. Do not lower your voice. Do not apologise.</b><p>&ldquo;It's one flat price — <b>S$1,200 a month, plus your ad spend.</b> The ad budget goes straight to Meta; we never mark it up. No tiers, no hourly billing, no setup games.&rdquo;</p><p>That fee buys the whole machine — qualifier, instant WhatsApp, live sheet, winback, dashboard, and the build. Add-ons (WhatsApp volume, AI chat) are separate and only if they want them.</p><p>Do <b>not</b> quote any per-lead figure for us. Their all-in number from slide 4 stands on its own. Then <b>stop</b>. Whoever speaks first, loses.</p>">
+    <div class="inner">
+      <span class="eyebrow">Pricing</span>
+      <h2>One price. The whole machine.</h2>
+      <div class="offer">
+        <ul class="offer-list" id="offer_list"></ul>
+        <div class="offer-card">
+          <div class="oc-eye">The offer</div>
+          <div class="oc-price" id="offer_price">S$1,200</div>
+          <div class="oc-per">per month <b>+ your ad spend</b></div>
+          <p class="oc-fine">Ad budget billed to your own Meta account, straight to Meta — never marked up. Add-ons priced separately.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 · OBJECTIONS -->
+  <section class="slide" data-note="<b>Do not present this slide.</b> It's here for when you need it.<p>If they raise an objection, jump here (press the number key or arrow) and answer it. Otherwise skip straight past.</p><p>The strongest thing on this slide is &lsquo;No&rsquo; to the guarantee question. Never soften it.</p>">
+    <div class="inner">
+      <span class="eyebrow">Straight answers</span>
+      <h2>The questions you're about to ask.</h2>
+      <div class="obj">
+        <div class="obj-c"><div class="qq">"Your fee is more than my ad spend."</div><div class="aa">It is. You're not buying ads — you're buying a call list that filters itself and reaches your team in seconds. The media is the cheap part. What's one closed policy worth to you?</div></div>
+        <div class="obj-c"><div class="qq">"Can you guarantee closes?"</div><div class="aa">No. And be careful with anyone who says yes. We're accountable through to a qualified lead. The call is your advisors' craft.</div></div>
+        <div class="obj-c"><div class="qq">"We already have an agency."</div><div class="aa">Then you already know what you're paying all-in. If they're beating what you just saw on the previous slide, keep them — and I'll tell you so.</div></div>
+        <div class="obj-c"><div class="qq">"How soon do we see results?"</div><div class="aa">Paid social has a learning phase. Anyone promising results in thirty days is either lying or about to burn your budget proving it. We'd rather set the honest expectation now.</div></div>
+        <div class="obj-c"><div class="qq">"Do you mark up our ad spend?"</div><div class="aa">No. It's billed to your own Meta account and goes straight to Meta. You see every dollar of it in Pulse.</div></div>
+        <div class="obj-c"><div class="qq">"We get everything from referrals."</div><div class="aa">Good problem. How many last month? And what happens the month that number is zero?</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 · CLOSE -->
+  <section class="slide stmt" data-note="<b>Ask once. Then be quiet.</b><p>HOT / this month: &ldquo;You're missing [N] of the five, you're paying S$[X] a month all-in, and you said you want this running this month. I've got build slots this week. Shall we get you started?&rdquo;</p><p>WARM: &ldquo;Give me thirty minutes with your ad account and last month's leads. I'll show you exactly where the money's going. No charge. If you're fine, I'll tell you.&rdquo;</p><p>COOL: &ldquo;You're not ready and I won't pretend otherwise. Can I check back in six weeks?&rdquo; — then actually send them something useful.</p>">
+    <div class="inner">
+      <span class="eyebrow">Next step</span>
+      <span class="serif">Shall we get you started?</span>
+      <p class="sub" id="close_line">Build slots open weekly. Setup takes days, not months.</p>
+    </div>
+  </section>
+</div>
+
+<div class="hud">
+  <div class="l"><span class="count" id="count">1 / 16</span></div>
+  <div class="r">
+    <button class="arrow" id="prev" aria-label="Previous">‹</button>
+    <button class="arrow" id="next" aria-label="Next">›</button>
+  </div>
+</div>
+
+<div class="notes" id="notes"><div class="h">Presenter notes</div><div id="notesbody"></div></div>
+
+<script src="/assets/leadly-animations.js"></script>
+<script>
+(function(){
+  var L = window.LEADLY;
+  var money = function(n){ return "S$" + Math.round(n).toLocaleString("en-SG"); };
+
+  /* ── build data-driven slides ───────────────────────────── */
+  document.getElementById('sys').innerHTML = L.system.map(function(s,i){
+    return '<div class="sys-row"><div class="n">0'+(i+1)+'</div><h3>'+s.n+'</h3><p>'+s.d+'</p></div>';
+  }).join('');
+
+  /* one offer — S$1,200/month + your ad spend (single source: leadly-data.js) */
+  document.getElementById('offer_price').textContent = "S$" + L.price.toLocaleString("en-SG");
+  document.getElementById('offer_list').innerHTML = L.system.map(function(s){
+    return '<li><b>'+s.n+'</b> — '+s.d+'</li>';
+  }).join('') + '<li><b>The build &amp; the creative</b> — landing page, tracking and ad creative, set up and maintained.</li>';
+
+  /* ── qualifier ──────────────────────────────────────────── */
+  var TOTAL = 6, cur = 1;
+  var D = { advisors:"", sources:[], features:[], timing:"", leads:"", leadsN:0 };
+  var bar = document.getElementById('qbar'), nB = document.getElementById('qnext'), bB = document.getElementById('qback');
+
+  function ok(n){
+    if(n===1) return !!D.advisors;
+    if(n===2) return D.sources.length>0;
+    if(n===4) return !!D.leads;
+    if(n===6) return !!D.timing;
+    return true;
+  }
+  function qshow(n){
+    document.querySelectorAll('.q-step').forEach(function(s){ s.classList.toggle('on', +s.dataset.s===n); });
+    cur = n;
+    bar.style.width = ((n-1)/TOTAL*100) + "%";
+    bB.style.display = n>1 ? "" : "none";
+    nB.textContent = n===TOTAL ? "See the number" : "Continue";
+    nB.disabled = !ok(n);
+  }
+  document.querySelectorAll('.opts').forEach(function(g){
+    var k = g.dataset.k, multi = g.dataset.m==="multi";
+    g.addEventListener('click', function(e){
+      var o = e.target.closest('.opt'); if(!o) return;
+      if(multi){
+        o.classList.toggle('sel');
+        D[k] = [].slice.call(g.querySelectorAll('.opt.sel')).map(function(x){return x.dataset.v;});
+      } else {
+        g.querySelectorAll('.opt').forEach(function(x){x.classList.remove('sel');});
+        o.classList.add('sel'); D[k] = o.dataset.v;
+        if(o.dataset.sc) D[k+"S"] = +o.dataset.sc;
+        if(o.dataset.n)  D.leadsN = +o.dataset.n;
+      }
+      nB.disabled = !ok(cur);
+    });
+  });
+  ['m_ads','m_fees','m_lists','m_hrs','m_rate'].forEach(function(id){
+    document.getElementById(id).addEventListener('input', function(){ nB.disabled = !ok(cur); });
+  });
+  function total(){
+    var g = function(id){ return parseFloat(document.getElementById(id).value)||0; };
+    return g('m_ads')+g('m_fees')+g('m_lists')+(g('m_hrs')*g('m_rate'));
+  }
+  function result(){
+    var t = total(), n = D.leadsN, each = (t>0 && n>0) ? t/n : 0;
+    var have = D.features.length, gaps = 5-have;
+    var you = document.getElementById('r_you'), basis = document.getElementById('r_basis');
+    if(t>0){
+      you.textContent = money(t);
+      basis.textContent = n>0
+        ? (money(t) + " a month, riding on ~" + n + " leads — about " + money(each) + " on each one.")
+        : "You're not sure how many leads that produces — which is the real problem.";
+    } else {
+      you.textContent = "S$0?";
+      you.style.fontSize = "clamp(30px,4vw,52px)";
+      basis.textContent = "Nothing entered — and the staff hours are the part nobody adds up.";
+    }
+    document.getElementById('r_gap').innerHTML = gaps===0
+      ? "You already have all five pieces. Honestly — you may not need us."
+      : "You have <b>" + have + " of the 5</b> pieces in place. The <b>" + gaps + "</b> you're missing are where your leads — and your money — leak out.";
+  }
+  nB.addEventListener('click', function(){
+    if(cur===TOTAL){ result(); go(idx+1); return; }
+    qshow(cur+1);
+  });
+  bB.addEventListener('click', function(){ qshow(Math.max(1,cur-1)); });
+  qshow(1);
+
+  /* ── deck nav ───────────────────────────────────────────── */
+  var slides = [].slice.call(document.querySelectorAll('.slide'));
+  var idx = 0;
+  var prog = document.getElementById('prog'), count = document.getElementById('count');
+  var notes = document.getElementById('notes'), nbody = document.getElementById('notesbody');
+  var notesOn = false;
+
+  function go(i){
+    idx = Math.max(0, Math.min(slides.length-1, i));
+    slides.forEach(function(s,j){ s.classList.toggle('on', j===idx); });
+    prog.style.width = ((idx+1)/slides.length*100) + "%";
+    count.textContent = (idx+1) + " / " + slides.length;
+    nbody.innerHTML = "<p>" + (slides[idx].dataset.note || "—") + "</p>";
+    var ds = slides[idx].querySelector('[data-leadly-anim]');
+    if (ds && window.LeadlyAnim && !ds._leadly) window.LeadlyAnim.mount(ds);
+  }
+  document.getElementById('next').addEventListener('click', function(){ go(idx+1); });
+  document.getElementById('prev').addEventListener('click', function(){ go(idx-1); });
+
+  document.addEventListener('keydown', function(e){
+    if(/^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+    if(e.key==="ArrowRight" || e.key===" " || e.key==="PageDown"){ e.preventDefault(); go(idx+1); }
+    if(e.key==="ArrowLeft"  || e.key==="PageUp"){ e.preventDefault(); go(idx-1); }
+    if(e.key==="Home") go(0);
+    if(e.key==="End")  go(slides.length-1);
+    if(e.key==="n" || e.key==="N"){ notesOn=!notesOn; notes.classList.toggle('on', notesOn); }
+    if(/^[1-9]$/.test(e.key)) go(+e.key - 1);
+  });
+
+  var sx=0, sy=0;
+  document.addEventListener('touchstart', function(e){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if(Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) go(idx + (dx<0 ? 1 : -1));
+  }, {passive:true});
+
+  go(0);
+})();
+</script>
+</body>
+</html>

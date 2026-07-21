@@ -1,0 +1,93 @@
+
+    @keyframes j-rise{ from{ opacity:0; transform:translateY(18px); } to{ opacity:1; transform:none; } }
+    @keyframes j-pop{ 0%{ transform:scale(.6); opacity:0; } 60%{ transform:scale(1.12); } 100%{ transform:scale(1); opacity:1; } }
+    /* subtle, slow micro-interactions — ideas from the animated version */
+    @keyframes j-zoom{ from{ transform:scale(1); } to{ transform:scale(1.07); } }
+    @keyframes j-panshow{ from{ object-position:center 5%; transform:scale(1.1); } to{ object-position:center 55%; transform:scale(1.1); } }
+    .j-anim-panshow{ animation:j-panshow 9s ease-in-out infinite alternate; }
+    @keyframes j-glow{ 0%,100%{ box-shadow:0 6px 14px rgba(0,85,232,.30); } 50%{ box-shadow:0 11px 24px rgba(0,85,232,.55); } }
+    @keyframes j-float{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-4px); } }
+    @keyframes j-livedot{ 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.35; transform:scale(1.5); } }
+    @keyframes j-rowpulse{ 0%,100%{ background:#E8F0FE; } 50%{ background:#D3E1FD; } }
+    @keyframes j-checkpulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.07); } }
+    @keyframes j-ctapulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.035); } }
+    @keyframes j-ring{ from{ transform:scale(1); opacity:.55; } to{ transform:scale(2.3); opacity:0; } }
+    .j-anim-zoom{ animation:j-zoom 10s ease-in-out infinite alternate; }
+    .j-anim-glow{ animation:j-glow 3.4s ease-in-out infinite; }
+    .j-anim-float{ animation:j-float 4.2s ease-in-out infinite; }
+    .j-anim-livedot{ animation:j-livedot 2s ease-in-out infinite; }
+    .j-anim-rowpulse{ animation:j-rowpulse 3.6s ease-in-out infinite; }
+    .j-anim-check{ animation:j-checkpulse 3s ease-in-out infinite; }
+    .j-anim-cta{ animation:j-ctapulse 3s ease-in-out infinite; }
+    .j-ring{ position:absolute; inset:0; border-radius:50%; border:2px solid rgba(77,140,240,.55); animation:j-ring 2.8s ease-out infinite; }
+    .j-ring.r2{ animation-delay:1.4s; }
+    @keyframes j-arrive{ 0%{ opacity:0; transform:translateY(16px) scale(.95); } 14%{ opacity:1; transform:none; } 90%{ opacity:1; transform:none; } 100%{ opacity:0; transform:translateY(-6px); } }
+    @keyframes j-rowarrive{ 0%{ transform:translateY(-10px); background:#C6DAFC; } 18%{ transform:none; } 100%{ transform:none; background:#E8F0FE; } }
+    @keyframes j-cascade{ 0%{ background:#CFE0FE; } 22%{ background:transparent; } 100%{ background:transparent; } }
+    .j-anim-cascade{ animation:j-cascade 6s ease-out infinite; }
+    @keyframes j-seqA{ 0%,90%{ opacity:1; } 96%,100%{ opacity:0; } }
+    @keyframes j-seqB{ 0%,17%{ opacity:0; } 20%,90%{ opacity:1; } 96%,100%{ opacity:0; } }
+    @keyframes j-seqC{ 0%,37%{ opacity:0; } 40%,90%{ opacity:1; } 96%,100%{ opacity:0; } }
+    @keyframes j-seqD{ 0%,57%{ opacity:0; } 60%,90%{ opacity:1; } 96%,100%{ opacity:0; } }
+    @keyframes j-seqE{ 0%,77%{ opacity:0; } 80%,90%{ opacity:1; } 96%,100%{ opacity:0; } }
+    .j-anim-seqA{ animation:j-seqA 12s ease-in-out infinite; }
+    .j-anim-seqB{ animation:j-seqB 12s ease-in-out infinite; }
+    .j-anim-seqC{ animation:j-seqC 12s ease-in-out infinite; }
+    .j-anim-seqD{ animation:j-seqD 12s ease-in-out infinite; }
+    .j-anim-seqE{ animation:j-seqE 12s ease-in-out infinite; }
+    @keyframes j-glowt{ 0%,100%{ box-shadow:0 6px 14px rgba(18,128,92,.30); } 50%{ box-shadow:0 11px 24px rgba(18,128,92,.55); } }
+    .j-anim-arrive{ animation:j-arrive 4s ease-in-out infinite; }
+    .j-anim-rowarrive{ animation:j-rowarrive 3.6s ease-in-out infinite; }
+    .j-anim-glow-t{ animation:j-glowt 3.4s ease-in-out infinite; }
+    @media (prefers-reduced-motion:reduce){ .j-anim-zoom,.j-anim-glow,.j-anim-glow-t,.j-anim-float,.j-anim-arrive,.j-anim-livedot,.j-anim-rowpulse,.j-anim-rowarrive,.j-anim-check,.j-anim-cta,.j-ring{ animation:none !important; } }
+    a{ color:var(--accent-ink); } a:hover{ color:var(--accent-strong); }
+
+/* ── THE PROCESS · interaction + modal (converted from the design canvas) ── */
+.lp-step{ cursor:pointer; transition:transform .25s cubic-bezier(.16,1,.3,1); }
+.lp-step:hover{ transform:translateY(-4px) scale(1.018); z-index:20; }
+.lp-step:focus-visible{ outline:3px solid var(--accent); outline-offset:6px; border-radius:14px; }
+
+/* NO background here — the parent <section> owns the band colour. Painting
+   --canvas inside a --canvas-sunk section produced a white stripe between two
+   grey ones, which is the banding Kenneth flagged. */
+.lp-scroll{ padding:0; overflow-x:auto; }
+.lp-rail{ min-width:1120px; max-width:1320px; margin:0 auto; padding:0 clamp(24px,3vw,44px); }
+.lp-head-sec{ margin-bottom:clamp(28px,3.6vw,44px); }
+.lp-hint{ display:none; }
+@media (max-width:1180px){
+  .lp-hint{ display:block; font-size:12.5px; color:var(--text-3-aa); margin-bottom:10px; }
+}
+
+/* modal */
+.lp-modal{ position:fixed; inset:0; background:rgba(12,17,29,.55); -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px);
+  z-index:200; display:flex; align-items:center; justify-content:center; padding:24px; }
+.lp-modal[hidden]{ display:none; }
+.lp-card{ background:#fff; border-radius:20px; box-shadow:var(--shadow-lg); max-width:720px; width:100%;
+  max-height:86vh; overflow:auto; padding:clamp(24px,3vw,40px); animation:j-rise .35s both; }
+.lp-head{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px; margin-bottom:20px; }
+.lp-head h3{ font-size:clamp(20px,2.2vw,26px); font-weight:800; color:var(--text-1); letter-spacing:var(--tracking-tight); margin:0; }
+.lp-x{ flex:none; width:32px; height:32px; border-radius:50%; background:var(--surface-2); border:0;
+  display:flex; align-items:center; justify-content:center; font-size:16px; color:var(--text-3-aa); cursor:pointer; }
+.lp-x:hover{ background:var(--line); color:var(--text-1); }
+.lp-note{ background:var(--tint); border:1px solid var(--tint-line); border-radius:14px; padding:16px 18px; margin-bottom:20px; }
+.lp-note-l{ font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent-strong); margin-bottom:6px; }
+.lp-note-b{ font-size:14px; line-height:1.55; color:var(--text-1); }
+.lp-dl-h{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3-aa);
+  border-bottom:1px solid var(--line); padding-bottom:10px; margin-bottom:4px; }
+.lp-dl{ list-style:none; margin:0; padding:0; }
+.lp-dl li{ display:flex; align-items:flex-start; gap:12px; padding:13px 0; border-bottom:1px solid var(--line); }
+.lp-tick{ flex:none; width:18px; height:18px; margin-top:1px; border-radius:5px; background:var(--tint);
+  color:var(--accent-strong); font-size:11px; display:flex; align-items:center; justify-content:center; }
+.lp-dl .t{ font-size:15px; font-weight:600; color:var(--text-1); line-height:1.35; }
+.lp-dl .d{ font-size:13px; color:var(--text-3-aa); line-height:1.5; margin-top:3px; }
+@media (prefers-reduced-motion:reduce){ .lp-step, .lp-card{ transition:none !important; animation:none !important; } }
+
+/* benefits row now lives in the page container (not the fixed-width rail),
+   so it has to reflow on its own */
+.lp-benefits-wrap{ margin-top:clamp(24px,3vw,40px); }
+@media (max-width:900px){
+  .lp-benefits-wrap > div{ grid-template-columns:repeat(2,1fr) !important; }
+}
+@media (max-width:520px){
+  .lp-benefits-wrap > div{ grid-template-columns:1fr !important; }
+}

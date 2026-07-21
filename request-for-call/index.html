@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="only light">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book a call — Leadly</title>
+<meta name="description" content="Book a short call to explore how Leadly can plug into your business — more leads, better follow-up, or full automation across chat and bookings.">
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5TR4KNPK');</script>
+<link rel="stylesheet" href="/assets/brand.css">
+<link rel="stylesheet" href="/assets/leadly-book.css">
+<style>
+.nav-logo img{ height:22px; width:auto; display:block; }
+.book{ padding: clamp(40px,6vw,80px) 0 clamp(56px,8vw,96px); }
+.book-head{ text-align:center; max-width:60ch; margin:0 auto clamp(28px,3.4vw,44px); }
+.book-head .eyebrow{ display:block; margin-bottom:14px; }
+.book-head h1{ font-size:var(--fs-display); font-weight:600; letter-spacing:var(--tracking-display);
+  line-height:1.12; margin:0 0 16px; }
+.book-head h1 .accent{ color:var(--accent-ink); }
+.book-head p{ font-size:17px; line-height:1.62; color:var(--text-2); margin:0 auto; max-width:52ch; }
+/* the booking panel that sits on the page (the calendar itself opens over it) */
+.book-panel{ max-width:560px; margin:0 auto; background:var(--surface); border:1px solid var(--line);
+  border-radius:var(--r-xl); box-shadow:var(--shadow-md,0 8px 30px rgba(12,17,29,.08));
+  padding:clamp(32px,4vw,52px); text-align:center; }
+.book-panel .ico{ width:56px; height:56px; margin:0 auto 20px; border-radius:var(--r-lg);
+  background:var(--tint); display:grid; place-items:center; color:var(--accent-ink); }
+.book-panel .ico svg{ width:26px; height:26px; }
+.book-panel h2{ font-size:22px; font-weight:600; letter-spacing:var(--tracking-tight); margin:0 0 8px; color:var(--text-1); }
+.book-panel p{ font-size:15px; color:var(--text-2); margin:0 auto 24px; max-width:34ch; line-height:1.55; }
+.book-panel .btn{ justify-content:center; }
+.book-meta{ margin-top:22px; font-size:13px; color:var(--text-3-aa); }
+</style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TR4KNPK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- Netlify registers this form at build time; the booking calendar fills + posts it.
+     KENNETH: bookings land in the Netlify Forms inbox for now — webhook to GHL when ready. -->
+<form name="book-demo" method="POST" data-netlify="true" netlify-honeypot="company" id="bk-form" hidden>
+  <input type="hidden" name="form-name" value="book-demo">
+  <p hidden><label>Leave this empty <input name="company"></label></p>
+  <input type="hidden" name="name">
+  <input type="hidden" name="phone">
+  <input type="hidden" name="business">
+  <input type="hidden" name="date">
+  <input type="hidden" name="time">
+  <input type="hidden" name="consent">
+</form>
+
+<nav class="nav"><div class="nav-in">
+  <a href="/" class="nav-logo"><img src="/assets/leadly-logo.png" alt="Leadly"></a>
+  <div class="nav-right"><a class="btn btn-secondary" href="/"><span>Back to site</span></a></div>
+</div></nav>
+
+<main class="book"><div class="container">
+  <div class="book-head">
+    <span class="eyebrow">Let's talk</span>
+    <h1>The smartest 15 minutes <span class="accent">you'll spend this week.</span></h1>
+    <p>Book a short call to explore how Leadly can plug into your business — whether you're looking for more leads, better follow-up, or full automation across chat and bookings.</p>
+  </div>
+
+  <div class="book-panel">
+    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+    <h2>Grab a 30-minute slot</h2>
+    <p>Pick a day and time that suits you. We'll send a confirmation straight to your phone.</p>
+    <a class="btn btn-primary" href="#" data-book><span>Choose a time</span><i class="btn-ico" aria-hidden="true"></i></a>
+    <div class="book-meta">Weekdays · all times Singapore (SGT)</div>
+  </div>
+</div></main>
+
+<footer><div class="foot-in">
+  <span>© 2026 Leadly · Elephant &amp; Ostrich LLP</span>
+  <span class="foot-note"><a href="/terms-and-conditions">Terms &amp; Conditions</a> · <a href="/privacy-policy">Privacy Policy</a></span>
+</div></footer>
+
+<script src="/assets/leadly-book.js"></script>
+<script>
+  /* dedicated booking page — open the calendar on arrival (once) */
+  window.addEventListener('load', function () {
+    setTimeout(function () { if (window.LeadlyBook) window.LeadlyBook.open(); }, 350);
+  });
+</script>
+</body>
+</html>

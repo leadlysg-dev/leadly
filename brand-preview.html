@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leadly — Brand Preview</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="/assets/brand.css">
+<style>
+/* preview-only scaffolding — layout helpers, not brand tokens */
+body{ padding-bottom: var(--space-10); }
+.pv-top{ border-bottom:1px solid var(--line); padding:20px 0; }
+.pv-sec{ padding: var(--space-8) 0; border-bottom:1px solid var(--line); }
+.pv-h{ font-size:var(--fs-h2); font-weight:var(--weight-heavy); letter-spacing:var(--tracking-h); margin-bottom:6px; }
+.pv-note{ color:var(--text-3); font-size:var(--fs-sm); margin-bottom:28px; max-width:70ch; }
+.grid{ display:grid; gap:var(--space-4); }
+.sw{ border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; background:var(--surface); }
+.sw .chip{ height:64px; }
+.sw .meta{ padding:10px 12px; font-size:12px; }
+.sw .meta b{ display:block; font-weight:var(--weight-semibold); color:var(--text-1); }
+.sw .meta span{ color:var(--text-3); font-variant-numeric:tabular-nums; }
+.scale{ display:grid; grid-template-columns:repeat(10,1fr); border-radius:var(--r-md); overflow:hidden; border:1px solid var(--line); }
+.scale .s{ height:72px; display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px; font-size:10px; font-weight:600; }
+.two{ display:grid; grid-template-columns:1fr 1fr; gap:var(--space-6); }
+.card-lite{ border:1px solid var(--line); border-radius:var(--r-lg); padding:var(--space-5); }
+.row{ display:flex; flex-wrap:wrap; gap:var(--space-4); align-items:center; }
+.tok{ font-family:ui-monospace,Menlo,monospace; font-size:12px; color:var(--accent-ink); }
+.type-row{ display:flex; align-items:baseline; gap:16px; padding:12px 0; border-bottom:1px dashed var(--line); }
+.type-row .lbl{ width:150px; flex:none; font-size:12px; color:var(--text-3); font-family:ui-monospace,Menlo,monospace; }
+.box{ display:flex; align-items:center; justify-content:center; height:64px; border-radius:var(--r-sm); background:var(--surface-2); border:1px solid var(--line); font-size:12px; color:var(--text-3); }
+.phone-ph{ width:190px; aspect-ratio:393/852; border-radius:36px; background:var(--ink); box-shadow:var(--shadow-lg); display:flex; align-items:center; justify-content:center; }
+.phone-ph span{ color:rgba(255,255,255,.4); font-size:11px; letter-spacing:.1em; text-transform:uppercase; }
+@media(max-width:860px){ .two{ grid-template-columns:1fr; } .scale{ grid-template-columns:repeat(5,1fr); } }
+</style>
+</head>
+<body>
+
+<div class="pv-top">
+  <div class="container row" style="justify-content:space-between">
+    <strong style="font-size:20px;letter-spacing:-.02em">Leadly — Brand Preview</strong>
+    <span class="muted">2026 rebuild · white canvas · Hanken Grotesk · green accent · <span class="tok">brand.css</span></span>
+  </div>
+</div>
+
+<!-- ════════ MOCK HERO ════════ -->
+<header class="section">
+  <div class="container-narrow" style="text-align:center">
+    <span class="eyebrow">For insurance advisory teams · Singapore</span>
+    <h1 class="display display--center" style="margin-top:8px">Where good leads<br>come to close</h1>
+    <p class="subhead" style="margin:22px auto 0">One system that qualifies every lead the moment they submit and puts it in your team's hands within seconds — not the next morning.</p>
+    <div class="row" style="justify-content:center;margin-top:30px">
+      <a class="btn btn-primary" href="#"><span>Get a demo</span><i class="btn-ico" aria-hidden="true"></i></a>
+      <a class="btn btn-secondary" href="#"><span>Learn more</span><i class="btn-ico" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</header>
+<div class="container" style="padding-bottom:var(--space-8)">
+  <div class="logo-wall">
+    <div class="logo-item" style="font-weight:800;font-size:19px">NORTHOAK</div>
+    <div class="logo-item" style="font-style:italic;font-size:22px;font-family:Georgia,serif">Meridian</div>
+    <div class="logo-item" style="font-weight:700;letter-spacing:.18em;font-size:15px">CLARIST</div>
+    <div class="logo-item" style="font-weight:900;font-size:18px">VANTAGE</div>
+    <div class="logo-item" style="font-weight:600;font-size:17px">Fairbank&nbsp;Co</div>
+  </div>
+  <p class="muted" style="text-align:center;margin-top:14px">↑ mock hero: all-caps stacked display · muted subhead · primary + secondary buttons · greyscale logo wall <span class="tok">(placeholder names — not real clients)</span></p>
+</div>
+
+<!-- ════════ MOCK TWO-COL-ALT ════════ -->
+<section class="section section--sunk">
+  <div class="container">
+    <div class="two-col-alt is-flip">
+      <div class="tca-copy">
+        <span class="eyebrow">Smart Qualifier</span>
+        <h2 class="section-title" style="margin-bottom:16px">Every lead, already qualified.</h2>
+        <p class="lead">A branching questionnaire asks what your advisors would ask on the call — before the call. The answers arrive attached to the contact.</p>
+        <ul class="feature-list" style="margin-top:24px">
+          <li class="feature-row">Filters the lead before it reaches an advisor</li>
+          <li class="feature-row">Answers arrive with the name and number</li>
+          <li class="feature-row">No discovery call spent on a bad fit</li>
+          <li class="feature-row">Qualified the instant they submit</li>
+          <li class="feature-row">Works on iOS, Android and mobile web</li>
+        </ul>
+        <a class="btn btn-primary" href="#" style="margin-top:26px"><span>See it live</span><i class="btn-ico" aria-hidden="true"></i></a>
+      </div>
+      <div class="tca-media">
+        <div class="tint-panel">
+          <div class="phone-ph"><span>product</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:20px">↑ two-col-alt (flipped) · eyebrow + sentence-case header + 5 feature-rows + tint-panel framing a phone</p>
+  </div>
+</section>
+
+<!-- ════════ GREEN CANDIDATES ════════ -->
+<section class="pv-sec">
+  <div class="container">
+    <div class="pv-h">Green — pick one</div>
+    <p class="pv-note">Both scales ship in <span class="tok">brand.css</span>. The live accent defaults to <b>Candidate B "Ledger"</b>. To adopt A, swap the seven <span class="tok">--accent*/--tint*</span> lines. Neither copies the reference's hexes.</p>
+
+    <div class="two">
+      <div>
+        <div class="row" style="justify-content:space-between;margin-bottom:10px">
+          <strong>Candidate A — “Court”</strong><span class="muted">reference-adjacent · spring green</span>
+        </div>
+        <div class="scale">
+          <div class="s" style="background:var(--green-a-50)">50</div>
+          <div class="s" style="background:var(--green-a-100)">100</div>
+          <div class="s" style="background:var(--green-a-200)">200</div>
+          <div class="s" style="background:var(--green-a-300)">300</div>
+          <div class="s" style="background:var(--green-a-400)">400</div>
+          <div class="s" style="background:var(--green-a-500);color:#fff">500</div>
+          <div class="s" style="background:var(--green-a-600);color:#fff">600</div>
+          <div class="s" style="background:var(--green-a-700);color:#fff">700</div>
+          <div class="s" style="background:var(--green-a-800);color:#fff">800</div>
+          <div class="s" style="background:var(--green-a-900);color:#fff">900</div>
+        </div>
+        <div class="card-lite" style="margin-top:14px;background:var(--green-a-50)">
+          <div class="row">
+            <a class="btn" style="background:var(--green-a-300);color:var(--ink)"><span>Get a demo</span><i class="btn-ico" style="background:var(--ink);--arrow:var(--green-a-300)"></i></a>
+            <span style="color:var(--green-a-700);font-weight:700">Link / ink text</span>
+          </div>
+          <p class="muted" style="margin-top:10px">pill <span class="tok">#ABE178</span> (dark text 12.4:1) · ink <span class="tok">#467A22</span> (5.16:1) · tint <span class="tok">#F2FBEA</span></p>
+        </div>
+      </div>
+
+      <div>
+        <div class="row" style="justify-content:space-between;margin-bottom:10px">
+          <strong>Candidate B — “Ledger” <span class="pill pill--accent" style="vertical-align:middle">default</span></strong><span class="muted">ours · deeper, cooler emerald</span>
+        </div>
+        <div class="scale">
+          <div class="s" style="background:var(--green-b-50)">50</div>
+          <div class="s" style="background:var(--green-b-100)">100</div>
+          <div class="s" style="background:var(--green-b-200)">200</div>
+          <div class="s" style="background:var(--green-b-300)">300</div>
+          <div class="s" style="background:var(--green-b-400);color:#fff">400</div>
+          <div class="s" style="background:var(--green-b-500);color:#fff">500</div>
+          <div class="s" style="background:var(--green-b-600);color:#fff">600</div>
+          <div class="s" style="background:var(--green-b-700);color:#fff">700</div>
+          <div class="s" style="background:var(--green-b-800);color:#fff">800</div>
+          <div class="s" style="background:var(--green-b-900);color:#fff">900</div>
+        </div>
+        <div class="card-lite" style="margin-top:14px;background:var(--tint)">
+          <div class="row">
+            <a class="btn btn-primary"><span>Get a demo</span><i class="btn-ico"></i></a>
+            <span style="color:var(--accent-ink);font-weight:700">Link / ink text</span>
+          </div>
+          <p class="muted" style="margin-top:10px">pill <span class="tok">#2FB985</span> (dark text 7.5:1) · ink <span class="tok">#147A54</span> (5.33:1) · tint <span class="tok">#ECF7F1</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ CORE PALETTE ════════ -->
+<section class="pv-sec">
+  <div class="container">
+    <div class="pv-h">Core palette</div>
+    <p class="pv-note">Canvas, ink and lines. Every text token is WCAG-AA on every ground it sits on.</p>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))">
+      <div class="sw"><div class="chip" style="background:var(--canvas);border-bottom:1px solid var(--line)"></div><div class="meta"><b>--canvas</b><span>#FFFFFF</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--canvas-sunk)"></div><div class="meta"><b>--canvas-sunk</b><span>#F7F8F8</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--surface-2)"></div><div class="meta"><b>--surface-2</b><span>#F6F7F8</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--ink)"></div><div class="meta"><b>--ink / text-1</b><span>#0C111D</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--text-2)"></div><div class="meta"><b>--text-2</b><span>#5A6473</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--text-3)"></div><div class="meta"><b>--text-3</b><span>#667085</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--line)"></div><div class="meta"><b>--line</b><span>#EAECF0</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--line-strong)"></div><div class="meta"><b>--line-strong</b><span>#D8DCE2</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--accent)"></div><div class="meta"><b>--accent</b><span>#2FB985</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--accent-ink)"></div><div class="meta"><b>--accent-ink</b><span>#147A54</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--tint);border-bottom:1px solid var(--line)"></div><div class="meta"><b>--tint</b><span>#ECF7F1</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--danger)"></div><div class="meta"><b>--danger</b><span>#C4271B</span></div></div>
+    </div>
+
+    <p class="pv-note" style="margin-top:32px">Data-viz (Pulse charts) — the only place blue survives.</p>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(120px,1fr))">
+      <div class="sw"><div class="chip" style="background:var(--chart-1)"></div><div class="meta"><b>--chart-1</b><span>blue</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--chart-2)"></div><div class="meta"><b>--chart-2</b><span>green</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--chart-3)"></div><div class="meta"><b>--chart-3</b><span>violet</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--chart-4)"></div><div class="meta"><b>--chart-4</b><span>amber</span></div></div>
+      <div class="sw"><div class="chip" style="background:var(--chart-5)"></div><div class="meta"><b>--chart-5</b><span>teal</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ TYPE ════════ -->
+<section class="pv-sec">
+  <div class="container">
+    <div class="pv-h">Type — Hanken Grotesk</div>
+    <p class="pv-note">One family, 400–900. Heavy uppercase display; clean sentence-case body.</p>
+    <div class="type-row"><span class="lbl">.display / 900</span><span class="display" style="font-size:52px">Made for business</span></div>
+    <div class="type-row"><span class="lbl">.h1 / 800</span><span class="h1">Where great teams close</span></div>
+    <div class="type-row"><span class="lbl">.section-title / 600</span><span class="section-title">A section header, sentence case</span></div>
+    <div class="type-row"><span class="lbl">.h3 / 700</span><span class="h3">A card heading</span></div>
+    <div class="type-row"><span class="lbl">.eyebrow / 600</span><span class="eyebrow" style="margin:0">Eyebrow label</span></div>
+    <div class="type-row"><span class="lbl">.lead</span><span class="lead">A lead paragraph introduces the section in a muted, readable body weight.</span></div>
+    <div class="type-row"><span class="lbl">body / 400</span><span>The quick brown fox jumps over the lazy dog — body copy at 17px.</span></div>
+    <div class="type-row"><span class="lbl">.muted / 14</span><span class="muted">Fine print and captions.</span></div>
+  </div>
+</section>
+
+<!-- ════════ BUTTONS ════════ -->
+<section class="pv-sec">
+  <div class="container">
+    <div class="pv-h">Buttons</div>
+    <p class="pv-note">Primary = green pill + dark text + arrow. Secondary = near-black pill + white text. Ghost = text only.</p>
+    <div class="row">
+      <a class="btn btn-primary" href="#"><span>Get a demo</span><i class="btn-ico"></i></a>
+      <a class="btn btn-secondary" href="#"><span>Learn more</span><i class="btn-ico"></i></a>
+      <a class="btn btn-ghost" href="#"><span>Read the story</span><i class="btn-ico"></i></a>
+      <a class="btn btn-primary" href="#"><span>No icon</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ COMPONENTS ════════ -->
+<section class="pv-sec">
+  <div class="container">
+    <div class="pv-h">Components</div>
+    <div class="two" style="margin-top:8px">
+      <div>
+        <p class="muted" style="margin-bottom:10px">Feature list</p>
+        <ul class="feature-list">
+          <li class="feature-row">Text with a hairline beneath</li>
+          <li class="feature-row">No bullets, no icons</li>
+          <li class="feature-row">Stacked, they form the list</li>
+        </ul>
+      </div>
+      <div>
+        <p class="muted" style="margin-bottom:10px">Card · pill · stat</p>
+        <div class="card">
+          <span class="pill pill--accent"><span class="dot"></span>Live</span>
+          <div class="stat" style="margin-top:16px">
+            <span class="stat-value stat-value--accent">1m 52s</span>
+            <span class="stat-label">Median time to first call</span>
+            <span class="stat-sub">across the last 30 days</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="two" style="margin-top:var(--space-6)">
+      <div>
+        <p class="muted" style="margin-bottom:10px">Inputs (green focus ring)</p>
+        <label for="pv-n">Your name</label>
+        <input id="pv-n" type="text" placeholder="Type to see the focus ring">
+        <label for="pv-s" style="margin-top:12px">A select</label>
+        <select id="pv-s"><option>Option one</option><option>Option two</option></select>
+      </div>
+      <div>
+        <p class="muted" style="margin-bottom:10px">Pills</p>
+        <div class="row">
+          <span class="pill">Neutral</span>
+          <span class="pill pill--accent"><span class="dot"></span>Qualified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ RADII · SPACING · SHADOWS ════════ -->
+<section class="pv-sec">
+  <div class="container">
+    <div class="pv-h">Radii · spacing · shadow</div>
+    <p class="muted" style="margin:18px 0 10px">Radii</p>
+    <div class="row">
+      <div class="box" style="width:88px;border-radius:var(--r-sm)">sm 8</div>
+      <div class="box" style="width:88px;border-radius:var(--r-md)">md 12</div>
+      <div class="box" style="width:88px;border-radius:var(--r-lg)">lg 16</div>
+      <div class="box" style="width:88px;border-radius:var(--r-xl)">xl 24</div>
+      <div class="box" style="width:88px;border-radius:var(--r-tint)">tint 24</div>
+      <div class="box" style="width:120px;border-radius:var(--r-pill)">pill</div>
+    </div>
+    <p class="muted" style="margin:26px 0 10px">Spacing (4px base)</p>
+    <div class="row" style="align-items:flex-end">
+      <div style="background:var(--accent);height:var(--space-2);width:var(--space-2)"></div>
+      <div style="background:var(--accent);height:var(--space-4);width:var(--space-4)"></div>
+      <div style="background:var(--accent);height:var(--space-5);width:var(--space-5)"></div>
+      <div style="background:var(--accent);height:var(--space-6);width:var(--space-6)"></div>
+      <div style="background:var(--accent);height:var(--space-7);width:var(--space-7)"></div>
+      <div style="background:var(--accent);height:var(--space-8);width:var(--space-8)"></div>
+    </div>
+    <p class="muted" style="margin:26px 0 10px">Shadows</p>
+    <div class="row">
+      <div class="box" style="width:120px;background:var(--surface);box-shadow:var(--shadow-sm);border:0">sm</div>
+      <div class="box" style="width:120px;background:var(--surface);box-shadow:var(--shadow-md);border:0">md</div>
+      <div class="box" style="width:120px;background:var(--surface);box-shadow:var(--shadow-lg);border:0">lg</div>
+    </div>
+  </div>
+</section>
+
+<div class="container" style="padding:var(--space-8) var(--gutter)">
+  <p class="muted">Full spec: <span class="tok">/BRAND.md</span> · animations showcase: <span class="tok">/animations</span></p>
+</div>
+
+</body>
+</html>

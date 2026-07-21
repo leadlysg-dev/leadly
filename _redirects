@@ -1,0 +1,6 @@
+/r/*                   /.netlify/functions/report?s=:splat   200
+/insurance/*           /for/insurance/                        301
+/for/owned/*           /for/insurance/                        301
+/for/clinics/*         /for/insurance/                        301
+/for/immigration/*     /for/insurance/                        301
+/*                     /404.html                              404

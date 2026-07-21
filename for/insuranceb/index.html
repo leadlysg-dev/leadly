@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="only light">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qualified insurance leads, delivered to WhatsApp in seconds | Leadly</title>
+<meta name="description" content="Every lead arrives already qualified and lands in your team's WhatsApp within seconds. One flat price — S$1,500/month plus your ad spend.">
+<link rel="canonical" href="https://www.leadly.sg/for/insurance">
+<meta name="robots" content="noindex,follow"><!-- A/B variant: paid traffic only, never indexed -->
+<meta property="og:title" content="Already qualified. Delivered in seconds.">
+<meta property="og:description" content="Qualified the instant they submit. In your team's WhatsApp in seconds. S$1,500/month + your ad spend.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.leadly.sg/for/insuranceb">
+
+<script>/* A/B TEST — which section converts better: the process rail (A) or the live system demo (B).
+   Pushed BEFORE GTM so every downstream event and conversion carries the variant. */
+window.dataLayer=window.dataLayer||[];window.dataLayer.push({leadly_variant:"B",leadly_variant_section:"system"});</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5TR4KNPK');</script>
+
+<script src="/assets/leadly-data.js"></script>
+<script>console.log('%c✔ LEADLY build 2026-07-19 · variant B (system) · calc-hardened + blobs-fix','color:#0055E8;font-weight:700;font-size:14px');</script>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="stylesheet" href="/assets/brand.css">
+<link rel="stylesheet" href="/assets/leadly-reel.css">
+<link rel="stylesheet" href="/assets/leadly-components.css">
+<link rel="stylesheet" href="/assets/leadly-lockscreen.css">
+<link rel="stylesheet" href="/assets/leadly-funnels.css">
+<link rel="stylesheet" href="/assets/leadly-analysis.css">
+<link rel="stylesheet" href="/assets/leadly-book.css">
+
+<style>
+/* ══════════════════════════════════════════════════════════════════════════
+   PAGE-SPECIFIC LAYOUT ONLY. Every colour / type / radius / space is a token.
+   The system: white paper, one dark stage, one blue. See /BRAND.md.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── NAV — the wordmark ────────────────────────────────────────────────── */
+.nav-logo img{ height:22px; width:auto; display:block; }
+
+/* ── S1 · HERO — the stage ─────────────────────────────────────────────── */
+.hero{ padding: clamp(24px,3vw,44px) 0 0; }
+.hero .stage-dark{
+  /* Real padding on ALL FOUR sides — the copy must never touch the border.
+     The phone still bleeds off the bottom: it is absolutely positioned inside
+     .hero-media, so it overflows the padding box and gets cut by the panel's
+     own overflow:hidden at the border box. Padding constrains the text, not it. */
+  padding: clamp(44px,5.6vw,72px) clamp(28px,4.4vw,56px);
+  display: flex; align-items: center;
+  min-height: clamp(340px, 36vw, 470px);
+}
+
+.hero .stage-dark > *{ width:100%; }   /* .tex-dark already lifts children above the grid */
+
+.hero-head{ display:grid; grid-template-columns: minmax(0,1.04fr) minmax(0,.96fr);
+  gap:clamp(24px,3vw,48px); align-items:center; }
+.hero .display{ max-width:17ch; }
+
+/* The phone is anchored to the BOTTOM of the panel, not to the top of its
+   column — so it keeps bleeding off the edge by a fixed amount no matter how
+   tall the stage grows. Anchoring to the top made the bleed depend on the
+   copy's length, which is how it silently disappeared when padding changed. */
+.hero-media{ position:relative; align-self:stretch; min-height:clamp(330px,32vw,430px); }
+.hero-media > div{
+  position:absolute; left:50%;
+  bottom: calc(-1 * (clamp(44px,5.6vw,72px) + 46px));   /* clear the padding, then bleed 46px */
+  transform:translateX(-50%);
+}
+.hero-lead{ font-size:clamp(15.5px,1.15vw,17.5px); color:var(--on-panel-2); max-width:46ch; margin-top:20px; line-height:1.6; }
+.hero-cta{ display:flex; gap:12px; margin-top:26px; flex-wrap:wrap; align-items:center; }
+.hero-note{ margin-top:20px; padding-top:18px; border-top:1px solid var(--panel-line);
+  max-width:46ch; font-size:13.5px; line-height:1.6; color:var(--on-panel-3); }
+.hero-note b{ color:var(--panel-accent); font-weight:600; }
+.hero-note cite{ display:block; margin-top:5px; font-style:normal; font-size:11.5px; color:var(--on-panel-3); opacity:.7; }
+
+/* The thesis. It used to hang off the bottom of the hero; now it sits BELOW
+   the logo row, so it needs vertical rhythm on both sides, not just the top. */
+
+/* ── LOGO MARQUEE ──────────────────────────────────────────────────────── */
+.marquee{ position:relative; overflow:hidden; max-width:var(--container); margin-inline:auto; padding: clamp(40px,5vw,60px) 0 clamp(8px,1.5vw,16px);
+  -webkit-mask:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+          mask:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee .cap{ text-align:center; font-size:12px; font-weight:600; letter-spacing:var(--tracking-eyebrow);
+  text-transform:uppercase; color:var(--text-3-aa); margin:0 0 22px; }
+.mq-track{ display:flex; align-items:center; gap:clamp(56px,8vw,120px); width:max-content; animation: mq 64s linear infinite; }
+.marquee:hover .mq-track{ animation-play-state:paused; }
+@keyframes mq{ from{ transform:translateX(0) } to{ transform:translateX(-50%) } }
+/* These are the biggest insurers in Singapore — they carry weight, so they run in
+   FULL COLOUR at full opacity. No greyscale, no fade. Heights are optically
+   balanced per mark, not mathematically equal. */
+.mq-item{ display:flex; align-items:center; justify-content:center; height:60px; flex:none; }
+.mq-item img{ width:auto; display:block; }
+
+/* ── S3 · SYSTEM — tab bar on top; animation left, copy right ──────────── */
+.sys-tabs{ display:flex; gap:2px; flex-wrap:wrap; margin-top:34px; border-bottom:1px solid var(--line); }
+.sys-tab{ font-family:var(--font); cursor:pointer; background:none; border:0; border-bottom:2px solid transparent;
+  margin-bottom:-1px; padding:12px 15px; font-size:14.5px; font-weight:600; color:var(--text-2);
+  display:flex; align-items:center; gap:9px; white-space:nowrap; letter-spacing:var(--tracking-tight);
+  transition:color var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease); }
+.sys-tab .n{ font-size:11px; font-weight:700; width:20px; height:20px; border-radius:50%; flex:none;
+  display:grid; place-items:center; color:var(--text-2); background:var(--surface-2); border:1px solid var(--line); }
+.sys-tab:hover{ color:var(--text-1); }
+.sys-tab.is-active{ color:var(--accent-ink); border-bottom-color:var(--accent); }
+.sys-tab.is-active .n{ background:var(--accent); color:var(--on-accent); border-color:var(--accent); }
+
+.sys-body{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,360px); gap:clamp(24px,3vw,48px);
+  align-items:start; margin-top:30px; }
+/* ALL SIX tabs run on the same dark stage — black, hairline grid, one bloom.
+   The panel never changes shape or colour when you switch tabs; only what is
+   running on it changes. */
+.sys-stage{ position:relative; height:620px; }
+.sys-anim{ position:absolute; inset:0; display:none; }
+.sys-anim.is-active{ display:block; animation:sysfade .35s var(--ease-out); }
+.sys-anim > .demo-stage,
+.sys-anim > [data-leadly-demo]{ height:100%; min-height:0; padding:28px 20px; }
+.sys-stage .phone{ --pw:250px; }
+.sys-stage .demo-stage .glow{ left:50%; top:50%; transform:translate(-50%,-50%); }
+/* the reel rides the stage directly — no frame of its own */
+.sys-anim .reel{ height:100%; min-height:0; }
+.sys-copy-col{ position:sticky; top:84px; }
+.sys-copy{ display:none; }
+.sys-copy.is-active{ display:grid; gap:18px; animation:sysfade .35s var(--ease-out); }
+@keyframes sysfade{ from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+.sys-block .lbl{ font-size:12px; font-weight:600; letter-spacing:var(--tracking-eyebrow); text-transform:uppercase;
+  color:var(--accent-ink); margin-bottom:6px; }
+.sys-block p{ font-size:15px; line-height:1.6; color:var(--text-2); }
+.sys-stat{ border:1px solid var(--tint-line); border-radius:var(--r-md); padding:16px 18px; background:var(--tint); }
+.sys-stat b{ display:block; font-size:28px; font-weight:800; color:var(--accent-ink); letter-spacing:var(--tracking-display); line-height:1; margin-bottom:6px; }
+.sys-stat p{ font-size:13.5px; line-height:1.55; color:var(--text-2); }
+.sys-stat cite{ display:block; font-style:normal; font-size:11.5px; color:var(--text-3-aa); margin-top:5px; }
+.sys-fill{ border:1px dashed var(--line-strong); border-radius:var(--r-md); padding:14px 16px; background:var(--surface-2);
+  color:var(--text-3-aa); font-size:13px; line-height:1.5; }
+.sys-fill b{ color:var(--text-2); font-weight:600; }
+.sys-cta{ display:inline-block; margin-top:4px; font-size:14px; font-weight:600;
+  color:var(--accent-ink); text-decoration:none; letter-spacing:var(--tracking-tight); }
+.sys-cta:hover{ text-decoration:underline; }
+
+/* ── PULSE showcase — the product dashboard, included in the plan ───────── */
+.pulse-showcase .two-col-alt{ align-items:center; }
+.pulse-showcase .tca-copy .btn{ display:flex; width:max-content; margin-top:26px; }
+.pulse-media{ align-self:stretch; min-height:clamp(300px,30vw,380px); }
+.pulse-media [data-leadly-demo]{ height:100%; min-height:clamp(300px,30vw,380px); display:block; }
+/* The Pulse tour is authored as a 1080x1080 square. Give it a square slot so it
+   scales to an exact fit rather than being cropped top and bottom. */
+.pulse-media:has([data-leadly-tour]){ padding:0; overflow:hidden; }
+.pulse-media [data-leadly-tour]{ display:block; width:100%; aspect-ratio:1/1; border-radius:inherit; }
+
+/* ── S4 · PRICING — the table is the whole section ──────────────────────────
+   The offer list and the price card are gone. They said the same thing the
+   table says, twice, and the table says it better because it says it against
+   the alternative. What could NOT go with them is the price itself, so it
+   moves up top, on its own line, where it is the first thing read. */
+.price-line{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;
+  gap:clamp(20px,3vw,40px);
+  margin-top:32px; padding:24px 26px;
+  border:1px solid var(--tint-line); border-radius:var(--r-xl);
+  background:var(--tint);
+}
+.price-fig{ display:flex; align-items:baseline; gap:12px; flex:none; }
+.price-fig .fig{
+  font-size:clamp(38px,4.4vw,54px); font-weight:800; line-height:1;
+  letter-spacing:var(--tracking-display); color:var(--text-1);
+  font-variant-numeric:tabular-nums;
+}
+.price-fig .per{ font-size:14px; line-height:1.35; color:var(--text-2); font-weight:500; }
+.price-fig .per b{ display:block; color:var(--accent-ink); font-weight:600; }
+.price-note{ font-size:13.5px; line-height:1.55; color:var(--text-2); }
+.price-line .btn{ flex:none; }
+
+@media (max-width:860px){
+  .price-line{ grid-template-columns:minmax(0,1fr); gap:16px; padding:22px; text-align:left; }
+  .price-line .btn{ justify-content:center; }
+}
+
+.tick-svg circle{ fill:#FFFFFF; }
+.tick-svg path{ stroke:var(--accent-ink); stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:16; stroke-dashoffset:16; animation:tick-draw 3s var(--ease) infinite; }
+@keyframes tick-draw{ 0%{stroke-dashoffset:16} 26%,74%{stroke-dashoffset:0} 100%{stroke-dashoffset:16} }
+.cross-svg path{ stroke:var(--text-3); stroke-width:2.2; fill:none; stroke-linecap:round; }
+
+/* ── S7 · COMPARISON ────────────────────────────────────────────────────────
+   THIS STAYS A TABLE. At every width, on every device.
+
+   Two wrong answers were tried before this one:
+     · `overflow-x:auto` on a 640px min-width table — two thirds of it sat
+       off-screen behind a sideways scroll nobody finds. Hidden.
+     · stacked cards on mobile — visible, but it stopped being a comparison.
+       A comparison table only argues when the two columns sit SIDE BY SIDE and
+       your eye can cross between them. Stack them and the argument is gone.
+
+   So the structure never changes — three columns, always. What changes is the
+   WORDS. Every cell carries a long form and a short form; the phone gets the
+   short one. The table shrinks by saying less, not by breaking apart.        */
+.cmp{ margin-top:46px; }
+.cmp table{ width:100%; border-collapse:collapse; table-layout:fixed; }
+.cmp th, .cmp td{ text-align:left; padding:16px 18px; font-size:15px; border-bottom:1px solid var(--line); vertical-align:top; }
+.cmp thead th{ font-size:12px; font-weight:600; letter-spacing:var(--tracking-eyebrow); text-transform:uppercase;
+  color:var(--text-3-aa); border-bottom:1px solid var(--line-strong); background:transparent; }
+.cmp thead th.us{ color:var(--accent-ink); background:var(--tint); }
+.cmp .crit{ width:30%; color:var(--text-2); font-weight:600; }
+.cmp td.crit{ color:var(--text-1); }
+.cmp th.us, .cmp td.us{ width:35%; }
+.cmp td.us{ color:var(--text-1); font-weight:600; background:var(--tint); }
+.cmp td.them{ color:var(--text-3-aa); }
+.cmp tbody tr:last-child td{ border-bottom:0; }
+.cmp .cell{ display:flex; align-items:flex-start; gap:9px; line-height:1.45; }
+.cmp .cell svg{ flex:none; margin-top:2px; }
+
+/* the two forms of every cell */
+.cmp .sm{ display:none; }
+.cmp .lg{ display:inline; }
+
+/* the group headers */
+.cmp tr.grp td{
+  padding:26px 18px 10px; border-bottom:1px solid var(--line-strong);
+  font-size:11.5px; font-weight:600; letter-spacing:var(--tracking-eyebrow);
+  text-transform:uppercase; color:var(--text-1); background:transparent;
+}
+
+@media (max-width:760px){
+  /* STILL A TABLE. Tighter, and it says less. */
+  .cmp .lg{ display:none; }
+  .cmp .sm{ display:inline; }
+  .cmp table{ table-layout:fixed; }
+  .cmp th, .cmp td{ padding:11px 8px; font-size:12.5px; }
+  .cmp thead th{ font-size:9.5px; letter-spacing:.06em; padding:9px 8px; }
+  .cmp .crit{ width:28%; font-size:12.5px; }
+  .cmp th.us, .cmp td.us{ width:36%; }
+  .cmp .cell{ gap:6px; line-height:1.35; }
+  .cmp .cell svg{ width:14px; height:14px; margin-top:1px; }
+  .cmp tr.grp td{ padding:18px 8px 8px; font-size:9.5px; }
+}
+@media (max-width:380px){
+  .cmp th, .cmp td{ padding:10px 6px; font-size:11.5px; }
+  .cmp thead th{ font-size:9px; }
+  .cmp .cell svg{ width:12px; height:12px; }
+  .cmp .cell{ gap:5px; }
+}
+
+
+/* ── ADD-ONS — a drawer, not a page ────────────────────────────────────────
+   This used to link out to /for/insurance/pricing/. Sending a prospect who is
+   reading your price OFF the page to read more price is how you lose them. It
+   opens under the table now, and minimises again. */
+.ao{ margin-top:20px; border:1px solid var(--line); border-radius:var(--r-xl); overflow:hidden; background:var(--surface); }
+.ao-toggle{
+  width:100%; display:grid; grid-template-columns:1fr auto; align-items:center;
+  gap:4px 16px; padding:20px 22px; cursor:pointer;
+  background:none; border:0; font-family:var(--font); text-align:left;
+  transition:background var(--dur-2) var(--ease);
+}
+.ao-toggle:hover{ background:var(--surface-2); }
+.ao-toggle:focus-visible{ outline:3px solid var(--accent); outline-offset:-3px; }
+.ao-t{ font-size:16.5px; font-weight:600; color:var(--text-1); letter-spacing:var(--tracking-h); }
+.ao-s{ grid-column:1; font-size:13.5px; color:var(--text-2); }
+.ao-chev{
+  grid-row:1 / span 2; width:36px; height:36px; border-radius:50%;
+  border:1px solid var(--line-strong); display:grid; place-items:center; color:var(--text-2);
+  transition:transform var(--dur-3) var(--ease), background var(--dur-2) var(--ease), color var(--dur-2) var(--ease);
+}
+.ao-chev svg{ width:17px; height:17px; }
+.ao-toggle:hover .ao-chev{ background:var(--accent); border-color:var(--accent); color:#fff; }
+.ao-toggle[aria-expanded="true"] .ao-chev{ transform:rotate(180deg); background:var(--accent); border-color:var(--accent); color:#fff; }
+
+/* the drawer itself — height is animated in JS so it can be `auto` at rest */
+.ao-panel{ overflow:hidden; border-top:1px solid var(--line); }
+.ao-panel[hidden]{ display:none; }
+.ao-in{ padding:24px 22px 20px; }
+.ao-lead{ font-size:14.5px; line-height:1.6; color:var(--text-2); max-width:64ch; margin-bottom:22px; }
+.ao-h{
+  font-size:11.5px; font-weight:600; letter-spacing:var(--tracking-eyebrow);
+  text-transform:uppercase; color:var(--text-3-aa);
+  padding-bottom:10px; border-bottom:1px solid var(--line-strong); margin-bottom:4px;
+}
+.ao-h + .ao-list{ margin-bottom:26px; }
+.ao-list{ list-style:none; margin:0; padding:0; }
+.ao-row{
+  display:grid; grid-template-columns:minmax(0,190px) minmax(0,1fr) auto;
+  gap:16px; align-items:baseline;
+  padding:15px 0; border-bottom:1px solid var(--line);
+}
+.ao-row:last-child{ border-bottom:0; }
+.ao-n{ font-size:14.5px; font-weight:600; color:var(--text-1); }
+.ao-d{ font-size:13.5px; line-height:1.55; color:var(--text-2); }
+.ao-p{
+  font-size:12px; font-weight:600; letter-spacing:var(--tracking-eyebrow); text-transform:uppercase;
+  color:var(--accent-ink); white-space:nowrap;
+}
+.ao-fine{ margin-top:18px; padding-top:18px; border-top:1px solid var(--line);
+  font-size:12.5px; line-height:1.6; color:var(--text-3-aa); }
+.ao-close{
+  margin-top:18px; display:inline-flex; align-items:center; gap:8px;
+  padding:10px 18px; border-radius:var(--r-pill);
+  border:1px solid var(--line-strong); background:none; cursor:pointer;
+  font-family:var(--font); font-size:14px; font-weight:600; color:var(--text-2);
+  transition:border-color var(--dur-2) var(--ease), color var(--dur-2) var(--ease);
+}
+.ao-close:hover{ border-color:var(--accent); color:var(--accent-ink); }
+.ao-close svg{ width:15px; height:15px; }
+
+@media (max-width:760px){
+  .ao-row{ grid-template-columns:minmax(0,1fr); gap:5px; }
+  .ao-p{ justify-self:start; }
+  .ao-in{ padding:20px 18px 18px; }
+  .ao-toggle{ padding:18px; }
+}
+
+
+/* ── S5 · CALCULATOR ───────────────────────────────────────────────────── */
+/* ── THE 2-MINUTE CHECK — a demonstration, not a form ───────────────────────
+   Left: what they fill in. Right: what an advisor would already be looking at,
+   assembling itself one answer at a time. The page claims "the form is the
+   product" — this is that claim, made visible while they use it. */
+.q{ max-width:1060px; margin:0 auto; padding:0; border:0; background:none; box-shadow:none; }
+.q.is-analysis{ max-width:920px; }
+/* ── THE SHOWCASE ─────────────────────────────────────────────────────────
+   Three things were wrong and they compounded:
+     · the shell grew with each question, so the page kept getting longer
+     · the right-hand panel scrolled away — the one thing that PROVES the
+       machine is reading you, and it left the screen while you answered
+     · nothing anchored a question to a screen; it just ran on
+
+   Now: the shell is a FIXED-HEIGHT stage. One question fills it, the next
+   replaces it. The page does not grow by a pixel. The live panel is sticky
+   inside it, so the profile assembling itself is always in view — which is the
+   entire argument, and it is not allowed to scroll off.                     */
+.q-shell{
+  display:grid; grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);
+  gap:0; border-radius:var(--r-xl); overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:0 24px 60px -20px rgba(12,24,60,.20), 0 2px 6px rgba(16,24,40,.05);
+  background:var(--surface);
+  min-height:560px;                 /* one question, one stage — it never grows */
+}
+.q.is-analysis .q-shell{ grid-template-columns:minmax(0,1fr); }
+.q.is-analysis .q-live, .q.is-analysis .q-steps-bar, .q.is-analysis .q-bar, .q.is-analysis .q-nav{ display:none !important; }
+.q-main{ padding:clamp(24px,2.6vw,34px); display:flex; flex-direction:column; min-width:0; }
+
+/* the stepper — you can see how far there is to go, and how far you've come */
+.q-steps-bar{ display:flex; gap:5px; margin-bottom:14px; }
+.q-seg{ flex:1; height:4px; border-radius:99px; background:var(--line); overflow:hidden; }
+.q-seg i{ display:block; height:100%; width:0; background:var(--accent); border-radius:99px;
+  transition:width .45s cubic-bezier(.4,0,.2,1); }
+.q-seg.done i{ width:100%; }
+.q-seg.now i{ width:100%; background:linear-gradient(90deg,var(--accent),#7BA2F6); }
+.q-bar{ display:none; }
+
+/* options become things you want to press */
+.q-opts{ display:grid; gap:10px; }
+.opt{
+  position:relative; display:flex; align-items:center; gap:13px;
+  padding:16px 16px; border:1.5px solid var(--line); border-radius:var(--r-btn);
+  cursor:pointer; font-size:15.5px; color:var(--text-1); background:var(--surface);
+  transition:border-color .18s var(--ease), background .18s var(--ease),
+             transform .14s cubic-bezier(.2,.8,.2,1), box-shadow .18s var(--ease);
+}
+.opt:hover{ border-color:var(--accent); transform:translateX(3px);
+  box-shadow:0 4px 14px -6px rgba(0,85,232,.34); }
+.opt.sel{ border-color:var(--accent); background:rgba(0,85,232,.05); font-weight:600;
+  box-shadow:0 0 0 3px rgba(0,85,232,.10); }
+.opt .tick{ width:20px; height:20px; border-radius:50%; border:1.5px solid var(--line-strong);
+  flex:none; position:relative; background:#fff; transition:all .2s var(--ease); }
+.opt.multi .tick{ border-radius:6px; }
+.opt.sel .tick{ border-color:var(--accent); background:var(--accent);
+  animation:q-pop .34s cubic-bezier(.34,1.56,.64,1); }
+@keyframes q-pop{ 0%{transform:scale(.55)} 60%{transform:scale(1.18)} 100%{transform:scale(1)} }
+.opt.sel .tick::after{ content:""; position:absolute; inset:0; margin:auto; width:6px; height:10px;
+  border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg) translate(-1px,-1px); }
+/* the keyboard hint — power users notice, nobody else does */
+.opt .k{
+  margin-left:auto; flex:none; width:22px; height:22px; border-radius:6px;
+  display:grid; place-items:center; font-size:11px; font-weight:700;
+  color:var(--text-3-aa); background:var(--surface-2); border:1px solid var(--line);
+  transition:all .18s var(--ease);
+}
+.opt:hover .k{ color:var(--accent-ink); border-color:var(--accent); background:var(--tint); }
+.opt.sel .k{ color:#fff; background:var(--accent); border-color:var(--accent); }
+
+.q-q{ font-size:clamp(20px,2.1vw,25px); font-weight:600; letter-spacing:var(--tracking-h);
+  color:var(--text-1); margin-bottom:6px; line-height:1.28; }
+.q-sub{ font-size:14.5px; line-height:1.55; color:var(--text-2); margin-bottom:22px; }
+.q-n{ font-size:11.5px; font-weight:600; letter-spacing:var(--tracking-eyebrow);
+  text-transform:uppercase; color:var(--accent-ink); margin-bottom:11px; }
+
+/* the running total on the money step — the number moves while they type */
+.q-total{
+  margin-top:16px; padding:14px 16px; border-radius:var(--r-btn);
+  background:var(--tint); border:1px solid var(--tint-line);
+  display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+}
+.q-total span{ font-size:12.5px; font-weight:600; letter-spacing:var(--tracking-eyebrow);
+  text-transform:uppercase; color:var(--accent-strong); }
+.q-total b{ font-size:24px; font-weight:800; color:var(--text-1);
+  letter-spacing:var(--tracking-display); font-variant-numeric:tabular-nums; }
+
+.q-err{ display:none; margin-top:5px; font-size:12.5px; color:var(--danger); }
+.q-field-bad .q-err{ display:block; }
+.q-field-bad input{ border-color:var(--danger) !important; }
+.q-consent{
+  display:flex; gap:11px; align-items:flex-start; margin-top:4px;
+  padding:14px; border:1.5px solid var(--line); border-radius:var(--r-btn);
+  background:var(--surface-2); cursor:pointer;
+}
+.q-consent input{ width:18px; height:18px; margin:1px 0 0; flex:none; accent-color:var(--accent); }
+.q-consent span{ font-size:12.5px; line-height:1.5; color:var(--text-2); }
+.q-consent.bad{ border-color:var(--danger); }
+.q-money label i{ font-style:normal; font-weight:400; color:var(--text-3-aa); }
+.q-fine{ margin-top:10px; font-size:11.5px; color:var(--text-3-aa); text-align:center; }
+
+/* ── THE LIVE PANEL ────────────────────────────────────────────────────────*/
+.q-live{
+  background:var(--panel); color:#fff; padding:24px 22px;
+  display:flex; flex-direction:column; position:relative; overflow:hidden;
+}
+.q-live::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(80% 60% at 100% 0%, rgba(0,85,232,.40), transparent 68%),
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:100% 100%, 34px 34px, 34px 34px;
+  -webkit-mask:radial-gradient(120% 90% at 100% 0%, #000 25%, transparent 92%);
+          mask:radial-gradient(120% 90% at 100% 0%, #000 25%, transparent 92%);
+}
+.q-live > *{ position:relative; }
+.q-live-top{ display:flex; gap:10px; align-items:flex-start; padding-bottom:16px;
+  border-bottom:1px solid var(--panel-line); margin-bottom:16px; }
+.q-live-dot{ width:8px; height:8px; border-radius:50%; background:#34D399; flex:none; margin-top:5px;
+  box-shadow:0 0 0 0 rgba(52,211,153,.6); animation:q-live-pulse 2s ease-out infinite; }
+@keyframes q-live-pulse{ to{ box-shadow:0 0 0 9px rgba(52,211,153,0); } }
+.q-live-top b{ display:block; font-size:13.5px; font-weight:600; color:#fff; }
+.q-live-top small{ display:block; font-size:11.5px; line-height:1.45; color:rgba(255,255,255,.52); margin-top:2px; }
+.q-live-body{ flex:1; display:flex; flex-direction:column; gap:8px; min-height:150px; }
+.q-live-empty{ font-size:12.5px; line-height:1.6; color:rgba(255,255,255,.40); }
+.q-row{
+  padding:10px 12px; border-radius:10px;
+  background:rgba(255,255,255,.055); border:1px solid rgba(255,255,255,.08);
+  animation:q-row-in .45s cubic-bezier(.34,1.4,.64,1) both;
+}
+@keyframes q-row-in{ from{ opacity:0; transform:translateX(12px); } to{ opacity:1; transform:none; } }
+.q-row .k{ display:block; font-size:9.5px; font-weight:600; letter-spacing:.09em;
+  text-transform:uppercase; color:rgba(255,255,255,.46); margin-bottom:3px; }
+.q-row .v{ display:block; font-size:13px; font-weight:500; color:#fff; line-height:1.35; }
+.q-live-foot{
+  margin-top:16px; padding-top:14px; border-top:1px solid var(--panel-line);
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+}
+.q-live-score{ font-size:11.5px; color:rgba(255,255,255,.56); }
+.q-live-score b{ color:#9DC0FF; font-weight:700; font-size:15px; margin-left:5px;
+  font-variant-numeric:tabular-nums; }
+.q-live-prio{
+  font-size:10.5px; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
+  padding:5px 10px; border-radius:6px;
+  background:rgba(255,255,255,.10); color:rgba(255,255,255,.72);
+}
+.q-live-prio.hot{ background:rgba(196,39,27,.22); color:#FF9A90; }
+.q-live-prio.warm{ background:rgba(181,71,8,.24); color:#FFC48A; }
+.q-live-prio.cool{ background:rgba(0,85,232,.24); color:#9DC0FF; }
+
+@media (max-width:900px){
+  .q-shell{ grid-template-columns:minmax(0,1fr); }
+  .q-live{ order:-1; padding:16px 18px; }
+  .q-live-body{ min-height:0; flex-direction:row; flex-wrap:wrap; gap:6px; }
+  .q-row{ padding:7px 10px; flex:0 1 auto; }
+  .q-row .v{ font-size:12px; }
+  .q-live-top small{ display:none; }
+  .q-main{ padding:20px 18px; }
+}
+
+.q-money{ display:grid; gap:13px; }
+.q-money label{ font-size:13px; color:var(--text-3-aa); display:block; margin-bottom:5px; }
+.q-in{ position:relative; }
+.q-in span{ position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--text-3-aa); font-size:15px; pointer-events:none; }
+.q-in input{ padding-left:38px; }
+.q-hours{ display:grid; grid-template-columns:1fr 1fr; gap:11px; }
+.q-nav{ display:flex; gap:10px; margin-top:22px; }
+.q-nav .btn{ flex:1; justify-content:center; }
+.q-back{ flex:0 0 auto !important; padding-left:18px; padding-right:18px; }
+
+/* ── S6 · PROMISE — the page's second, and last, dark object ───────────── */
+/* ── S6 · THE PROMISE, AND THE RESEARCH UNDER IT ───────────────────────────
+   The prose is gone. What backs the promise is nine figures, each carrying its
+   own source AND its sample size — because a statistic without a sample is a
+   rumour, and this audience has been sold rumours before. */
+.promise-wrap{ padding: var(--space-9) 0; }
+.promise{ text-align:center; padding: clamp(44px,5.4vw,72px) clamp(24px,4vw,56px); }
+.promise .statement{ max-width:20ch; margin:14px auto 0; }
+
+/* six cards, a clean 3 x 2 */
+.sci-grid{
+  display:grid; grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:12px; margin-top:clamp(36px,4.4vw,52px); text-align:left;
+}
+.sci-card{
+  position:relative;
+  padding:22px 20px 18px;
+  border-radius:var(--r-lg);
+  background:rgba(255,255,255,.045);
+  border:1px solid var(--panel-line);
+  display:flex; flex-direction:column;
+  transition:background var(--dur-2) var(--ease), border-color var(--dur-2) var(--ease), transform var(--dur-2) var(--ease);
+}
+.sci-card:hover{
+  background:rgba(255,255,255,.075);
+  border-color:rgba(157,192,255,.34);
+  transform:translateY(-2px);
+}
+.sci-fig{
+  font-size:clamp(34px,3.6vw,44px); font-weight:800; line-height:1;
+  letter-spacing:var(--tracking-display);
+  color:#9DC0FF;                       /* 5.6:1 on the panel — measured */
+  font-variant-numeric:tabular-nums;
+  margin-bottom:12px;
+}
+.sci-fig .u{ font-size:.42em; font-weight:600; margin-left:3px; letter-spacing:0; }
+.sci-claim{
+  font-size:15px; font-weight:600; line-height:1.35;
+  color:#fff; margin-bottom:6px;
+}
+.sci-detail{
+  font-size:13px; line-height:1.5;
+  color:rgba(255,255,255,.66);
+  margin-bottom:16px; flex:1;
+}
+.sci-src{
+  padding-top:12px; border-top:1px solid var(--panel-line);
+  font-size:11px; line-height:1.45;
+}
+.sci-src b{ display:block; color:rgba(255,255,255,.82); font-weight:600; }
+.sci-src span{ display:block; color:rgba(255,255,255,.44); margin-top:2px; }
+
+.sci-foot{
+  margin-top:26px; font-size:12px; line-height:1.6;
+  color:rgba(255,255,255,.44); max-width:76ch; margin-inline:auto;
+}
+
+@media (max-width:900px){
+  .sci-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+}
+@media (max-width:600px){
+  .sci-grid{ grid-template-columns:minmax(0,1fr); gap:10px; }
+  .sci-card{ padding:18px 16px 15px; }
+  .sci-fig{ font-size:32px; margin-bottom:9px; }
+}
+
+/* ── RESPONSIVE ────────────────────────────────────────────────────────── */
+@media (max-width:980px){
+}
+@media (max-width:860px){
+  /* ── MOBILE HERO ───────────────────────────────────────────────────────
+     The phone was anchored to the BOTTOM of the panel, which is right on
+     desktop (it bleeds off the edge) and wrong here: once the columns stack,
+     that anchor drove the handset straight up through the copy, at full
+     opacity, and the 160% stat became unreadable.
+
+     Mobile inverts it. The phone comes FIRST (order:-1), sharp and legible at
+     the top. Its lower half then dissolves and slides BEHIND the copy — a
+     mask fades it out, a blurred cobalt orb sits behind it, and the text rides
+     on top at a higher z-index. Depth, instead of a collision.               */
+  .hero .stage-dark{ display:block; padding-top:clamp(20px,4vw,32px); }
+  .hero-head{ grid-template-columns:minmax(0,1fr); gap:0; }
+  .lockscreen{ --dev:230px; }
+
+  .hero-copy{ position:relative; z-index:2; }   /* the copy always wins */
+
+  .hero-media{
+    order:-1;                       /* phone ABOVE the text */
+    position:relative; z-index:0;   /* and BEHIND it, if they ever met */
+    align-self:auto;
+    min-height:0; height:340px;     /* the handset's own box */
+    margin:0 0 14px;                /* copy starts BELOW it — no overlap */
+    /* The phone is ~520px tall in a 340px box, so it MUST be contained here.
+       overflow clips it; the mask dissolves the last third so it reads as
+       depth rather than a hard cut. Without this the handset ran on under
+       the headline. */
+    overflow:hidden;
+    -webkit-mask: linear-gradient(#000 64%, rgba(0,0,0,.30) 87%, transparent 100%);
+            mask: linear-gradient(#000 64%, rgba(0,0,0,.30) 87%, transparent 100%);
+  }
+  .hero-media > div{
+    position:absolute; left:50%; top:0; bottom:auto;
+    transform:translateX(-50%);
+  }
+  /* the bokeh — one soft cobalt orb behind the glass */
+  .hero-media::before{
+    content:""; position:absolute; z-index:-1;
+    left:50%; top:4%; width:min(80vw,330px); aspect-ratio:1;
+    transform:translateX(-50%);
+    border-radius:50%;
+    background:radial-gradient(circle, color-mix(in srgb, var(--accent) 55%, transparent), transparent 66%);
+    filter:blur(44px); opacity:.5;
+    pointer-events:none;
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .hero-media::before{ animation:hero-bokeh 7s ease-in-out infinite; }
+  }
+  @keyframes hero-bokeh{
+    0%,100%{ opacity:.38; transform:translateX(-50%) scale(.92); }
+    50%    { opacity:.58; transform:translateX(-50%) scale(1.06); }
+  }
+  .sys-body{ grid-template-columns:minmax(0,1fr); gap:18px; }
+  /* No sideways scroll on mobile — tabs 4-6 were simply off-screen.
+     Wrap to TWO ROWS OF THREE instead, so all six are always visible.
+     The number STACKS ABOVE the label: side-by-side, "Advertising" is one
+     unbreakable word wider than a third of a 320px screen, so the row spilled
+     to a third line. Stacked, the widest thing in a cell is a single word. */
+  .sys-tabs{ flex-wrap:wrap; overflow:visible; gap:0; }
+  .sys-tab{ flex:0 0 33.333%; min-width:0;
+    flex-direction:column; justify-content:flex-end; gap:6px;
+    padding:12px 4px; font-size:12.5px; line-height:1.3;
+    white-space:normal; text-align:center; overflow-wrap:break-word; }
+  .sys-tab .n{ width:19px; height:19px; font-size:10px; }
+  /* On mobile the demos stack (phone above stats), so a fixed frame would clip
+     them. Let the stage take the height it needs — only one tab is ever shown. */
+  .sys-stage{ height:auto; }
+  .sys-anim{ position:relative; inset:auto; }
+  .sys-anim > .demo-stage,
+  .sys-anim > [data-leadly-demo]{ height:auto; padding:24px 12px; }
+  .sys-anim .reel{ height:380px; }
+  .sys-copy-col{ position:static; }
+}
+@media (max-width:420px){ .q-hours{ grid-template-columns:1fr; } }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE 2-MINUTE CHECK — ONE QUESTION, ONE SCREEN.
+
+   `.q-step { display:none }` had been deleted (by me, in an earlier revert), so
+   ALL EIGHT questions were rendering stacked on top of each other. The shell was
+   3,886px tall. That is the "too long" — it was not a design problem, it was a
+   missing line of CSS.
+
+   Restored, and then made deliberate:
+     · the shell is a FIXED-HEIGHT stage. A question fills it; the next replaces
+       it. The page does not grow by a single pixel as you answer.
+     · the live panel is STICKY inside that stage, so the profile assembling
+       itself never scrolls away. It is the entire argument of the page; letting
+       it leave the screen was the worst thing about the old layout.
+   Placed last so nothing can quietly override it again.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.q-step{ display:none; }
+.q-step.on{ display:block; animation:q-in .34s cubic-bezier(.16,1,.3,1); }
+@keyframes q-in{ from{ opacity:0; transform:translateX(18px); } to{ opacity:1; transform:none; } }
+
+.q-shell{ min-height:0; }
+.q-main{
+  display:flex; flex-direction:column; min-width:0; min-height:0;
+  height:auto; min-height:500px;          /* content height — never scrolls internally */
+}
+.q-stage{ min-height:0; overflow:visible; }
+.q-stage::-webkit-scrollbar{ width:0; }
+.q-nav{ flex:none; }
+
+.q-live{
+  position:sticky; top:0; align-self:stretch;
+  min-height:500px; overflow:visible;
+}
+.q-live::-webkit-scrollbar{ width:0; }
+
+/* once the analysis lands, the stage becomes a document — it may grow */
+.q.is-analysis .q-main{ height:auto; }
+.q.is-analysis .q-stage{ overflow:visible; }
+
+@media (max-width:900px){
+  .q-main{ height:auto; min-height:0; }
+  .q-stage{ overflow:visible; }
+  .q-live{ position:static; height:auto; max-height:none; }
+
+  /* ── MOBILE FORM FIX ────────────────────────────────────────────────────
+     The bug a tester hit: .q-shell forced min-height:560px and the live panel
+     stacked ABOVE the question, so the stage ran ~1250px tall on an 844px
+     screen. On the multi-select steps (3 and 6) the only way forward is the
+     Continue button — and it sat ~400px below the fold with nothing on screen
+     to suggest it was there. The form was literally uncompletable without
+     blind scrolling. Three fixes: let the shell size to content, pin the nav
+     to the bottom of the viewport so Continue is ALWAYS reachable, and shrink
+     the live panel so the question starts near the top of the screen. */
+  .q-shell{ min-height:0; }
+
+  .q-nav{
+    position:sticky; bottom:0; z-index:5;
+    margin-top:18px; margin-left:-18px; margin-right:-18px;
+    padding:12px 18px calc(12px + env(safe-area-inset-bottom));
+    background:linear-gradient(180deg, rgba(255,255,255,0), var(--surface) 22%);
+    border-top:1px solid var(--line);
+  }
+  .q-nav .btn{ min-height:48px; }          /* comfortable thumb target */
+
+  /* iOS Safari zooms the whole page when a focused input is under 16px.
+     That zoom is what makes a form feel "broken" on a phone — it never
+     zooms back out. 16px is the threshold, not a preference. */
+  .q input, .q select, .q textarea,
+  #bk-modal input, #bk-modal select, #bk-modal textarea{ font-size:16px; }
+
+  .q-opts .opt{ min-height:48px; }         /* every answer is a thumb target */
+  .q-hours{ grid-template-columns:1fr; }   /* two number fields side by side is too tight */
+  .q-consent input{ width:24px; height:24px; }   /* 18px is not a thumb target */
+  .q-consent span{ font-size:13px; }
+}
+/* a failed field must be obvious, not a 1px border change */
+.q-consent.bad{ background:var(--danger-soft); }
+.q-field-bad input{ border-color:var(--danger) !important; background:var(--danger-soft); }
+
+/* ── MOBILE TAP TARGETS ────────────────────────────────────────────────────
+   Anything you tap with a thumb needs roughly 44px of reachable area. These
+   were all comfortably clickable with a mouse and fiddly with a finger:
+   the wordmark (26x22), the "See live demo" links (38px tall) and the two
+   footer legal links (16px tall). Padding is used rather than height so
+   nothing shifts visually on desktop. */
+@media (max-width:900px){
+  .nav-logo{ display:inline-flex; align-items:center; min-height:44px; padding:4px 2px; }
+  .funnel-link{ min-height:44px; display:inline-flex; align-items:center; }
+  .foot-links a{ display:inline-block; padding:12px 2px; }
+  .foot-in{ gap:6px; }
+}
+
+@media (max-width:640px){
+  /* the live panel is the proof, but on a phone it must not push the question
+     off-screen — cap it and let it scroll internally instead of growing */
+  .q-live{ max-height:172px; overflow:auto; -webkit-overflow-scrolling:touch; }
+  .q-live-body{ gap:5px; }
+  .q-main{ padding:18px 18px 0; }
+  .q-q{ font-size:19px; line-height:1.3; }
+  .q-sub{ font-size:13.5px; }
+}
+/* ── THE NUMBERS · six sourced stat cards ───────────────────────────── */
+.nums{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:clamp(28px,4vw,44px); }
+@media (max-width:900px){ .nums{ grid-template-columns:repeat(2,1fr); gap:14px; } }
+@media (max-width:560px){ .nums{ grid-template-columns:1fr; } }
+.num{ background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg);
+  padding:clamp(20px,2.4vw,28px); display:flex; flex-direction:column; gap:8px; box-shadow:var(--shadow-sm); }
+.num .fig{ font-size:clamp(34px,4vw,46px); font-weight:800; line-height:1; letter-spacing:var(--tracking-display); color:var(--accent-ink); }
+.num .fig .u{ font-size:.5em; font-weight:700; margin-left:2px; letter-spacing:0; }
+.num .what{ font-size:15.5px; font-weight:600; color:var(--text-1); line-height:1.4; }
+.num .why{ font-size:13.5px; color:var(--text-2); line-height:1.55; }
+.num .src{ margin-top:auto; padding-top:10px; font-size:11.5px; color:var(--text-3-aa);
+  border-top:1px solid var(--line); line-height:1.45; }
+.nums-note{ margin-top:18px; font-size:12.5px; color:var(--text-3-aa); }
+</style>
+</head>
+<body>
+
+<!-- Netlify parses forms at BUILD time. A JS-built form is invisible to it and
+     every booking is silently dropped. This one stays in the markup. -->
+<form name="book-demo" method="POST" data-netlify="true" netlify-honeypot="company" id="bk-form" hidden>
+  <input type="hidden" name="variant" value="B">
+  <input type="hidden" name="form-name" value="book-demo">
+  <p hidden><label>Leave this empty <input name="company"></label></p>
+  <input type="hidden" name="name">
+  <input type="hidden" name="phone">
+  <input type="hidden" name="business">
+  <input type="hidden" name="date">
+  <input type="hidden" name="time">
+  <input type="hidden" name="consent">
+</form>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5TR4KNPK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav class="nav">
+  <div class="nav-in">
+    <!-- KENNETH: drop your real logo at /assets/leadly-logo.png and replace the
+         .nav-mark svg + wordmark with: <img src="/assets/leadly-logo.png" alt="Leadly"> -->
+    <a href="/" class="nav-logo"><img src="/assets/leadly-logo.png" alt="Leadly"></a>
+    <div class="nav-right">
+      <a class="btn btn-secondary" href="https://app.leadly.sg/demo" target="_blank" rel="noopener"><span>Leadly Pulse</span></a>
+      <a class="btn btn-primary" href="#" data-book><span>Book demo</span><i class="btn-ico" aria-hidden="true"></i></a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════ S1 · HERO — the stage ═══════════ -->
+<header class="hero" id="top">
+  <div class="container">
+    <div class="stage-dark tex-dark">
+      <div class="hero-head">
+        <div class="hero-copy">
+          <h1 class="display">10x your leads.<br><span class="accent">Zero the chasing.</span></h1>
+          <p class="hero-lead">Your competitors reply in 29 hours. You'll reply in 29 seconds — every lead already qualified, delivered straight to your team's WhatsApp.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#" data-book><span>Book demo</span><i class="btn-ico" aria-hidden="true"></i></a>
+            <a class="btn btn-secondary" href="#system"><span>See how it works</span></a>
+          </div>
+          <p class="hero-note"><b>635 of 1,000 businesses never replied at all</b> — and the ones that did averaged 29 hours. That's the gap we close. <cite>RevenueHero, 1,000-company lead response test, 2024</cite></p>
+        </div>
+        <!-- INSTANT PING, shown not described: leads land on the lock screen
+             and the handset buzzes. The phone bleeds off the bottom of the
+             stage — the panel's overflow:hidden does the cropping. -->
+        <div class="hero-media"><div data-leadly-lock></div></div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<!-- ═══════════ LOGO MARQUEE ═══════════ -->
+<div class="marquee">
+  <div class="container"><p class="cap">Divisions and teams of</p></div>
+  <!-- Five insurers. The set is duplicated once so translateX(-50%) loops seamlessly —
+       if you add or remove a logo, change it in BOTH halves. -->
+  <div class="mq-track" id="mqTrack">
+    <span class="mq-item"><img src="/assets/logos/prudential.png"    alt="Prudential"    style="height:54px"></span>
+    <span class="mq-item"><img src="/assets/logos/aia.png"           alt="AIA"           style="height:52px"></span>
+    <span class="mq-item"><img src="/assets/logos/great-eastern.png" alt="Great Eastern" style="height:36px"></span>
+    <span class="mq-item"><img src="/assets/logos/fwd.png"           alt="FWD Insurance" style="height:42px"></span>
+    <span class="mq-item"><img src="/assets/logos/ntuc-income.png"   alt="NTUC Income"   style="height:34px"></span>
+
+    <span class="mq-item" aria-hidden="true"><img src="/assets/logos/prudential.png"    alt="" style="height:54px"></span>
+    <span class="mq-item" aria-hidden="true"><img src="/assets/logos/aia.png"           alt="" style="height:52px"></span>
+    <span class="mq-item" aria-hidden="true"><img src="/assets/logos/great-eastern.png" alt="" style="height:36px"></span>
+    <span class="mq-item" aria-hidden="true"><img src="/assets/logos/fwd.png"           alt="" style="height:42px"></span>
+    <span class="mq-item" aria-hidden="true"><img src="/assets/logos/ntuc-income.png"   alt="" style="height:34px"></span>
+  </div>
+</div>
+
+<!-- ═══════════ S3 · INTERACTIVE SYSTEM DEMO ═══════════ -->
+<section class="section" id="system">
+  <div class="container">
+    <span class="eyebrow">The system, running live</span>
+    <h2 class="section-title" style="margin:0 0 8px">Here's exactly what we do for you.</h2>
+    <p class="lead" style="max-width:64ch">Six parts, one machine — from the ad that catches a stranger's eye through to a qualified lead in your advisor's hand. Every screen below is live.</p>
+
+    <div class="sys-tabs" role="tablist">
+      <button class="sys-tab is-active" data-tab="advertising"><span class="n">1</span>Advertising</button>
+      <button class="sys-tab" data-tab="qualifier"><span class="n">2</span>Smart Qualifier</button>
+      <button class="sys-tab" data-tab="ping"><span class="n">3</span>Instant Ping</button>
+      <button class="sys-tab" data-tab="sheet"><span class="n">4</span>Live Call Sheet</button>
+      <button class="sys-tab" data-tab="winback"><span class="n">5</span>Winback Engine</button>
+      <button class="sys-tab" data-tab="pulse"><span class="n">6</span>Leadly Pulse</button>
+    </div>
+
+    <div class="sys-body">
+      <div class="sys-stage">
+        <div class="sys-anim is-active" data-item="advertising">
+          <!-- THE REEL — the real ad creatives. This IS the Advertising demo. -->
+          <div class="demo-stage"><div class="glow"></div><div data-leadly-reel></div></div>
+        </div>
+        <div class="sys-anim" data-item="qualifier"><div data-leadly-demo="qualifier" data-manual></div></div>
+        <div class="sys-anim" data-item="ping"><div data-leadly-demo="ping" data-manual></div></div>
+        <div class="sys-anim" data-item="sheet"><div data-leadly-demo="sheet" data-manual></div></div>
+        <div class="sys-anim" data-item="winback"><div data-leadly-demo="winback" data-manual></div></div>
+        <div class="sys-anim" data-item="pulse"><div data-leadly-demo="pulse" data-manual></div></div>
+      </div>
+
+      <div class="sys-copy-col">
+        <div class="sys-copy is-active" data-item="advertising">
+          <div class="sys-block"><div class="lbl">What it is</div><p>We run and iterate the Meta and Google creative that feeds the whole funnel — <b>many angles, tested against each other every week.</b></p></div>
+          <div class="sys-block"><div class="lbl">Why we do it</div><p>The ad is what makes a stranger stop scrolling. We treat it as <b>the top of the machine, not an afterthought</b> — fresh angles ship continuously, so your cost stays flat as an audience tires.</p></div>
+          <div class="sys-fill"><b>One ad is a guess.</b> A dozen in rotation is a system that keeps finding cheaper attention.</div>
+          <div class="sys-block"><div class="lbl">Why others don't</div><p>Most vendors run one ad until it dies. <b>Continuous testing is real work</b> — so it's the first thing they quietly skip.</p></div>
+        </div>
+
+        <div class="sys-copy" data-item="qualifier">
+          <div class="sys-block"><div class="lbl">What it is</div><p>A branching questionnaire that asks <b>what your advisors would ask on the call — before the call.</b> The lead is qualified the instant they submit.</p></div>
+          <div class="sys-block"><div class="lbl">Why we do it</div><p>A name and a number isn't a lead. When the answers arrive with the contact, <b>your advisor opens the call already knowing the need, the budget and the timing.</b></p></div>
+          <div class="sys-fill"><b>The form is the product.</b> It filters as it flows, so your team never dials a stranger.</div>
+          <div class="sys-block"><div class="lbl">Why others don't</div><p>Cheap lead forms optimise for volume, so they <b>strip it to a name and a number.</b> We build a real, dynamic experience that qualifies as it goes.</p></div>
+        </div>
+
+        <div class="sys-copy" data-item="ping">
+          <div class="sys-block"><div class="lbl">What it is</div><p>The moment a lead submits, their full profile lands in <b>your team's WhatsApp — in seconds, not a morning export.</b></p></div>
+          <div class="sys-block"><div class="lbl">Why we do it</div><p>A lead is warmest in the <b>first few minutes.</b> Whoever calls while they're still at their desk wins the conversation.</p></div>
+          <div class="sys-stat"><b>160%</b><p>Leads called 60–120 seconds after they come in convert <b>160% more often</b> than those called later. That window is exactly what this delivers into.</p><cite>Leads360 / Velocify lead-response study</cite></div>
+          <div class="sys-block"><div class="lbl">Why others don't</div><p>Most setups route through a CRM sync or a daily export, so the <b>"new lead" your team sees is already hours cold.</b></p></div>
+        </div>
+
+        <div class="sys-copy" data-item="sheet">
+          <div class="sys-block"><div class="lbl">What it is</div><p>One shared, always-current sheet of every lead and every answer. <b>Your advisors work it; you watch it fill.</b></p></div>
+          <div class="sys-block"><div class="lbl">Why we do it</div><p>No exports, no "send me the latest list." <b>One source of truth</b> the whole team sees at once, updating itself as reps mark leads called or booked.</p></div>
+          <div class="sys-fill"><b>You can see the gap</b> between leads delivered and leads actually worked — live, not at month-end.</div>
+          <div class="sys-block"><div class="lbl">Why others don't</div><p>Agencies hand you a PDF or a login you check monthly. <b>A live sheet makes the gaps impossible to hide.</b></p></div>
+        </div>
+
+        <div class="sys-copy" data-item="winback">
+          <div class="sys-block"><div class="lbl">What it is</div><p>Automatic re-engagement at <b>30 and 60 days</b> for everyone who didn't convert — over the WhatsApp API, with nobody having to remember.</p></div>
+          <div class="sys-block"><div class="lbl">Why we do it</div><p>Most people aren't ready the first time. <b>You already paid for that lead</b> — win back a handful in a hundred and it pays for itself many times over.</p></div>
+          <div class="sys-fill"><b>The follow-up nobody does</b> is where half your pipeline is quietly hiding.</div>
+          <div class="sys-block"><div class="lbl">Why others don't</div><p>Follow-up is boring, manual and easy to drop — <b>so it gets dropped.</b> Automating it properly is a system most vendors never build.</p></div>
+        </div>
+
+        <div class="sys-copy" data-item="pulse">
+          <div class="sys-block"><div class="lbl">What it is</div><p>Your dashboard. Leads and performance — <b>live, down to the individual ad.</b> The same screen we look at.</p></div>
+          <div class="sys-block"><div class="lbl">Why we do it</div><p>You should see how campaigns perform without waiting for a monthly PDF. Every build ships with <b>UTM tagging, the Meta Pixel and a server-side Conversions API</b> wired in.</p></div>
+          <div class="sys-fill"><b>Nothing to request.</b> The numbers are already on your screen, updating live.</div>
+          <div class="sys-block"><div class="lbl">Why others don't</div><p>A monthly screenshot is easy to dress up. <b>Live, event-level tracking is not</b> — so most agencies keep the dashboard on their side of the glass.</p></div>
+          <a class="sys-cta" href="https://app.leadly.sg/demo" target="_blank" rel="noopener">This is Leadly Pulse — the dashboard you log into. Explore it →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PULSE — the product dashboard, included in the plan ═══════════ -->
+<section class="section pulse-showcase">
+  <div class="container">
+    <div class="two-col-alt">
+      <div class="tca-copy">
+        <span class="eyebrow">Included in your plan</span>
+        <h2 class="section-title" style="margin:0 0 8px">Your whole campaign, live in Leadly Pulse.</h2>
+        <p class="lead">Every lead and every dollar — Meta and Google, down to the individual ad, updating live. The same dashboard we look at, with AI that reads the numbers for you. It's part of the S$1,500/month, not an add-on.</p>
+        <a class="btn btn-primary" href="https://app.leadly.sg/demo" target="_blank" rel="noopener"><span>Explore Leadly Pulse</span><i class="btn-ico" aria-hidden="true"></i></a>
+      </div>
+      <div class="tca-media">
+        <div class="stage-dark tex-dark pulse-media"><div data-leadly-tour></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ S3b · SMART QUALIFIERS — the funnel types ═══════════ -->
+<section class="section section--sunk" id="qualifiers">
+  <div class="container">
+    <span class="eyebrow">Smart Qualifiers</span>
+    <h2 class="section-title" style="margin:0 0 8px">The filter that decides who your team calls.</h2>
+    <p class="lead" style="max-width:66ch">A Smart Qualifier is a funnel built to be answered, not endured — it asks what your advisors would ask, and it does the filtering before anyone picks up a phone. The shape changes with the campaign. These are three we run.</p>
+
+    <div class="funnel-grid">
+
+      <article class="funnel-card tex-dark">
+        <p class="funnel-kicker">Type 01 · Qualify</p>
+        <h3 class="funnel-name">The Questionnaire</h3>
+        <p class="funnel-what">A few branching questions that separate the ready from the curious. Your advisor opens the call already knowing the need, the budget and the timing.</p>
+        <a class="funnel-link" href="/for/insurance/demos/critical-illness/" target="_blank" rel="noopener">See live demo <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div data-leadly-funnel="quiz"></div>
+      </article>
+
+      <article class="funnel-card tex-dark">
+        <p class="funnel-kicker">Type 02 · Quantify</p>
+        <h3 class="funnel-name">The Gap Calculator</h3>
+        <p class="funnel-what">Turns a vague worry into a number the prospect can't unsee. They arrive already knowing what they're short by — and asking you how to close it.</p>
+        <a class="funnel-link" href="/for/insurance/demos/income-protection/" target="_blank" rel="noopener">See live demo <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div data-leadly-funnel="gap"></div>
+      </article>
+
+      <article class="funnel-card tex-dark">
+        <p class="funnel-kicker">Type 03 · Convert</p>
+        <h3 class="funnel-name">The Booking Calendar</h3>
+        <p class="funnel-what">No call-back queue. The lead picks a slot from your advisor's real availability, and the invite is in both calendars before they close the tab.</p>
+        <a class="funnel-link" href="/for/insurance/demos/retirement/" target="_blank" rel="noopener">See live demo <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div data-leadly-funnel="book"></div>
+      </article>
+
+    </div>
+
+    <p class="muted" style="margin-top:clamp(56px,6vw,72px);max-width:66ch">Not sure which fits your campaign? That's the conversation. Every build is shaped around the offer, the audience and how warm they are when they land.</p>
+  </div>
+</section>
+
+<!-- ═══════════ S4 · PRICING — the table IS the pricing section ═══════════ -->
+<section class="section" id="pricing">
+  <div class="container">
+    <span class="eyebrow">Pricing</span>
+    <h2 class="section-title" style="margin:0 0 8px">One price. The whole machine.</h2>
+    <p class="lead" style="max-width:66ch">No tiers, no hourly billing, no setup games. Your advisors stop working down a list of names, the same ad budget buys a call list of people who answered real questions, and nothing you paid for is left to go cold. Seven lines — here is exactly what that means.</p>
+
+    <!-- The price used to live on a card beside a feature list. Both are gone;
+         the table says all of it. But the PRICE cannot vanish with them, so it
+         moves up here, where it is the first thing read. -->
+    <div class="price-line">
+      <div class="price-fig">
+        <span class="fig" id="offer_price">S$1,500</span>
+        <span class="per">per month<b>+ your ad spend</b></span>
+      </div>
+      <p class="price-note">Your ad budget is billed to your own Meta account and goes straight to Meta — we never touch it, and we never mark it up. You see every dollar of it in Leadly Pulse.</p>
+      <a class="btn btn-primary" href="#" data-book><span>Book demo</span><i class="btn-ico" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="cmp">
+      <table>
+        <thead>
+          <tr><th class="crit"><span class="lg">What you get</span><span class="sm">What you get</span></th><th class="us"><span class="lg">Leadly · S$1,500/mo + ad spend</span><span class="sm">Leadly</span></th><th><span class="lg">A typical setup at this price</span><span class="sm">Typical</span></th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="crit">Advertising</td><td class="us"><span class="cell"><svg class="tick-svg" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.5"/></svg><span class="lg">Meta &amp; Google creative, run and iterated weekly</span><span class="sm">Run &amp; iterated weekly</span></span></td><td class="them"><span class="cell"><svg class="cross-svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg><span class="lg">One ad, run until it fatigues</span><span class="sm">One ad, left to fatigue</span></span></td></tr>
+          <tr><td class="crit">Smart Qualifier</td><td class="us"><span class="cell"><svg class="tick-svg" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.5"/></svg><span class="lg">Every lead qualified before it reaches an advisor</span><span class="sm">Qualified before the call</span></span></td><td class="them"><span class="cell"><svg class="cross-svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg><span class="lg">A name and a number, nothing else</span><span class="sm">Name &amp; number only</span></span></td></tr>
+          <tr><td class="crit">Instant Ping</td><td class="us"><span class="cell"><svg class="tick-svg" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.5"/></svg><span class="lg">In your team’s WhatsApp within seconds</span><span class="sm">WhatsApp, in seconds</span></span></td><td class="them"><span class="cell"><svg class="cross-svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg><span class="lg">An email digest, or a morning export</span><span class="sm">Email or daily export</span></span></td></tr>
+          <tr><td class="crit">Live Call Sheet</td><td class="us"><span class="cell"><svg class="tick-svg" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.5"/></svg><span class="lg">One shared sheet, always current</span><span class="sm">One live shared sheet</span></span></td><td class="them"><span class="cell"><svg class="cross-svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg><span class="lg">A monthly PDF you can’t work from</span><span class="sm">A monthly PDF</span></span></td></tr>
+          <tr><td class="crit">Winback Engine</td><td class="us"><span class="cell"><svg class="tick-svg" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.5"/></svg><span class="lg">Automatic re-engagement at 30 and 60 days</span><span class="sm">Automatic, day 30 &amp; 60</span></span></td><td class="them"><span class="cell"><svg class="cross-svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg><span class="lg">Manual follow-up, if it happens at all</span><span class="sm">Manual, if at all</span></span></td></tr>
+          <tr><td class="crit">Leadly Pulse</td><td class="us"><span class="cell"><svg class="tick-svg" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.5"/></svg><span class="lg">Live dashboard — Pixel and CAPI, down to the ad</span><span class="sm">Live, Pixel + CAPI</span></span></td><td class="them"><span class="cell"><svg class="cross-svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg><span class="lg">A screenshot, once a month</span><span class="sm">A monthly screenshot</span></span></td></tr>
+          <tr><td class="crit">Your ad spend</td><td class="us"><span class="cell"><svg class="tick-svg" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.5"/></svg><span class="lg">Billed to your own account. Never marked up.</span><span class="sm">Never marked up</span></span></td><td class="them"><span class="cell"><svg class="cross-svg" width="16" height="16" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></svg><span class="lg">Often marked up, quietly</span><span class="sm">Often marked up</span></span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Add-ons used to be a separate page. Sending someone off the pricing
+         section to read a price list is how you lose them — so it opens here,
+         under the table, and closes again. -->
+    <div class="ao">
+      <button class="ao-toggle" id="aoToggle" aria-expanded="false" aria-controls="aoPanel">
+        <span class="ao-t">Add-ons &amp; ad-hoc pricing</span>
+        <span class="ao-s">Optional. Never bundled in to inflate the core fee.</span>
+        <span class="ao-chev" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </button>
+
+      <div class="ao-panel" id="aoPanel" hidden>
+        <div class="ao-in">
+          <p class="ao-lead">The whole system is one flat price. Everything below is optional — layered on only if you want it.</p>
+
+          <p class="ao-h">Recurring add-ons</p>
+          <ul class="ao-list">
+            <li class="ao-row"><span class="ao-n">WhatsApp automation volume</span><span class="ao-d">Higher outbound volumes on the WhatsApp Business API for winback and nurture, beyond what the core system includes.</span><span class="ao-p">On request</span></li>
+            <li class="ao-row"><span class="ao-n">AI chat — messaging</span><span class="ao-d">An AI responder that greets and pre-answers on WhatsApp or web chat before a rep picks up. Sits on top of Instant Ping.</span><span class="ao-p">On request</span></li>
+            <li class="ao-row"><span class="ao-n">AI chat — phone</span><span class="ao-d">An AI voice agent that makes or takes the first call while the lead is still warm.</span><span class="ao-p">On request</span></li>
+            <li class="ao-row"><span class="ao-n">Additional managed ad spend</span><span class="ao-d">Management above the ad-spend band included in the core fee. For teams scaling budget hard.</span><span class="ao-p">On request</span></li>
+            <li class="ao-row"><span class="ao-n">Extra funnel or vertical</span><span class="ao-d">A second qualifier and landing page for another product line, managed monthly.</span><span class="ao-p">On request</span></li>
+          </ul>
+
+          <p class="ao-h">One-off &amp; ad-hoc work</p>
+          <ul class="ao-list">
+            <li class="ao-row"><span class="ao-n">Extra creative batch</span><span class="ao-d">A fresh set of ad creatives beyond the ongoing rotation. Per batch.</span><span class="ao-p">On request</span></li>
+            <li class="ao-row"><span class="ao-n">Standalone landing page</span><span class="ao-d">A one-off page build outside the managed system. Fixed one-time build.</span><span class="ao-p">On request</span></li>
+            <li class="ao-row"><span class="ao-n">Custom integration</span><span class="ao-d">Wiring leads into a specific CRM, dialer or internal tool. Scoped per system.</span><span class="ao-p">On request</span></li>
+          </ul>
+
+          <p class="ao-fine">Ad spend is never marked up. Whatever you set as your budget is billed straight to your own Meta account — you see every dollar of it in Leadly Pulse. The items above are the only things that ever sit on top of the flat S$1,500/month.</p>
+
+          <button class="ao-close" id="aoClose">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 15l-6-6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Minimise
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ S5 · TRUE COST CALCULATOR ═══════════ -->
+<section class="section section--sunk" id="calculator">
+  <div class="container">
+    <span class="eyebrow">The 2-minute check</span>
+    <h2 class="section-title" style="margin:0 0 8px">What is a lead really costing you?</h2>
+    <p class="lead" style="max-width:64ch">Not just the ad spend — the agency, the freelancers, the lists, the tools and the hours your team burns chasing people. Most teams have never added it all up. Take two minutes and find out.</p>
+
+    <div class="calc-grid">
+      <!-- THE 2-MINUTE CHECK.
+           It was a form with a progress bar. Now it is a demonstration: the
+           LEFT is what the prospect fills in, the RIGHT is what an advisor
+           would be looking at — the profile assembling itself in real time, one
+           answer at a time. That is the whole product argument made visible,
+           and it is the reason the page says "the form is the product". -->
+      <div class="q" id="qualifier">
+        <div class="q-shell">
+          <div class="q-main">
+            <div class="q-steps-bar" id="qsteps"></div>
+            <div class="q-stage">
+        <div class="q-step on" data-step="1">
+          <div class="q-n">Question 1 of 6</div>
+          <div class="q-q">Which best describes you?</div>
+          <div class="q-sub">So we know who we're talking to.</div>
+          <div class="q-opts" data-name="role" data-mode="single">
+            <div class="opt" data-v="Individual advisor" data-s="1"><span class="tick"></span>Individual advisor<span class="k"></span></div>
+            <div class="opt" data-v="Team leader (2-15 advisors)" data-s="3"><span class="tick"></span>Team leader (2–15 advisors)<span class="k"></span></div>
+            <div class="opt" data-v="Agency principal (16+ advisors)" data-s="4"><span class="tick"></span>Agency principal (16+ advisors)<span class="k"></span></div>
+          </div>
+        </div>
+
+        <div class="q-step" data-step="2">
+          <div class="q-n">Question 2 of 6</div>
+          <div class="q-q">How many advisors need a steady flow of leads?</div>
+          <div class="q-sub">The people who'd be working the call list.</div>
+          <div class="q-opts" data-name="advisors" data-mode="single">
+            <div class="opt" data-v="Just me" data-s="1"><span class="tick"></span>Just me<span class="k"></span></div>
+            <div class="opt" data-v="2-5" data-s="2"><span class="tick"></span>2 – 5<span class="k"></span></div>
+            <div class="opt" data-v="6-15" data-s="3"><span class="tick"></span>6 – 15<span class="k"></span></div>
+            <div class="opt" data-v="16+" data-s="4"><span class="tick"></span>16+<span class="k"></span></div>
+          </div>
+        </div>
+
+        <div class="q-step" data-step="3">
+          <div class="q-n">Question 3 of 6</div>
+          <div class="q-q">Where do your leads come from today?</div>
+          <div class="q-sub">Select everything that applies, then Continue.</div>
+          <div class="q-opts" data-name="sources" data-mode="multi">
+            <div class="opt multi" data-v="Referrals and warm network"><span class="tick"></span>Referrals &amp; warm network<span class="k"></span></div>
+            <div class="opt multi" data-v="Purchased cold lists"><span class="tick"></span>Purchased cold lists<span class="k"></span></div>
+            <div class="opt multi" data-v="An agency runs our ads"><span class="tick"></span>An agency runs our ads<span class="k"></span></div>
+            <div class="opt multi" data-v="A freelancer runs our ads"><span class="tick"></span>A freelancer runs our ads<span class="k"></span></div>
+            <div class="opt multi" data-v="We run ads ourselves"><span class="tick"></span>We run ads ourselves<span class="k"></span></div>
+            <div class="opt multi" data-v="No consistent source"><span class="tick"></span>No consistent source<span class="k"></span></div>
+          </div>
+        </div>
+
+        <div class="q-step" data-step="4">
+          <div class="q-n">Question 4 of 6</div>
+          <div class="q-q">What do you spend a month getting leads?</div>
+          <div class="q-sub">Everything in — ads, agency, tools, staff time. A rough band is fine.</div>
+          <div class="q-opts" data-name="spend" data-mode="single">
+            <div class="opt" data-v="Under S$1,000" data-n="600" data-s="1"><span class="tick"></span>Under S$1,000<span class="k"></span></div>
+            <div class="opt" data-v="S$1,000 – 3,000" data-n="2000" data-s="2"><span class="tick"></span>S$1,000 – 3,000<span class="k"></span></div>
+            <div class="opt" data-v="S$3,000 – 5,000" data-n="4000" data-s="3"><span class="tick"></span>S$3,000 – 5,000<span class="k"></span></div>
+            <div class="opt" data-v="S$5,000 – 10,000" data-n="7500" data-s="4"><span class="tick"></span>S$5,000 – 10,000<span class="k"></span></div>
+            <div class="opt" data-v="S$10,000 – 20,000" data-n="15000" data-s="4"><span class="tick"></span>S$10,000 – 20,000<span class="k"></span></div>
+            <div class="opt" data-v="More than S$20,000" data-n="30000" data-s="4"><span class="tick"></span>More than S$20,000<span class="k"></span></div>
+          </div>
+        </div>
+
+        <div class="q-step" data-step="5">
+          <div class="q-n">Question 5 of 6</div>
+          <div class="q-q">How many new leads does that actually produce?</div>
+          <div class="q-sub">New enquiries per month, across the whole team.</div>
+          <div class="q-opts" data-name="leads" data-mode="single">
+            <div class="opt" data-v="Under 10" data-n="6"><span class="tick"></span>Under 10<span class="k"></span></div>
+            <div class="opt" data-v="10-30" data-n="20"><span class="tick"></span>10 – 30<span class="k"></span></div>
+            <div class="opt" data-v="30-60" data-n="45"><span class="tick"></span>30 – 60<span class="k"></span></div>
+            <div class="opt" data-v="60+" data-n="75"><span class="tick"></span>60+<span class="k"></span></div>
+            <div class="opt" data-v="Not sure" data-n="0"><span class="tick"></span>Honestly, not sure<span class="k"></span></div>
+          </div>
+        </div>
+
+        <div class="q-step" data-step="6">
+          <div class="q-n">Question 6 of 6</div>
+          <div class="q-q">Which of these do you have today?</div>
+          <div class="q-sub">Select everything already in place, then Continue.</div>
+          <div class="q-opts" data-name="features" data-mode="multi">
+            <div class="opt multi" data-v="Leads qualified before reaching an advisor"><span class="tick"></span>Leads qualified before they reach an advisor<span class="k"></span></div>
+            <div class="opt multi" data-v="New leads reach the team within seconds"><span class="tick"></span>New leads reach your team within seconds<span class="k"></span></div>
+            <div class="opt multi" data-v="One shared live call list"><span class="tick"></span>One shared, live call list<span class="k"></span></div>
+            <div class="opt multi" data-v="Automatic follow-up at 30 and 60 days"><span class="tick"></span>Automatic follow-up at 30 and 60 days<span class="k"></span></div>
+            <div class="opt multi" data-v="A live dashboard of performance by ad"><span class="tick"></span>A live dashboard of performance, by ad<span class="k"></span></div>
+          </div>
+        </div>
+
+        <div class="q-step" data-step="7">
+          <div class="q-n">Last step</div>
+          <div class="q-q">Want a copy of this?</div>
+          <div class="q-sub">We’ll WhatsApp you a PDF of your full analysis — the numbers, the leaks, the 90-day plan. Yours to keep either way.</div>
+          <form name="insurance-qualifier" method="POST" data-netlify="true" netlify-honeypot="website" id="qform" class="q-money" novalidate>
+            <input type="hidden" name="form-name" value="insurance-qualifier">
+            <input type="hidden" name="variant" value="B">
+            <p style="display:none"><label>Leave blank <input name="website"></label></p>
+            <input type="hidden" name="role" id="f_role">
+            <input type="hidden" name="advisors" id="f_advisors">
+            <input type="hidden" name="sources" id="f_sources">
+            <input type="hidden" name="monthly_spend" id="f_spend">
+            <input type="hidden" name="monthly_leads" id="f_leads">
+            <input type="hidden" name="all_in_monthly_cost" id="f_cost">
+            <input type="hidden" name="features_have" id="f_feat">
+            <input type="hidden" name="gaps" id="f_gaps">
+            <input type="hidden" name="timing" id="f_timing">
+            <input type="hidden" name="lead_score" id="f_score">
+            <input type="hidden" name="priority" id="f_prio">
+            <div><label for="f_name">Your name</label><input type="text" id="f_name" name="name" autocomplete="name"></div>
+            <div><label for="f_wa">Mobile / WhatsApp</label><input type="tel" id="f_wa" name="phone" autocomplete="tel" inputmode="tel"><div class="q-err" id="e_wa">Please enter a valid Singapore mobile number.</div></div>
+            <div><label for="f_org">Company name <i>— optional</i></label><input type="text" id="f_org" name="company" autocomplete="organization"></div>
+            <div><label for="f_em">Company email <i>— optional</i></label><input type="email" id="f_em" name="email" autocomplete="email"></div>
+            <label class="q-consent" id="q_consent_l">
+              <input type="checkbox" id="f_consent" name="consent" value="yes">
+              <span>Send it to me on WhatsApp. I agree to be contacted by Leadly about this analysis — PDPA-compliant, opt out any time.</span>
+            </label>
+            <button type="submit" class="btn btn-primary" style="margin-top:4px;justify-content:center"><span>Send it to me</span></button>
+            <p class="q-fine">No sequence, no spam. The PDF arrives in under a minute.</p>
+          </form>
+        </div>
+
+        <!-- The old static result screen is gone. What lands here now is a real
+             analysis — see /assets/leadly-analysis.js. -->
+        <div class="q-step q-result" data-step="8">
+          <div id="analysis"></div>
+        </div>
+
+            </div><!-- /.q-stage -->
+
+            <div class="q-nav" id="qnav">
+              <button class="btn btn-ghost q-back" id="qback" style="display:none">Back</button>
+              <button class="btn btn-primary" id="qnext" disabled><span>Continue</span></button>
+            </div>
+          </div><!-- /q-main -->
+
+          <!-- what the advisor would already know -->
+          <aside class="q-live" id="qlive">
+            <div class="q-live-top">
+              <span class="q-live-dot"></span>
+              <div>
+                <b>The lead profile</b>
+                <small>Building as you answer — exactly what your advisor sees</small>
+              </div>
+            </div>
+            <div class="q-live-body" id="qlivebody">
+              <p class="q-live-empty">Nothing yet. Answer the first question and watch.</p>
+            </div>
+            <!-- The lead score and the HOT/WARM/COOL flag are OURS, not theirs.
+                 Showing a prospect that we have graded them is a strange thing
+                 to do, and it invites them to game the answers. They still go
+                 to GHL on submit — they just are not on screen. -->
+          </aside>
+        </div><!-- /q-shell -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ S6 · OUR PROMISE — and the research under it ═══════════
+     No prose. Nine figures, each with its primary source AND its sample size,
+     because a statistic without a sample is a rumour. Every one of these was
+     checked against the original study — see the notes in the source lines.  -->
+<!-- ═══════════ THE NUMBERS · six sourced stats (2023–2026) ═══════════ -->
+<section class="section" id="numbers">
+  <div class="container">
+    <span class="eyebrow">The numbers</span>
+    <h2 class="section-title" style="margin:0 0 8px">Why this is worth fixing.</h2>
+    <p class="lead" style="max-width:62ch">Six figures that describe the market you're selling into — and the gap almost every team leaves open. Sources and dates on each.</p>
+
+    <div class="nums">
+      <div class="num">
+        <div class="fig">74<span class="u">%</span></div>
+        <div class="what">Singapore's critical illness protection gap</div>
+        <div class="why">A S$579 billion shortfall between what working Singaporeans are covered for and what they'd actually need. The demand is not the problem.</div>
+        <div class="src">Life Insurance Association Singapore, Protection Gap Study — published 2023</div>
+      </div>
+
+      <div class="num">
+        <div class="fig">80.1<span class="u">%</span></div>
+        <div class="what">of Singapore internet users are on WhatsApp</div>
+        <div class="why">The most-used platform in the country — ahead of Facebook and Instagram. It's where a lead will actually see you.</div>
+        <div class="src">We Are Social / Meltwater, Digital 2025 Singapore — 2025</div>
+      </div>
+
+      <div class="num">
+        <div class="fig">63.1<span class="u">%</span></div>
+        <div class="what">research brands on social before deciding</div>
+        <div class="why">Social is the first step in the buying journey here, not the last. If you're not in the feed, you're not in the consideration set.</div>
+        <div class="src">We Are Social / Meltwater, Digital 2025 Singapore — 2025</div>
+      </div>
+
+      <div class="num">
+        <div class="fig">94.6<span class="u">%</span></div>
+        <div class="what">get online from a phone</div>
+        <div class="why">Your ad, your questionnaire and your first reply all land on a screen held in one hand. Anything that isn't built for that leaks.</div>
+        <div class="src">We Are Social / Meltwater, Digital 2025 Singapore — 2025</div>
+      </div>
+
+      <div class="num">
+        <div class="fig">63.5<span class="u">%</span></div>
+        <div class="what">of businesses never replied at all</div>
+        <div class="why">Of 1,000 companies sent a genuine enquiry, 635 never responded. Not slowly — never. Most leads aren't lost to competitors; they're lost to silence.</div>
+        <div class="src">RevenueHero, 1,000-company lead response test — 2024</div>
+      </div>
+
+      <div class="num">
+        <div class="fig">29<span class="u">hrs</span></div>
+        <div class="what">average reply time from those who did</div>
+        <div class="why">More than a full day before a lead hears back. Only 17.2% answered within two minutes — which is the entire opening for anyone willing to be quick.</div>
+        <div class="src">RevenueHero, 1,000-company lead response test — 2024</div>
+      </div>
+    </div>
+
+    <p class="nums-note">Figures published 2023–2026. The lead-response study covers B2B companies generally, not insurance specifically — we cite it because the behaviour it measures is the same one that decides whether your leads get called.</p>
+  </div>
+</section>
+
+<div class="promise-wrap">
+  <div class="container">
+    <div class="stage-dark tex-dark promise">
+      <span class="eyebrow">Our promise</span>
+      <h2 class="display statement">We own the digital conversion. <span class="accent">You own the sale.</span></h2>
+
+      <div class="sci-grid">
+        <article class="sci-card tex-dark">
+          <div class="sci-fig">21×</div>
+          <p class="sci-claim">more likely to qualify a lead</p>
+          <p class="sci-detail">calling at 5 minutes versus 30 minutes. The decay is a cliff, not a slope.</p>
+          <p class="sci-src"><b>MIT / InsideSales, 2007</b><span>15,000+ leads · 100,000+ dials</span></p>
+        </article>
+        <article class="sci-card tex-dark">
+          <div class="sci-fig">100×</div>
+          <p class="sci-claim">more likely to even reach them</p>
+          <p class="sci-detail">same 5-minute window. Qualifying is moot if nobody picks up.</p>
+          <p class="sci-src"><b>MIT / InsideSales, 2007</b><span>Same study</span></p>
+        </article>
+        <article class="sci-card tex-dark">
+          <div class="sci-fig">42<span class="u">hrs</span></div>
+          <p class="sci-claim">hours to first contact</p>
+          <p class="sci-detail">the average time a company takes to respond to a web lead</p>
+          <p class="sci-src"><b>Harvard Business Review, 2011</b><span>Audit of 2,241 US companies</span></p>
+        </article>
+        <article class="sci-card tex-dark">
+          <div class="sci-fig">23%</div>
+          <p class="sci-claim">never respond at all</p>
+          <p class="sci-detail">of audited companies never made contact with the lead. Ever.</p>
+          <p class="sci-src"><b>Harvard Business Review, 2011</b><span>Same audit</span></p>
+        </article>
+        <article class="sci-card tex-dark">
+          <div class="sci-fig">7%</div>
+          <p class="sci-claim">respond within five minutes</p>
+          <p class="sci-detail">of 433 firms tested. 55% had still not responded after five business days.</p>
+          <p class="sci-src"><b>Drift Lead Response Survey, 2017</b><span>433 B2B companies</span></p>
+        </article>
+        <article class="sci-card tex-dark">
+          <div class="sci-fig">93%</div>
+          <p class="sci-claim">are reached by the 6th call</p>
+          <p class="sci-detail">of the leads that convert. Most teams stop after one.</p>
+          <p class="sci-src"><b>Velocify, c.2013</b><span>~3.5m leads · platform data, not academic</span></p>
+        </article>
+      </div>
+
+      <p class="sci-foot">Every figure above is from the named study, with its sample size stated. Where the data is a vendor’s own platform data rather than independent research, it says so.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot-in">
+    <span>© 2026 Leadly · Elephant &amp; Ostrich LLP</span>
+    <span class="foot-links"><a href="/privacy-policy/">Privacy Policy</a> · <a href="/terms-and-conditions/">Terms &amp; Conditions</a></span>
+    <span class="foot-note">Licensed marketing partner. Not a financial adviser.</span>
+  </div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════════
+   THE REEL — KENNETH: drop your real ad creatives in here.
+   Each entry: { img:'/assets/ads/<file>.jpg', kicker:'…', line:'…', cta:'…' }
+   Portrait images, roughly 4:5 or 2:3. Until you add `img`, the placeholder
+   gradient art in leadly-reel.js is used and the layout is already correct.
+   ══════════════════════════════════════════════════════════════════════════ */
+window.LEADLY_REEL = [
+  { img:'/assets/ads/ad-01-retirement.webp', kicker:'Retirement',        line:'Are you on track to retire — or just hoping?',                cta:'Free 2-min check' },
+  { img:'/assets/ads/ad-02-income.webp',     kicker:'Income protection', line:'If you couldn\u2019t work tomorrow, how long would you last?', cta:'Find out' },
+  { img:'/assets/ads/ad-03-legacy.webp',     kicker:'Legacy',            line:'Your CPF doesn\u2019t go where you think it does.',           cta:'Check yours' },
+  { img:'/assets/ads/ad-04-ci.webp',         kicker:'Critical illness',  line:'The bill arrives long before the recovery does.',             cta:'See the numbers' },
+  { img:'/assets/ads/ad-05-winback.webp',    kicker:'Winback',           line:'Still thinking it over? Most people are.',                    cta:'Pick up where you left off' },
+  { img:'/assets/ads/ad-06-advisors.webp',   kicker:'Advisors',          line:'Stop calling strangers.',                                     cta:'Book a demo' },
+  { img:'/assets/ads/ad-07-annuity.webp',    kicker:'Annuity',           line:'What does S$4,000 a month actually cost you today?',          cta:'Work it out' },
+  { img:'/assets/ads/ad-08-pulse.webp',      kicker:'Pulse',             line:'One dashboard. Meta and Google. Live.',                       cta:'Try it free' }
+];
+</script>
+<script src="/assets/leadly-reel.js"></script>
+
+<script>
+(function(){
+  var L = window.LEADLY, dl = window.dataLayer = window.dataLayer || [];
+  var money = function(n){ return "S$" + Math.round(n).toLocaleString("en-SG"); };
+
+  /* ── the offer price (single source: leadly-data.js) ─────────── */
+  var priceEl = document.getElementById('offer_price');
+  if(priceEl) priceEl.textContent = "S$1,500";  /* insurance offer = S$1,500/mo */
+
+  /* ── True-cost calculator (the Smart Qualifier — logic preserved) ── */
+  var steps = [].slice.call(document.querySelectorAll('.q-step'));
+  var TOTAL = 7, cur = 1, started = false, advTimer;
+  var data = { role:"", advisors:"", sources:[], features:[], timing:"", leads:"", leadsN:0 };
+  var nextB = document.getElementById('qnext');
+  var backB = document.getElementById('qback');
+  var nav = document.getElementById('qnav');
+
+  function valid(n){
+    if(n === 1) return !!data.role;
+    if(n === 2) return !!data.advisors;
+    if(n === 3) return data.sources.length > 0;
+    if(n === 4) return !!data.spend;
+    if(n === 5) return !!data.leads;
+    return true;
+  }
+
+  /* ── THE STEPPER ────────────────────────────────────────────────────────*/
+  var segBar = document.getElementById('qsteps');
+  if (segBar) { for (var si = 0; si < TOTAL; si++) segBar.insertAdjacentHTML('beforeend', '<span class="q-seg"><i></i></span>'); }
+  var segs = segBar ? [].slice.call(segBar.children) : [];
+
+  /* ── THE LIVE PANEL — what the advisor already knows ────────────────────
+     This is the entire argument of the page, running while they use it. Each
+     answer lands on the right within a beat of being given. */
+  var liveBody = document.getElementById('qlivebody');
+  var liveFoot = document.getElementById('qlivefoot');
+  var scoreEl  = document.getElementById('qscore');
+  var prioEl   = document.getElementById('qprio');
+  var LIVE = {};
+  var LABEL = { role:'Who they are', advisors:'Team size', sources:'Lead sources today',
+                spend:'All-in monthly spend', leads:'Leads a month', features:'Already has',
+                timing:'When they want it' };
+  var ORDER = ['role','advisors','sources','spend','leads','features'];
+
+  function liveScore(){
+    var sc = (data.roleScore||0) + (data.advisorsScore||0) + (data.timingScore||0);
+    var t = spend();
+    sc += t >= 4000 ? 4 : t >= 1500 ? 3 : t >= 500 ? 2 : t > 0 ? 1 : 0;
+    sc += 5 - (data.features ? data.features.length : 0);
+    return sc;
+  }
+  function paintLive(){
+    var keys = ORDER.filter(function(k){ return LIVE[k]; });
+    if (!keys.length) return;
+    liveBody.innerHTML = keys.map(function(k){
+      return '<div class="q-row"><span class="k">' + LABEL[k] + '</span><span class="v">' + LIVE[k] + '</span></div>';
+    }).join('');
+    /* The score and the HOT/WARM/COOL grade are still COMPUTED — the form
+       carries them to GHL on submit, because your team needs them. They are
+       simply not rendered. Telling a prospect you have graded them invites
+       them to game the answers, and it is a strange thing to say out loud. */
+    if (liveFoot) liveFoot.hidden = true;
+  }
+  window.__q_paintLive = paintLive;
+  window.__q_LIVE = LIVE;
+
+  function show(n, userMoved){
+    steps.forEach(function(s){ s.classList.toggle('on', +s.dataset.step === n); });
+    segs.forEach(function(sg, i){
+      sg.classList.toggle('done', i < n - 1);
+      sg.classList.toggle('now', i === n - 1);
+    });
+    cur = n;
+    backB.style.display = (n > 1 && n <= TOTAL) ? "" : "none";
+    nav.style.display = (n >= 7) ? "none" : "flex";   /* the form has its OWN button */
+    nextB.disabled = !valid(n);
+
+    /* MOBILE: bring the new question to the top of the screen.
+       Without this the phone keeps whatever scroll position the last question
+       left it at, so a taller question opens with its options — and the
+       Continue button — below the fold. That is what made the form feel
+       broken: people answered, saw nothing happen, and had no reason to
+       suspect there was a button 400px further down. */
+    if (userMoved && window.matchMedia('(max-width:900px)').matches) {
+      var on = document.querySelector('.q-step.on');
+      if (on) {
+        var y = on.getBoundingClientRect().top + window.pageYOffset - 64;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+      }
+    }
+  }
+
+  function goNext(){
+    if(cur >= 7) return;
+    if(cur === 6){ dl.push({ event:'qualifier_complete' }); fill(); }
+    show(cur + 1, true);
+  }
+
+  document.querySelectorAll('.q-opts').forEach(function(grp){
+    var name = grp.dataset.name, multi = grp.dataset.mode === "multi";
+    grp.addEventListener('click', function(e){
+      var o = e.target.closest('.opt');
+      if(!o) return;
+      if(!started){ started = true; dl.push({ event:'qualifier_start' }); }
+      if(multi){
+        o.classList.toggle('sel');
+        data[name] = [].slice.call(grp.querySelectorAll('.opt.sel')).map(function(x){ return x.dataset.v; });
+        window.__q_LIVE[name] = data[name].length ? data[name].join(', ') : '';
+        window.__q_paintLive();
+        nextB.disabled = !valid(cur);
+      } else {
+        grp.querySelectorAll('.opt').forEach(function(x){ x.classList.remove('sel'); });
+        o.classList.add('sel');
+        data[name] = o.dataset.v;
+        if(o.dataset.s) data[name + "Score"] = +o.dataset.s;
+        if(o.dataset.n) data[name + 'N'] = +o.dataset.n;
+        window.__q_LIVE[name] = o.dataset.v;
+        window.__q_paintLive();
+        nextB.disabled = !valid(cur);
+        /* single-answer question → auto-advance, no Continue click needed */
+        clearTimeout(advTimer);
+        advTimer = setTimeout(function(){ if(valid(cur)) goNext(); }, 320);
+      }
+    });
+  });
+
+  function spend(){ return data.spendN || 0; }
+
+  function fill(){
+    var total = spend();
+    var leads = data.leadsN;
+    var each = (leads > 0 && total > 0) ? total / leads : 0;
+    var have = data.features.length;
+    var gaps = 5 - have;
+    var spendScore = total >= 4000 ? 4 : total >= 1500 ? 3 : total >= 500 ? 2 : 1;
+    var score = (data.roleScore || 0) + (data.advisorsScore || 0) + (data.timingScore || 0) + spendScore + gaps;
+    var prio = score >= 15 ? "HOT" : score >= 10 ? "WARM" : "COOL";
+
+    document.getElementById('f_role').value     = data.role;
+    document.getElementById('f_advisors').value = data.advisors;
+    document.getElementById('f_sources').value  = data.sources.join(", ");
+    document.getElementById('f_spend').value    = total;
+    document.getElementById('f_leads').value    = data.leads;
+    document.getElementById('f_cost').value     = total ? total.toFixed(0) : "unknown";
+    document.getElementById('f_feat').value     = data.features.join(", ") || "none";
+    document.getElementById('f_gaps').value     = gaps;
+    document.getElementById('f_timing').value   = data.timing;
+    document.getElementById('f_score').value    = score;
+    document.getElementById('f_prio').value     = prio;
+
+    /* The old result screen wrote a number into a <div> and stopped. What
+       happens now instead: hand every fact to the analysis, which does the
+       arithmetic here in the browser and sends the ANSWERS to a model for the
+       judgement. See /assets/leadly-analysis.js. */
+    /* the cost breakdown — this was declared in the old result code I replaced,
+       and I deleted it with the rest. Without it fill() threw on every submit. */
+    window.__LEADLY_FACTS = {
+      role: data.role,
+      advisors: data.advisors,
+      sources: data.sources,
+      leads: data.leads,
+      leadsN: leads,
+      timing: data.timing,
+      features: data.features,
+      gaps: gaps,
+      total: Math.round(total),
+      perLead: each ? Math.round(each) : 0,
+      breakdown: []
+    };
+
+    dl.push({ event:'qualifier_result', lead_score:score, priority:prio, all_in_monthly: total ? Math.round(total) : null });
+  }
+
+  /* number keys pick an option. Power users find it; nobody else notices. */
+  document.addEventListener('keydown', function(e){
+    if (cur > 6 || document.querySelector('.bk-scrim.on')) return;
+    var tag = (e.target.tagName || '').toLowerCase();
+    if (tag === 'input' || tag === 'textarea') return;
+    var n = parseInt(e.key, 10);
+    if (!n) return;
+    var opts = document.querySelectorAll('.q-step.on .opt');
+    if (opts[n - 1]) { opts[n - 1].click(); opts[n - 1].scrollIntoView({block:'nearest'}); }
+  });
+
+  nextB.addEventListener('click', goNext);
+  backB.addEventListener('click', function(){ clearTimeout(advTimer); show(Math.max(1, cur - 1), true); });
+
+  document.getElementById('qform').addEventListener('submit', function(e){
+    /* preventDefault IS LOAD-BEARING. A native POST navigates away and destroys
+       the analysis before it draws a pixel. Post with fetch instead. */
+    e.preventDefault();
+    var form = this;
+
+    var nameI = document.getElementById('f_name');
+    var waI   = document.getElementById('f_wa');
+    var consI = document.getElementById('f_consent');
+    var consL = document.getElementById('q_consent_l');
+    var waWrap = waI.parentNode;
+
+    /* name + mobile are REQUIRED. Company name and company email are not —
+       requiring them costs you the exact people worth talking to. */
+    var ok = true;
+    nameI.parentNode.classList.remove('q-field-bad');
+    waWrap.classList.remove('q-field-bad');
+    consL.classList.remove('bad');
+
+    if (!nameI.value.trim()) { nameI.parentNode.classList.add('q-field-bad'); ok = false; }
+    var digits = waI.value.replace(/[^\d]/g,'').replace(/^65/,'');
+    if (!/^[89]\d{7}$/.test(digits)) { waWrap.classList.add('q-field-bad'); ok = false; }
+    if (!consI.checked) { consL.classList.add('bad'); ok = false; }
+    if (!ok) {
+      /* THIS RETURN USED TO BE SILENT. On a phone the offending field —
+         usually the consent checkbox — sits below the fold, so tapping
+         "Send it to me" appeared to do absolutely nothing. That is the exact
+         symptom a tester reported as "can't even complete the form". Now the
+         first problem is scrolled into view and focused, so the form always
+         explains itself. */
+      var firstBad = form.querySelector('.q-field-bad, .q-consent.bad');
+      if (firstBad) {
+        var y = firstBad.getBoundingClientRect().top + window.pageYOffset - 90;
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+        var focusable = firstBad.querySelector('input, textarea, select');
+        if (focusable) setTimeout(function(){ try{ focusable.focus({preventScroll:true}); }catch(_){ focusable.focus(); } }, 320);
+      }
+      return;
+    }
+
+    dl.push({ event:'generate_lead', lead_type:'insurance', priority: document.getElementById('f_prio').value });
+
+    var run = function(){
+      show(8, true);   /* the analysis step — steps were renumbered 9→8 when the timing question was removed */
+      document.getElementById('qualifier').classList.add('is-analysis');
+      if (window.LeadlyAnalysis && window.__LEADLY_FACTS) {
+        window.__LEADLY_FACTS.contact = {
+          name:    nameI.value.trim(),
+          phone:   waI.value.trim(),
+          company: document.getElementById('f_org').value.trim(),   /* may be empty */
+          email:   document.getElementById('f_em').value.trim()     /* may be empty */
+        };
+        window.LeadlyAnalysis.run(document.getElementById('analysis'), window.__LEADLY_FACTS);
+      }
+    };
+
+    fetch('/', {
+      method:'POST',
+      headers:{ 'Content-Type':'application/x-www-form-urlencoded' },
+      body:new URLSearchParams(new FormData(form)).toString()
+    }).then(run).catch(run);
+  });
+
+  /* stamp the keyboard hints */
+  document.querySelectorAll('.q-opts').forEach(function(grp){
+    [].slice.call(grp.querySelectorAll('.opt')).forEach(function(o, i){
+      var k = o.querySelector('.k'); if (k) k.textContent = i + 1;
+    });
+  });
+
+  show(1);
+})();
+</script>
+
+<script>
+/* FAILSAFE — runs independently of the calculator IIFE above. If that script
+   threw for any reason (a missing element on a stale build, etc.), no step gets
+   the `.on` class and the card renders blank. This guarantees the first question
+   is always visible so the funnel is never a dead white box. */
+(function(){
+  try{
+    if(!document.querySelector('.q-step.on')){
+      var first=document.querySelector('.q-step');
+      if(first) first.classList.add('on');
+    }
+  }catch(e){}
+})();
+</script>
+
+<script src="/assets/leadly-components.js"></script>
+<script src="/assets/leadly-pulse-tour.js" defer></script>
+<script src="/assets/leadly-lockscreen.js"></script>
+<script src="/assets/leadly-funnels.js"></script>
+<!-- jsPDF. The document is DRAWN, not screenshotted — real text, real print. -->
+<script src="/assets/leadly-analysis.js"></script>
+<script src="/assets/leadly-book.js"></script>
+<script src="/assets/leadly-fx.js"></script>
+<script>
+/* S3 system — tabs. Demo components are lazy-mounted on first activation. */
+(function(){
+  function activate(key){
+    document.querySelectorAll('.sys-tab').forEach(function(t){ t.classList.toggle('is-active', t.dataset.tab === key); });
+    document.querySelectorAll('.sys-anim').forEach(function(p){ p.classList.toggle('is-active', p.dataset.item === key); });
+    document.querySelectorAll('.sys-copy').forEach(function(p){ p.classList.toggle('is-active', p.dataset.item === key); });
+    var m = document.querySelector('.sys-anim[data-item="' + key + '"] [data-leadly-demo]');
+    if (m && window.LeadlyDemo) window.LeadlyDemo.mount(m);
+    /* A demo mounts while its panel is still display:none, so the Call Sheet
+       and Pulse windows measure 0px wide and can't be scaled. Re-fit once the
+       panel is actually visible, or they render at full 680px and overflow. */
+    if (window.LeadlyDemoFit) requestAnimationFrame(window.LeadlyDemoFit);
+  }
+  document.querySelectorAll('.sys-tab').forEach(function(t){
+    t.addEventListener('click', function(){ activate(t.dataset.tab); });
+  });
+  activate('advertising');
+})();
+</script>
+<script>
+/* The add-on drawer. Height animates from 0 to its measured height and is then
+   released to `auto`, so the panel can grow later (a longer list, a narrower
+   viewport) instead of being pinned to a stale pixel value.
+
+   NOTE: transitionend BUBBLES. The chevron inside the toggle has its own rotate
+   transition, and without the target/property guard below its event fires this
+   handler before the height animation has even started. */
+(function(){
+  var t = document.getElementById('aoToggle');
+  var p = document.getElementById('aoPanel');
+  var c = document.getElementById('aoClose');
+  if (!t || !p) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function open(){
+    p.hidden = false;
+    t.setAttribute('aria-expanded','true');
+    if (reduced){ p.style.height = 'auto'; return; }
+    var h = p.scrollHeight;
+    p.style.transition = 'height .42s cubic-bezier(.16,1,.3,1)';
+    p.style.height = '0px';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ p.style.height = h + 'px'; });
+    });
+    p.addEventListener('transitionend', function done(e){
+      if (e.target !== p || e.propertyName !== 'height') return;
+      p.style.height = 'auto';
+      p.removeEventListener('transitionend', done);
+    });
+  }
+  function close(){
+    t.setAttribute('aria-expanded','false');
+    if (reduced){ p.hidden = true; return; }
+    p.style.height = p.scrollHeight + 'px';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ p.style.height = '0px'; });
+    });
+    p.addEventListener('transitionend', function done(e){
+      if (e.target !== p || e.propertyName !== 'height') return;
+      p.hidden = true; p.style.height = '';
+      p.removeEventListener('transitionend', done);
+    });
+  }
+  t.addEventListener('click', function(){
+    t.getAttribute('aria-expanded') === 'true' ? close() : open();
+  });
+  if (c) c.addEventListener('click', function(){
+    close();
+    t.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block:'center' });
+  });
+})();
+</script>
+</body>
+</html>

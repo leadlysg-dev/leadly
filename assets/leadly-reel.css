@@ -1,0 +1,114 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   LEADLY — THE REEL  ·  /assets/leadly-reel.css
+   Real ad creatives riding a slow arc. This is the Advertising demo — it is
+   what "we run and iterate the creative" looks like.
+
+   Built entirely on brand.css tokens. Two themes:
+     .reel               → on a dark stage  (white transport chrome)
+     .reel--on-light     → on white / tint  (dark transport chrome)
+
+   Card copy is sized RELATIVE to the card (--cw), so the headline and the blue
+   CTA fit at every card size — desktop, tablet and phone — without clipping.
+
+   Markup:  <div data-leadly-reel></div>          (cards injected by the JS)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.reel{
+  --cw: 210px;                     /* card width  — everything scales off this */
+  --ch: 300px;                     /* card height                              */
+  --arc: 640px;                    /* radius of the arc                        */
+  position: relative;
+  /* WIDTH IS NOT OPTIONAL. The reel has no intrinsic width — every card is
+     absolutely positioned off a pivot at left:50%. Drop it into a flex parent
+     (like .demo-stage) without this and the box collapses to 0px, the pivot
+     lands on the left edge, and the whole carousel silently vanishes. */
+  width: 100%;
+  flex: 1 1 auto;
+  align-self: stretch;
+  height: 100%;
+  min-height: 380px;
+  overflow: hidden;
+}
+/* The pivot sits --arc below the point the cards should ride through, so the
+   fan lands in the same place whatever height the container is. */
+.reel-pivot{ position: absolute; left: 50%; top: calc(46% + var(--arc)); width: 0; height: 0; }
+
+.reel-card{
+  position: absolute;
+  width: var(--cw); height: var(--ch);
+  margin: calc(var(--ch) / -2) 0 0 calc(var(--cw) / -2);   /* centre on the pivot */
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--panel-2);
+  will-change: transform, opacity;
+  box-shadow: 0 10px 24px rgba(0,0,0,.34), 0 40px 80px rgba(0,0,0,.42);
+}
+.reel-card .art{ position: absolute; inset: 0; }
+
+/* ── The copy block. Sits on a 4-stop scrim so it carries a bright sunset as
+      well as a dark room. Flex column so the CTA is always the last thing and
+      is never pushed off the card. ─────────────────────────────────────────── */
+.reel-card .copy{
+  position: absolute; left: 0; right: 0; bottom: 0;
+  display: flex; flex-direction: column; align-items: flex-start;
+  padding: calc(var(--cw) * .105) calc(var(--cw) * .072) calc(var(--cw) * .076);
+  background: linear-gradient(to top,
+    rgba(0,0,0,.90) 0%, rgba(0,0,0,.72) 46%, rgba(0,0,0,.32) 76%, rgba(0,0,0,0) 100%);
+}
+.reel-card .kicker{
+  font-size: calc(var(--cw) * .046);              /* ≈ 9.7px @ 210 */
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow); text-transform: uppercase;
+  color: rgba(255,255,255,.62);
+  margin-bottom: calc(var(--cw) * .026);
+}
+.reel-card .line{
+  font-size: calc(var(--cw) * .069);              /* ≈ 14.5px @ 210 */
+  font-weight: 600; line-height: 1.26;
+  letter-spacing: var(--tracking-tight);
+  color: #fff;
+  /* the longest headline is 4 lines at the smallest card — cap it, don't clip it */
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+/* THE BLUE CTA — wraps rather than overflowing. "Pick up where you left off"
+   is the long one; it must still sit inside the card at 150px wide. */
+.reel-card .btn-mini{
+  margin-top: calc(var(--cw) * .054);
+  max-width: 100%;
+  font-size: calc(var(--cw) * .052);              /* ≈ 11px @ 210 */
+  font-weight: 600; line-height: 1.25;
+  color: var(--on-accent);
+  background: var(--accent);
+  border-radius: var(--r-pill);
+  padding: calc(var(--cw) * .029) calc(var(--cw) * .062);
+  white-space: normal;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* ── transport ─────────────────────────────────────────────────────────────*/
+.reel-transport{
+  position: absolute; left: 0; right: 0; bottom: 18px;
+  display: flex; align-items: center; gap: 16px; padding: 0 6px; z-index: 200;
+}
+.reel-pause{
+  width: 40px; height: 40px; flex: none;
+  border: 0; border-radius: 50%; cursor: pointer;
+  background: rgba(255,255,255,.10);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  color: #fff; display: grid; place-items: center;
+  transition: background var(--dur-2) var(--ease);
+}
+.reel-pause:hover{ background: rgba(255,255,255,.20); }
+.reel-pause:focus-visible{ outline: 2px solid #fff; outline-offset: 3px; }
+.reel-track{ flex: 1; height: 3px; border-radius: var(--r-pill); background: rgba(255,255,255,.16); overflow: hidden; }
+.reel-bar{ height: 100%; width: 0; background: var(--accent); border-radius: var(--r-pill); }
+
+@media (max-width: 820px){
+  .reel{ --cw: 150px; --ch: 214px; min-height: 340px; }
+}
+@media (prefers-reduced-motion: reduce){
+  .reel-card{ transition: none; }
+}

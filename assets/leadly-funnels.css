@@ -1,0 +1,255 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   LEADLY — THE SMART QUALIFIERS  ·  /assets/leadly-funnels.css
+
+   Three insurance funnels, each running live on a phone:
+
+     quiz   The Questionnaire     — filters on need, cover and timing
+     gap    The Gap Calculator    — turns a vague worry into a dollar figure
+     book   The Booking Calendar  — puts a time in the advisor's diary
+
+   Qualify → quantify → convert. Each is a real funnel shape we run.
+
+   Reuses .phone / .screen / .island / .gloss from leadly-components.css —
+   load that first. Everything else is brand.css tokens.
+
+   Markup:  <div data-leadly-funnel="quiz"></div>
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── the card each funnel sits in — a small dark stage ─────────────────────*/
+.funnel-grid{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:clamp(16px,2vw,24px);
+  margin-top:40px;
+}
+.funnel-card{
+  position:relative;
+  border-radius:var(--r-stage);
+  box-shadow:var(--shadow-stage);
+  overflow:hidden;
+  padding:26px 20px 0;
+  display:flex; flex-direction:column;
+  min-width:0;
+  color:var(--on-panel);
+}
+
+/* ── THE RAMP ──────────────────────────────────────────────────────────────
+   Three identical near-black cards side by side read as one heavy block, and
+   the eye has nowhere to go. So the set is a GRADIENT — card one the lightest
+   cobalt, card three settling into the panel black — and each card is itself a
+   gradient, light at the top where the words are, dark at the bottom where the
+   phone rises out of it.
+
+   The ramp is not decoration. It IS the sequence: qualify → quantify →
+   convert. The page gets darker as the prospect gets closer to the call.
+
+   CONTRAST IS MEASURED, NOT EYEBALLED. The top of card one (#1E4490) is the
+   lightest ground any text sits on:
+     white body          9.19:1
+     68% white body      5.15:1
+     kicker #9DC0FF      5.00:1   ← the old #4D8CF0 gave 2.77:1 and FAILED
+   All clear AA. Lighten card one further and the kicker breaks first.        */
+.funnel-card:nth-child(1){
+  background:linear-gradient(168deg, #1E4490 0%, #16305F 38%, #0D1526 74%, #0B0D12 100%);
+}
+.funnel-card:nth-child(2){
+  background:linear-gradient(168deg, #16336C 0%, #10254B 38%, #0B111F 74%, #0A0B0F 100%);
+}
+.funnel-card:nth-child(3){
+  background:linear-gradient(168deg, #0F2247 0%, #0B1832 38%, #090D18 74%, #08090C 100%);
+}
+
+/* the grid + bloom. It fades ACROSS the set too — brightest on card one,
+   almost gone by card three, so the ramp reads as one gesture. */
+/* the grid + bloom now come from .tex-dark in brand.css — one pitch, everywhere */
+.funnel-card:nth-child(1){ --bloom:.34; }
+.funnel-card:nth-child(2){ --bloom:.24; }
+.funnel-card:nth-child(3){ --bloom:.16; }
+.funnel-card > *{ position:relative; z-index:1; }
+
+.funnel-kicker{
+  font-size:11px; font-weight:600; letter-spacing:var(--tracking-eyebrow);
+  text-transform:uppercase;
+  color:#9DC0FF;             /* NOT --panel-accent: 2.77:1 on card one. This is 5.00:1. */
+  margin-bottom:8px;
+}
+.funnel-name{
+  font-size:19px; font-weight:600; line-height:1.25;
+  letter-spacing:var(--tracking-h); color:var(--on-panel); margin-bottom:7px;
+}
+.funnel-what{
+  font-size:13.5px; line-height:1.55; color:var(--on-panel-2);
+  margin-bottom:14px; min-height:63px;
+}
+/* each card links out to the REAL landing page that funnel is running on */
+.funnel-link{
+  display:inline-flex; align-items:center; gap:6px; align-self:flex-start;
+  margin-bottom:18px; padding:8px 14px; border-radius:999px;
+  border:1px solid rgba(255,255,255,.22);
+  font-size:12.5px; font-weight:600; color:#fff; text-decoration:none;
+  transition:background .2s var(--ease), border-color .2s var(--ease);
+}
+.funnel-link:hover{ background:var(--accent); border-color:var(--accent); text-decoration:none; }
+.funnel-link:focus-visible{ outline:2px solid #fff; outline-offset:2px; }
+.funnel-link svg{ width:13px; height:13px; }
+
+/* the handset — cropped by the card, so it reads as rising out of it */
+.funnel-phone{ position:relative; margin-top:auto; display:flex; justify-content:center; }
+.funnel-card .phone{
+  width:214px; padding:8px; border-radius:32px;
+  transform:perspective(1400px) rotateY(-8deg) rotateX(4deg);
+  margin-bottom:-56px;                       /* runs off the bottom of the card */
+}
+.funnel-card .screen{ border-radius:25px; height:432px; }
+.funnel-card .island{ width:74px; height:20px; top:8px; }
+.funnel-card .gloss{ border-radius:25px; }
+
+/* ── shared screen furniture ───────────────────────────────────────────────*/
+.fn-top{
+  flex:none; padding:30px 13px 10px;
+  border-bottom:1px solid var(--ui-line);
+  background:#fff;
+}
+.fn-brand{ display:flex; align-items:center; gap:7px; margin-bottom:10px; }
+.fn-dot{ width:15px; height:15px; border-radius:4px; background:var(--accent); flex:none; }
+.fn-title{ font-size:10.5px; font-weight:600; color:var(--ui-ink); letter-spacing:-.01em;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.fn-step{ margin-left:auto; font-size:9.5px; color:var(--ui-mute); flex:none; font-variant-numeric:tabular-nums; }
+.fn-bar{ height:3px; border-radius:99px; background:var(--ui-line); overflow:hidden; }
+.fn-bar i{ display:block; height:100%; width:0; background:var(--accent); border-radius:99px;
+  transition:width .5s cubic-bezier(.4,0,.2,1); }
+.fn-body{ flex:1; min-height:0; background:#fff; position:relative; overflow:hidden; }
+.fn-foot{
+  flex:none; padding:9px 13px 12px; background:#fff;
+  border-top:1px solid var(--ui-line);
+  text-align:center; font-size:9.5px; color:var(--ui-mute);
+}
+
+/* ── 1 · THE QUESTIONNAIRE ─────────────────────────────────────────────────*/
+.fq-card{
+  position:absolute; inset:16px 13px;
+  transition:transform .4s cubic-bezier(.4,0,.2,1), opacity .3s ease;
+}
+.fq-q{ font-size:14.5px; font-weight:600; color:var(--ui-ink); line-height:1.3;
+  letter-spacing:-.01em; margin:0 0 4px; }
+.fq-hint{ font-size:10.5px; color:var(--ui-mute); line-height:1.4; margin:0 0 12px; }
+.fq-opts{ display:flex; flex-direction:column; gap:6px; }
+.fq-opt{
+  display:flex; align-items:center; gap:9px;
+  padding:10px 11px; border:1px solid var(--ui-line); border-radius:9px;
+  background:#fff; transition:all .28s var(--ease);
+}
+.fq-opt .rd{ width:14px; height:14px; border-radius:50%; border:1.5px solid #CBD2DA; flex:none; position:relative; }
+.fq-opt .lb{ font-size:11.5px; color:#344054; line-height:1.3; }
+.fq-opt.on{ border-color:var(--accent); background:rgba(0,85,232,.055); }
+.fq-opt.on .rd{ border-color:var(--accent); background:var(--accent); }
+.fq-opt.on .rd::after{
+  content:""; position:absolute; inset:0; margin:auto;
+  width:4px; height:7px; border:solid #fff; border-width:0 1.6px 1.6px 0;
+  transform:rotate(45deg) translate(-1px,-1px);
+}
+.fq-opt.on .lb{ color:var(--ui-ink); font-weight:600; }
+
+/* ── 2 · THE GAP CALCULATOR ────────────────────────────────────────────────*/
+.fg-wrap{ position:absolute; inset:14px 13px; display:flex; flex-direction:column; }
+.fg-fields{ display:flex; flex-direction:column; gap:8px; }
+.fg-field{
+  border:1px solid var(--ui-line); border-radius:9px; padding:8px 10px;
+  opacity:.35; transition:opacity .35s var(--ease), border-color .35s var(--ease);
+}
+.fg-field.on{ opacity:1; border-color:#CBD2DA; }
+.fg-label{ font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:var(--ui-mute); }
+.fg-value{ font-size:15px; font-weight:600; color:var(--ui-ink); margin-top:2px;
+  font-variant-numeric:tabular-nums; letter-spacing:-.01em; }
+
+.fg-result{ margin-top:12px; opacity:0; transform:translateY(8px);
+  transition:opacity .45s var(--ease-out), transform .45s var(--ease-out); }
+.fg-result.on{ opacity:1; transform:none; }
+.fg-rows{ display:flex; flex-direction:column; gap:7px; }
+.fg-row .fg-rl{ display:flex; justify-content:space-between; align-items:baseline;
+  font-size:10px; color:var(--ui-mute); margin-bottom:3px; }
+.fg-row .fg-rl b{ color:var(--ui-ink); font-weight:600; font-size:11px; font-variant-numeric:tabular-nums; }
+.fg-track{ height:7px; border-radius:99px; background:var(--ui-line); overflow:hidden; }
+.fg-fill{ height:100%; width:0; border-radius:99px; transition:width 1.1s cubic-bezier(.4,0,.2,1); }
+.fg-fill.need{ background:#CBD5E1; }
+.fg-fill.have{ background:var(--accent); }
+
+.fg-gap{
+  margin-top:11px; padding:10px 11px; border-radius:9px;
+  background:rgba(196,39,27,.07); border:1px solid rgba(196,39,27,.25);
+}
+.fg-gap .gl{ font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:var(--danger); font-weight:600; }
+.fg-gap .gv{ font-size:21px; font-weight:700; color:var(--danger); line-height:1.1; margin-top:2px;
+  font-variant-numeric:tabular-nums; letter-spacing:-.02em; }
+.fg-note{ font-size:9px; color:var(--ui-mute); line-height:1.4; margin-top:8px; }
+.fg-cta{
+  margin-top:auto; padding:10px; border-radius:99px; background:var(--accent);
+  color:#fff; font-size:12px; font-weight:600; text-align:center;
+  opacity:0; transform:translateY(6px); transition:all .4s var(--ease-out);
+}
+.fg-cta.on{ opacity:1; transform:none; }
+
+/* ── 3 · THE BOOKING CALENDAR ──────────────────────────────────────────────*/
+.fb-wrap{ position:absolute; inset:14px 13px; display:flex; flex-direction:column; }
+.fb-month{ font-size:11.5px; font-weight:600; color:var(--ui-ink); text-align:center; margin-bottom:9px; }
+.fb-dow{ display:grid; grid-template-columns:repeat(7,1fr); gap:2px; margin-bottom:3px; }
+.fb-dow span{ font-size:8px; color:var(--ui-mute); text-align:center; text-transform:uppercase; letter-spacing:.05em; }
+.fb-days{ display:grid; grid-template-columns:repeat(7,1fr); gap:2px; }
+.fb-day{
+  aspect-ratio:1; display:grid; place-items:center;
+  font-size:10.5px; color:#344054; border-radius:7px;
+  transition:all .25s var(--ease); font-variant-numeric:tabular-nums;
+}
+.fb-day.mute{ color:#CBD2DA; }
+.fb-day.free{ background:rgba(0,85,232,.07); color:var(--accent); font-weight:600; }
+.fb-day.on{ background:var(--accent); color:#fff; font-weight:700; transform:scale(1.08); }
+
+.fb-slots{ margin-top:12px; opacity:0; transform:translateY(8px);
+  transition:opacity .4s var(--ease-out), transform .4s var(--ease-out); }
+.fb-slots.on{ opacity:1; transform:none; }
+.fb-slots .sh{ font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:var(--ui-mute); margin-bottom:6px; }
+.fb-slot-row{ display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.fb-slot{
+  padding:8px 6px; border:1px solid var(--ui-line); border-radius:8px;
+  font-size:11px; color:#344054; text-align:center; transition:all .25s var(--ease);
+  font-variant-numeric:tabular-nums;
+}
+.fb-slot.on{ background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600; }
+
+.fb-done{
+  position:absolute; inset:0; background:#fff;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:16px;
+  opacity:0; pointer-events:none; transition:opacity .45s var(--ease-out);
+}
+.fb-done.on{ opacity:1; }
+.fb-check{
+  width:44px; height:44px; border-radius:50%; background:rgba(0,85,232,.10);
+  display:grid; place-items:center; margin-bottom:12px;
+}
+.fb-check svg{ width:22px; height:22px; }
+.fb-check path{ stroke:var(--accent); stroke-width:2.6; fill:none; stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:20; stroke-dashoffset:20; }
+.fb-done.on .fb-check path{ animation:fb-draw .5s var(--ease-out) .15s forwards; }
+@keyframes fb-draw{ to{ stroke-dashoffset:0; } }
+.fb-done .dt{ font-size:14px; font-weight:600; color:var(--ui-ink); letter-spacing:-.01em; }
+.fb-done .dw{ font-size:11.5px; color:var(--ui-mute); margin-top:4px; line-height:1.45; }
+.fb-adv{
+  margin-top:14px; display:flex; align-items:center; gap:8px;
+  padding:8px 11px; border:1px solid var(--ui-line); border-radius:99px;
+}
+.fb-adv .av{ width:24px; height:24px; border-radius:50%; background:var(--accent); color:#fff;
+  font-size:10px; font-weight:700; display:grid; place-items:center; flex:none; }
+.fb-adv .an{ font-size:11px; color:var(--ui-ink); font-weight:600; text-align:left; line-height:1.3; }
+.fb-adv .an small{ display:block; font-weight:400; color:var(--ui-mute); font-size:9.5px; }
+
+/* ── responsive ────────────────────────────────────────────────────────────*/
+@media (max-width:1000px){
+  .funnel-grid{ grid-template-columns:minmax(0,1fr); gap:20px; max-width:420px; margin-inline:auto; }
+  .funnel-what{ min-height:0; }
+}
+@media (prefers-reduced-motion:reduce){
+  .fq-card, .fg-field, .fg-result, .fg-fill, .fg-cta,
+  .fb-day, .fb-slot, .fb-slots, .fb-done{ transition:none; }
+  .fb-done.on .fb-check path{ animation:none; stroke-dashoffset:0; }
+}

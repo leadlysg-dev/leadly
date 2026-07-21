@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Leadly — coming soon</title>
+<meta name="description" content="Leadly is a Singapore marketing-technology studio. Our new site is on the way.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{ --page:#0A0B0D; --ink:#fff; --blue:#0055E8; --blue-2:#4C8DFF; }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ height:100%; overflow:hidden; }
+  body{ background:radial-gradient(120% 120% at 50% 0%, #14161B 0%, var(--page) 60%);
+        font-family:'Figtree',system-ui,sans-serif; color:var(--ink); position:fixed; inset:0; }
+  /* faint grid */
+  body::before{ content:""; position:absolute; inset:0; opacity:.5;
+    background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:44px 44px; -webkit-mask-image:radial-gradient(100% 100% at 50% 30%,#000 40%,transparent 80%); mask-image:radial-gradient(100% 100% at 50% 30%,#000 40%,transparent 80%); }
+  canvas{ position:absolute; inset:0; z-index:2; }
+  /* center message — sits above physics, pointer-events off so drags pass through to stickers around it */
+  .msg{ position:absolute; inset:0; z-index:3; display:grid; place-content:center; text-align:center; pointer-events:none; padding:24px; }
+  .brand{ margin-bottom:22px; }
+  .brand img{ height:clamp(30px,4.4vw,40px); width:auto; display:inline-block; }
+  h1{ font-weight:700; font-size:clamp(38px,6.4vw,58px); line-height:1.05; letter-spacing:-.03em; }
+  h1 .accent{ color:var(--blue-2); }
+  .sub{ margin:16px auto 0; max-width:40ch; color:rgba(255,255,255,.66); font-size:clamp(15px,1.6vw,16px); line-height:1.6; }
+  .mail{ margin-top:16px; font-size:14px; color:rgba(255,255,255,.5); }
+  .mail a{ color:var(--blue-2); text-decoration:none; font-weight:600; pointer-events:auto; }
+  .mail a:hover{ text-decoration:underline; }
+  /* location line */
+  .locs{ margin-top:18px; display:flex; gap:10px; align-items:center; justify-content:center;
+    font-size:13.5px; font-weight:600; letter-spacing:.02em; color:rgba(255,255,255,.7); }
+  .locs .sep{ color:rgba(255,255,255,.3); }
+  .locs .dot{ display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--blue-2);
+    margin-right:7px; box-shadow:0 0 0 3px rgba(76,141,255,.18); vertical-align:middle; }
+  /* password unlock */
+  .unlock{ margin:22px auto 0; display:flex; gap:8px; align-items:center; justify-content:center; pointer-events:auto; }
+  .unlock input{ font-family:inherit; font-size:14px; color:#fff; background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.16); border-radius:999px; padding:11px 18px; width:210px; outline:none;
+    transition:border-color .15s, background .15s; }
+  .unlock input::placeholder{ color:rgba(255,255,255,.4); }
+  .unlock input:focus{ border-color:var(--blue-2); background:rgba(0,85,232,.14); }
+  .unlock input.wrong{ border-color:#FA7A7A; animation:shakeX .4s; }
+  .unlock button{ font-family:inherit; font-size:17px; font-weight:700; color:#fff; cursor:pointer;
+    width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.16);
+    background:var(--blue); transition:transform .12s, background .15s; }
+  .unlock button:hover{ background:#0048c8; transform:translateY(-1px); }
+  @keyframes shakeX{ 0%,100%{transform:translateX(0)} 20%{transform:translateX(-7px)} 40%{transform:translateX(6px)} 60%{transform:translateX(-4px)} 80%{transform:translateX(3px)} }
+  .hint{ position:absolute; left:50%; bottom:22px; transform:translateX(-50%); z-index:3; font-size:12.5px; letter-spacing:.04em; color:rgba(255,255,255,.4); pointer-events:none; }
+  .shake{ position:absolute; right:22px; bottom:22px; z-index:6; pointer-events:auto; cursor:pointer;
+    background:var(--blue); border:1px solid rgba(120,170,255,.55); color:#fff; font-family:inherit; font-weight:700; font-size:15px;
+    border-radius:999px; padding:13px 22px; display:inline-flex; gap:8px; align-items:center;
+    box-shadow:0 8px 24px -6px rgba(0,85,232,.7), 0 0 0 0 rgba(76,141,255,.5);
+    animation:shakePulse 2.4s ease-out infinite; transition:transform .12s, background .15s, box-shadow .15s; }
+  .shake:hover{ background:#1466ff; transform:translateY(-2px); box-shadow:0 12px 30px -6px rgba(0,85,232,.85); }
+  .shake:active{ transform:translateY(0) scale(.97); }
+  @keyframes shakePulse{ 0%{box-shadow:0 8px 24px -6px rgba(0,85,232,.7),0 0 0 0 rgba(76,141,255,.5)}
+    70%{box-shadow:0 8px 24px -6px rgba(0,85,232,.7),0 0 0 14px rgba(76,141,255,0)}
+    100%{box-shadow:0 8px 24px -6px rgba(0,85,232,.7),0 0 0 0 rgba(76,141,255,0)} }
+  @media (max-width:640px){ .hint{ font-size:11.5px; } .shake{ font-size:14px; padding:12px 18px; } }
+</style>
+</head>
+<body>
+  <div class="msg">
+    <div>
+      <div class="brand"><img src="/assets/leadly-wordmark-white.png" alt="Leadly" /></div>
+      <h1>Something better is<br><span class="accent">under construction.</span></h1>
+      <p class="sub">We're a Singapore marketing-technology studio, and our new site is on its way.</p>
+      <div class="locs">
+        <span><span class="dot"></span>Singapore</span>
+        <span class="sep">·</span>
+        <span><span class="dot"></span>Melbourne</span>
+      </div>
+      <form class="unlock" id="unlock" autocomplete="off">
+        <input type="password" id="pw" placeholder="Got the password?" aria-label="Password" spellcheck="false" />
+        <button type="submit" aria-label="Enter">→</button>
+      </form>
+      <div class="mail">Need us now? <a href="mailto:hello@leadly.sg">hello@leadly.sg</a></div>
+    </div>
+  </div>
+  <div class="hint">Grab a sticker — throw it around ✦</div>
+  <button class="shake" id="shake" aria-label="Shake the wall">✦ Shake it up</button>
+  <button class="shake" id="motion" style="display:none; right:auto; left:18px;" aria-label="Enable motion">📱 Tilt &amp; shake</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+  <script>
+  (function(){
+    var M=Matter, Engine=M.Engine, Render=M.Render, Runner=M.Runner, Bodies=M.Bodies,
+        Composite=M.Composite, Mouse=M.Mouse, MouseConstraint=M.MouseConstraint, Body=M.Body, Common=M.Common;
+
+    var W=window.innerWidth, H=window.innerHeight;
+    var engine=Engine.create(); engine.gravity.y=1.15;   /* +15% gravity — less floaty */
+    var render=Render.create({ element:document.body, engine:engine,
+      options:{ width:W, height:H, wireframes:false, background:'transparent', pixelRatio:window.devicePixelRatio||1 } });
+    Render.run(render); var runner=Runner.create(); Runner.run(runner, engine);
+
+    // walls (invisible)
+    var t=60;
+    function walls(){ return [
+      Bodies.rectangle(W/2, H+t/2, W+200, t, {isStatic:true}),      // floor
+      Bodies.rectangle(-t/2, H/2, t, H*3, {isStatic:true}),          // left
+      Bodies.rectangle(W+t/2, H/2, t, H*3, {isStatic:true}),         // right
+      Bodies.rectangle(W/2, -H-t, W+200, t, {isStatic:true})         // high ceiling
+    ]; }
+    var wallBodies=walls(); Composite.add(engine.world, wallBodies);
+
+    /* STATIC COLLIDER under the "Shake it up" button — pills bounce off it and
+       rest on top instead of the button covering them. Body tracks the button rect. */
+    var shakeEl=document.getElementById('shake'), btnBody=null;
+    function syncButtonBody(){
+      var r=shakeEl.getBoundingClientRect();
+      if(btnBody) Composite.remove(engine.world, btnBody);
+      btnBody=Bodies.rectangle(r.left+r.width/2, r.top+r.height/2, r.width, r.height, {
+        isStatic:true, chamfer:{radius:Math.min(r.height,r.width)/2},
+        restitution:.6, friction:.25, render:{visible:false}
+      });
+      Composite.add(engine.world, btnBody);
+    }
+    syncButtonBody();
+    window.addEventListener('load', syncButtonBody);   // rect is final after fonts/layout settle
+
+    // sticker definitions — words + emoji, Leadly-flavoured
+    /* accent palette by domain */
+    var CAT={ ai:'#8B7CF6', infra:'#38BDF8', martech:'#34D399', data:'#F5A524', brand:'#0055E8', code:'#8B94A6' };
+    // 20 marketing-tech + 20 dev — code-token chips
+    var pills=[
+      {t:'Leadly', cat:'brand', solid:true},
+      /* ── marketing tech (20) ── */
+      {t:'lead gen', cat:'martech'},
+      {t:'Meta Pixel', cat:'martech'},
+      {t:'server-side CAPI', cat:'martech'},
+      {t:'GA4 events', cat:'martech'},
+      {t:'GTM', cat:'martech'},
+      {t:'UTM tracking', cat:'martech'},
+      {t:'conversion API', cat:'martech'},
+      {t:'attribution', cat:'martech'},
+      {t:'lookalikes', cat:'martech'},
+      {t:'retargeting', cat:'martech'},
+      {t:'landing pages', cat:'martech'},
+      {t:'A/B testing', cat:'martech'},
+      {t:'lead scoring', cat:'martech'},
+      {t:'CRM sync', cat:'martech'},
+      {t:'webhooks', cat:'martech'},
+      {t:'Zapier / Make', cat:'martech'},
+      {t:'WhatsApp API', cat:'martech'},
+      {t:'email automation', cat:'martech'},
+      {t:'ROAS', cat:'martech'},
+      {t:'funnels', cat:'martech'},
+      /* ── dev tech (20), one notch less showy ── */
+      {t:'REST APIs', cat:'infra'},
+      {t:'GraphQL', cat:'infra'},
+      {t:'React', cat:'infra'},
+      {t:'React Native', cat:'infra'},
+      {t:'Next.js', cat:'infra'},
+      {t:'Node.js', cat:'infra'},
+      {t:'TypeScript', cat:'infra'},
+      {t:'Python', cat:'infra'},
+      {t:'PostgreSQL', cat:'data'},
+      {t:'Redis', cat:'data'},
+      {t:'serverless', cat:'infra'},
+      {t:'CI/CD', cat:'infra'},
+      {t:'Docker', cat:'infra'},
+      {t:'OAuth 2.0', cat:'infra'},
+      {t:'JSON', cat:'code'},
+      {t:'LLM agents', cat:'ai'},
+      {t:'RAG', cat:'ai'},
+      {t:'vector DB', cat:'ai'},
+      {t:'AI pipelines', cat:'ai'},
+      {t:'automation', cat:'ai'}
+    ];
+    // small code-symbol tokens
+    var symbols=[
+      {t:'</>', cat:'infra'}, {t:'{ }', cat:'ai'}, {t:'git', cat:'code'},
+      {t:'npm', cat:'code'}, {t:'()=>', cat:'ai'}, {t:'$_', cat:'infra'},
+      {t:'~/', cat:'code'}, {t:'∑', cat:'martech'}, {t:'&&', cat:'code'}, {t:'#!', cat:'infra'}
+    ];
+
+    // lighten/darken a hex colour for gradient stops
+    function shade(hex, amt){
+      var n=parseInt(hex.slice(1),16), r=(n>>16)&255, g=(n>>8)&255, b=n&255;
+      r=Math.max(0,Math.min(255,r+amt)); g=Math.max(0,Math.min(255,g+amt)); b=Math.max(0,Math.min(255,b+amt));
+      return 'rgb('+r+','+g+','+b+')';
+    }
+    function hexA(hex,a){ var n=parseInt(hex.slice(1),16); return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')'; }
+    function rr(ctx,x,y,w,h,r){ ctx.beginPath();
+      ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
+
+    var MONO='"SF Mono", ui-monospace, Menlo, Consolas, monospace';
+    /* a matte CODE-TOKEN chip — deliberately not a glossy pill/button.
+       small radius, left accent bar, thin border, drop shadow, mono type,
+       a faint domain-coloured halo and a crisp top hairline for material depth. */
+    function chipSprite(def){
+      var accent=CAT[def.cat]||CAT.code, fs=def.small?21:18, dpr=2, m=14, rad=6;
+      var padL=def.small?14:15, padR=def.small?14:15, padY=def.small?11:12;
+      var probe=document.createElement('canvas').getContext('2d');
+      probe.font='600 '+fs+'px '+MONO;
+      try{ probe.letterSpacing='.3px'; }catch(e){}
+      var glyph=(!def.solid && !def.small) ? '\u203a ' : '';   // faint › prompt on term chips
+      var tw=probe.measureText(glyph+def.t).width;
+      var bar=def.solid?0:4;
+      var w=Math.ceil(tw+padL+padR+bar), h=Math.ceil(fs+padY*2);
+      var cw=w+m*2, chh=h+m*2;
+      var cv=document.createElement('canvas'), ctx=cv.getContext('2d');
+      cv.width=cw*dpr; cv.height=chh*dpr; ctx.scale(dpr,dpr);
+      // 1) soft coloured halo (domain accent) — subtle, gives each chip an aura
+      ctx.save(); ctx.shadowColor=hexA(accent,.45); ctx.shadowBlur=16; ctx.shadowOffsetY=0;
+      ctx.fillStyle='rgba(0,0,0,0)'; rr(ctx,m,m,w,h,rad); ctx.fill();
+      ctx.fillStyle=hexA(accent,.14); rr(ctx,m,m,w,h,rad); ctx.fill(); ctx.restore();
+      // 2) drop shadow + matte body
+      ctx.save(); ctx.shadowColor='rgba(0,0,0,.55)'; ctx.shadowBlur=12; ctx.shadowOffsetY=6;
+      if(def.solid){
+        var g=ctx.createLinearGradient(0,m,0,m+h); g.addColorStop(0,shade(accent,16)); g.addColorStop(1,shade(accent,-18));
+        ctx.fillStyle=g;
+      } else {
+        var g2=ctx.createLinearGradient(0,m,0,m+h); g2.addColorStop(0,'#1A1D24'); g2.addColorStop(1,'#0D0F14');
+        ctx.fillStyle=g2;
+      }
+      rr(ctx,m,m,w,h,rad); ctx.fill(); ctx.restore();
+      // 3) thin accent-tinted border
+      ctx.lineWidth=1; ctx.strokeStyle=def.solid?hexA(accent,.55):hexA(accent,.34); rr(ctx,m+.5,m+.5,w-1,h-1,rad); ctx.stroke();
+      // 4) crisp top hairline (1px light, material realism — not a glossy gradient)
+      ctx.save(); rr(ctx,m,m,w,h,rad); ctx.clip();
+      ctx.strokeStyle='rgba(255,255,255,.12)'; ctx.lineWidth=1; ctx.beginPath();
+      ctx.moveTo(m+rad,m+.5); ctx.lineTo(m+w-rad,m+.5); ctx.stroke(); ctx.restore();
+      // 5) left accent bar
+      if(bar){ ctx.save(); rr(ctx,m,m,w,h,rad); ctx.clip(); ctx.fillStyle=accent; ctx.fillRect(m,m,bar,h);
+        ctx.fillStyle=hexA(accent,.5); ctx.fillRect(m,m,bar+2,h); ctx.restore(); }
+      // 6) text (mono) with faint accent prompt glyph
+      try{ ctx.letterSpacing='.3px'; }catch(e){}
+      ctx.font='600 '+fs+'px '+MONO; ctx.textBaseline='middle'; ctx.textAlign=def.small?'center':'left';
+      var tx=def.small?(cw/2):(m+bar+padL);
+      if(glyph){ ctx.fillStyle=hexA(accent,.85); ctx.fillText(glyph, tx, chh/2+1); tx+=probe.measureText(glyph).width; }
+      ctx.fillStyle=def.solid?'#fff':(def.small?accent:'#EAEFF7');
+      ctx.fillText(def.t, tx, chh/2+1);
+      return {url:cv.toDataURL(), w:w, h:h};
+    }
+
+    var stickers=[];
+    function addChip(def, x, y){
+      var sp=chipSprite(def);
+      var b=Bodies.rectangle(x, y, sp.w, sp.h, {
+        chamfer:{radius:6}, restitution:.5, friction:.28, frictionAir:.008, density:.0016,
+        render:{ sprite:{ texture:sp.url, xScale:1/2, yScale:1/2 } }
+      });
+      stickers.push(b); return b;
+    }
+
+    // spawn: a timed cascade — every chip enters BELOW the ceiling, so all of
+    // them actually arrive (stacking them miles high trapped half above the sky)
+    function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+    function spawnAll(){
+      var narrow = W < 680;
+      var chips = pills;
+      if(narrow){
+        var brand = pills[0];                       // always keep Leadly
+        chips = [brand].concat(shuffle(pills.slice(1)).slice(0, 17));
+      }
+      var syms = narrow ? symbols.slice(0,4) : symbols;
+      var queue = shuffle(chips.map(function(p){ return {def:p}; })
+        .concat(syms.map(function(s){ return {def:{t:s.t, cat:s.cat, small:true}}; })));
+      queue.forEach(function(q, idx){
+        setTimeout(function(){
+          var x = 70 + Math.random()*(W-140);
+          var b = addChip(q.def, x, -60 - Math.random()*140);   // always just above the top edge
+          Composite.add(engine.world, b);
+          Body.setAngularVelocity(b, (Math.random()-.5)*.25);
+        }, idx * 110);                                          // ~110ms apart → a raining cascade
+      });
+    }
+    spawnAll();
+
+    // mouse drag / throw
+    var mouse=Mouse.create(render.canvas);
+    mouse.pixelRatio=window.devicePixelRatio||1;
+    var mc=MouseConstraint.create(engine,{ mouse:mouse, constraint:{ stiffness:.16, render:{visible:false} }});
+    Composite.add(engine.world, mc);
+    render.mouse=mouse;
+    // let page scroll/gestures on non-canvas still work; prevent text-selection while dragging
+    render.canvas.addEventListener('mousedown',function(){document.body.style.userSelect='none';});
+    window.addEventListener('mouseup',function(){document.body.style.userSelect='';});
+
+    // shake button — fling everything
+    document.getElementById('shake').addEventListener('click',function(){
+      stickers.forEach(function(b){
+        Body.setVelocity(b,{x:(Math.random()-.5)*22, y:-12-Math.random()*16});
+        Body.setAngularVelocity(b,(Math.random()-.5)*.5);
+      });
+    });
+
+    // gentle intro nudge so they don't just stack dead-center
+    setTimeout(function(){ document.getElementById('shake').click(); }, 1400);
+
+    /* password unlock — just for fun. "insurance" → the insurance page,
+       with a shake-then-dissolve-into-dust send-off. */
+    var uf=document.getElementById('unlock'), pw=document.getElementById('pw');
+    uf.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(pw.value.trim().toLowerCase()==='insurance'){
+        dissolveAndGo();
+      } else {
+        pw.classList.remove('wrong'); void pw.offsetWidth; pw.classList.add('wrong');
+        pw.value=''; pw.placeholder='Nope — try again';
+      }
+    });
+
+    function dissolveAndGo(){
+      document.getElementById('shake').click();               // 1) big shake
+      pw.blur();
+      var msg=document.querySelector('.msg'), hint=document.querySelector('.hint');
+      [msg,hint,document.getElementById('shake'),document.getElementById('motion')].forEach(function(el){
+        if(el){ el.style.transition='opacity .45s'; el.style.opacity='0'; }
+      });
+      var dust=[];
+      // dust canvas over everything
+      var dc=document.createElement('canvas');
+      dc.style.cssText='position:absolute;inset:0;z-index:5;pointer-events:none';
+      document.body.appendChild(dc);
+      var dctx=dc.getContext('2d'), dpr=window.devicePixelRatio||1;
+      dc.width=W*dpr; dc.height=H*dpr; dctx.setTransform(dpr,0,0,dpr,0,0);
+      // 2) after the shake peaks, shatter every sticker into particles
+      setTimeout(function(){
+        stickers.forEach(function(b){
+          var p=b.position, bw=(b.bounds.max.x-b.bounds.min.x), bh=(b.bounds.max.y-b.bounds.min.y);
+          var n=Math.max(12, Math.round(bw*bh/200));
+          for(var i=0;i<n;i++){
+            dust.push({ x:p.x+(Math.random()-.5)*bw, y:p.y+(Math.random()-.5)*bh,
+              vx:(Math.random()-.5)*7 + b.velocity.x*.5, vy:(Math.random()-1)*7 + b.velocity.y*.5,
+              r:1+Math.random()*2.6, life:1, max:.55+Math.random()*.7, g:Math.random()<.5 });
+          }
+          Composite.remove(engine.world, b);
+        });
+        stickers.length=0;
+        requestAnimationFrame(step);
+      }, 260);
+      var t0=null, last=null;
+      function step(ts){
+        if(!t0)t0=ts; var dt=Math.min(40, ts-(last||ts)); last=ts;
+        dctx.clearRect(0,0,W,H); var alive=false;
+        for(var i=0;i<dust.length;i++){ var d=dust[i]; if(d.life<=0)continue; alive=true;
+          d.vy+=0.05; d.vx*=0.99; d.x+=d.vx*(dt/16); d.y+=d.vy*(dt/16);
+          d.life-=(dt/1000)/d.max; var a=Math.max(0,d.life);
+          dctx.beginPath();
+          dctx.fillStyle=(d.g?'rgba(76,141,255,':'rgba(255,255,255,')+(a*0.9)+')';
+          dctx.arc(d.x,d.y,d.r*(0.5+d.life*0.6),0,7); dctx.fill();
+        }
+        if(alive && (ts-t0)<1300) requestAnimationFrame(step);
+        else window.location.href='/for/insurance/';
+      }
+      setTimeout(function(){ window.location.href='/for/insurance/'; }, 1900); // safety
+    }
+
+    /* ── PHONE MOTION ─────────────────────────────────────────────────────
+       Tilt the phone → gravity follows. Shake → stickers fly.
+       iOS 13+ requires a user tap to grant permission, so we show a prompt. */
+    var isTouch = matchMedia('(pointer:coarse)').matches || 'ontouchstart' in window;
+    var motionOn=false;
+    function startMotion(){
+      if(motionOn) return; motionOn=true;
+      window.addEventListener('deviceorientation', function(e){
+        if(e.gamma==null) return;
+        var gx = Math.max(-1,Math.min(1, e.gamma/40));
+        var gy = Math.max(-1,Math.min(1, (e.beta||0)/40));
+        engine.gravity.x = gx * 1.1;
+        engine.gravity.y = 0.55 + Math.abs(gy)*0.95;
+      });
+      var last=null, cooldown=0;
+      window.addEventListener('devicemotion', function(e){
+        var a=e.accelerationIncludingGravity||e.acceleration; if(!a) return;
+        if(last){
+          var mag=Math.abs(a.x-last.x)+Math.abs(a.y-last.y)+Math.abs(a.z-last.z);
+          var now=Date.now();
+          if(mag > 16 && now>cooldown){          // lower threshold = easier to trigger
+            cooldown=now+450;
+            stickers.forEach(function(b){
+              Body.setVelocity(b,{x:(Math.random()-.5)*26, y:-16-Math.random()*20});
+              Body.setAngularVelocity(b,(Math.random()-.5)*.7);
+            });
+          }
+        }
+        last={x:a.x||0,y:a.y||0,z:a.z||0};
+      });
+      document.querySelector('.hint').textContent='Tilt and shake your phone ✦';
+    }
+    var motionBtn=document.getElementById('motion');
+    if(isTouch && typeof DeviceMotionEvent!=='undefined'){
+      if(typeof DeviceMotionEvent.requestPermission==='function'){
+        // iOS 13+: permission must come from a user gesture. Accept the FIRST tap
+        // anywhere on the page (or the explicit button) so it can't be missed.
+        motionBtn.style.display='inline-flex';
+        var askMotion=function(){
+          Promise.all([
+            DeviceMotionEvent.requestPermission(),
+            (DeviceOrientationEvent && DeviceOrientationEvent.requestPermission) ? DeviceOrientationEvent.requestPermission() : Promise.resolve('granted')
+          ]).then(function(res){
+            if(res[0]==='granted'){ startMotion(); motionBtn.style.display='none'; }
+          }).catch(function(){});
+          window.removeEventListener('pointerdown', askMotion);
+        };
+        motionBtn.addEventListener('click', askMotion);
+        window.addEventListener('pointerdown', askMotion, {once:false});
+      } else {
+        startMotion();                                   // Android: no prompt needed
+      }
+    }
+
+    // resize
+    var rt;
+    window.addEventListener('resize',function(){
+      clearTimeout(rt); rt=setTimeout(function(){
+        W=window.innerWidth; H=window.innerHeight;
+        render.canvas.width=W*(window.devicePixelRatio||1); render.canvas.height=H*(window.devicePixelRatio||1);
+        render.options.width=W; render.options.height=H;
+        render.canvas.style.width=W+'px'; render.canvas.style.height=H+'px';
+        M.Composite.remove(engine.world, wallBodies); wallBodies=walls(); Composite.add(engine.world, wallBodies);
+        syncButtonBody();
+      },200);
+    });
+  })();
+  </script>
+</body>
+</html>

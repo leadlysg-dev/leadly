@@ -1,0 +1,16 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Node
+node_modules/
+
+# Netlify CLI local state
+.netlify/
+
+# Logs
+*.log

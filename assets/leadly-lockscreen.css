@@ -1,0 +1,118 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   LEADLY — THE LOCK SCREEN  ·  /assets/leadly-lockscreen.css
+
+   A phone on its lock screen. Qualified leads arrive in the team's WhatsApp
+   group, one after another, and the handset buzzes each time. This is Instant
+   Ping, shown rather than described — the hero's proof.
+
+   Uses the .phone / .screen / .gloss / .island primitives from
+   leadly-components.css. Load that first.
+
+   Markup:  <div data-leadly-lock></div>
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.lockscreen .phone{ --pw: 286px; }
+
+/* ── the wallpaper ─────────────────────────────────────────────────────────*/
+.lockscreen .screen{
+  background: radial-gradient(120% 70% at 50% 0%, #1B2436 0%, #0F1219 52%, #0A0C11 100%);
+  padding: 56px 11px 0;
+}
+
+.ls-time{ text-align:center; flex:none; }
+.ls-date{ font-size:12.5px; font-weight:500; color:rgba(255,255,255,.62); }
+.ls-clock{
+  display:block; margin-top:1px;
+  font-size:46px; font-weight:600; line-height:1.05;
+  letter-spacing:-.035em; color:#fff;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── the notification stack ────────────────────────────────────────────────
+   Newest first. A new note enters with a negative margin that animates to
+   zero, so it slides down and pushes the stack, the way a real one does.   */
+.ls-notes{
+  position:relative;
+  margin-top:16px; flex:1; min-height:0;
+  display:flex; flex-direction:column; gap:6px;
+  overflow:hidden;
+  /* fade only the last sliver — the mask must NOT eat the bottom card */
+  -webkit-mask: linear-gradient(#000 93%, transparent 100%);
+          mask: linear-gradient(#000 93%, transparent 100%);
+}
+
+.ls-note{
+  /* HEIGHT IS MEASURED, NOT GUESSED.
+     11 top + 12 meta + 2 + 17 title + 2 + 16 body + 11 bottom = 71 → 74 with headroom.
+     The slide-in animation needs a known height, so if you change the type
+     sizes below, re-measure this. A card shorter than its content clips it. */
+  --h: 74px;
+  flex:none; height:var(--h);
+  display:flex; align-items:flex-start; gap:9px;
+  padding:11px 11px;
+  border-radius:16px;
+  background: rgba(255,255,255,.11);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+          backdrop-filter: blur(14px) saturate(1.3);
+  box-shadow: inset 0 0 0 .5px rgba(255,255,255,.10);
+}
+.ls-note.is-new{ animation: ls-in 560ms var(--ease-out) both; }
+@keyframes ls-in{
+  0%   { margin-top: calc((var(--h) + 6px) * -1); opacity:0; transform:scale(.94); }
+  55%  { opacity:1; }
+  100% { margin-top:0; opacity:1; transform:scale(1); }
+}
+.ls-note.is-out{ animation: ls-out 380ms var(--ease) both; }
+@keyframes ls-out{
+  0%   { opacity:.6; }
+  100% { opacity:0; margin-bottom: calc((var(--h) + 6px) * -1); }
+}
+
+/* the WhatsApp app icon — this depicts the real integration, so it is
+   WhatsApp's green, not Leadly's blue */
+.ls-app{
+  width:27px; height:27px; flex:none;
+  border-radius:8px;
+  background: var(--wa-green);
+  display:grid; place-items:center;
+}
+.ls-app svg{ width:17px; height:17px; display:block; }
+
+/* Three tidy rows, on a grid so nothing can collapse into the line above.
+   Row 1  the group, and how long ago
+   Row 2  WHO and WHAT they want          ← the line an advisor scans
+   Row 3  the qualifying detail
+   Every row is one line and ellipsises. Nothing is ever cut mid-height. */
+.ls-body{
+  flex:1; min-width:0;
+  display:grid; grid-template-rows:auto auto auto; gap:2px;
+}
+.ls-row{ display:flex; align-items:center; gap:6px; min-width:0; }
+.ls-name{
+  font-size:9.5px; font-weight:600; line-height:1.25;
+  text-transform:uppercase; letter-spacing:.09em;
+  color:rgba(255,255,255,.62);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.ls-ago{ margin-left:auto; font-size:9.5px; line-height:1.25; color:rgba(255,255,255,.42); flex:none; }
+.ls-title{
+  display:block;
+  font-size:13px; font-weight:600; line-height:1.3;
+  letter-spacing:var(--tracking-tight); color:#fff;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.ls-title b{ font-weight:600; }
+.ls-title .sep{ color:rgba(255,255,255,.42); margin:0 4px; font-weight:400; }
+.ls-title .want{ font-weight:500; color:rgba(255,255,255,.92); }
+.ls-text{
+  display:block;
+  font-size:11.5px; line-height:1.35; color:rgba(255,255,255,.60);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+.ls-foot{ flex:none; padding:0 6px 10px; }
+.ls-bar{ width:36%; height:5px; margin:12px auto 0; border-radius:99px; background:rgba(255,255,255,.30); }
+
+@media (prefers-reduced-motion: reduce){
+  .ls-note.is-new, .ls-note.is-out{ animation:none; }
+}

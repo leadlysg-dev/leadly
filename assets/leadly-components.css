@@ -1,0 +1,239 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   LEADLY — PRODUCT DEMO KIT  ·  /assets/leadly-components.css
+
+   The dark stage and the objects that sit on it. Everything Leadly demonstrates
+   — the hero lock screen, the ad reel, and all five product demos — is built
+   from the primitives in this file, so the whole page reads as one machine.
+
+   THE STAGE  .demo-stage   black, a hairline grid, one cobalt bloom
+   THE PHONE  .phone        tilted left, a real extruded flank, glass on top
+   THE WINDOW .win          a flat product surface (sheet, dashboard)
+   THE READOUT .readout     the stat column that sits beside a device
+
+   Colour, radius and motion come from brand.css. The only hardcoded values are
+   the ones that must be exact to read as the real thing: WhatsApp's chrome and
+   Google Sheets' chrome. Those live in their own tokens below and nowhere else.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+:root{
+  /* third-party UI, reproduced only where the demo depicts a real integration */
+  --wa-head:#075E54; --wa-bg:#ECE5DD; --wa-out:#DCF8C6; --wa-tick:#34B7F1;
+  --wa-green:#25D366; --wa-send:#128C7E;
+  --gs-green:#188038;
+
+  /* light UI drawn INSIDE a device screen */
+  --ui-bg:#FFFFFF; --ui-soft:#F7F8FA; --ui-line:#E4E7EC; --ui-skel:#E9EBEF;
+  --ui-ink:#101828; --ui-mute:#98A2B3;
+  --navy:#1C2333;
+
+  --grid-line:#1E2024;
+}
+
+/* ═══ THE STAGE ═══════════════════════════════════════════════════════════
+   Black, a techy hairline grid masked to the middle, and one cobalt bloom
+   that brightens on the beats of whatever is running on it.                */
+.demo-stage{
+  position:relative;
+  background: radial-gradient(120% 100% at 50% 50%, #0E1013 0%, #0A0A0A 70%);
+  border:1px solid var(--grid-line);
+  border-radius:20px;
+  padding:48px 24px;
+  display:flex; align-items:center; justify-content:center;
+  min-height:460px;
+  overflow:hidden;
+}
+/* the grid + bloom come from .tex-dark in brand.css — one pitch, everywhere */
+.demo-stage .glow{
+  position:absolute; width:440px; height:440px; border-radius:50%;
+  background:var(--accent); filter:blur(115px); opacity:.20;
+  transition:opacity .7s ease; pointer-events:none;
+}
+.demo-stage .pair{ display:flex; gap:clamp(24px,4vw,48px); align-items:center; flex-wrap:wrap; justify-content:center; }
+
+/* ═══ SHADOW — the screens sit ON the void, not in it ══════════════════════ */
+.shadow{
+  box-shadow:
+    0 4px 10px rgba(0,0,0,.35),
+    0 18px 36px rgba(0,0,0,.45),
+    0 48px 90px rgba(0,0,0,.65),
+    0 90px 150px rgba(0,0,0,.55),
+    0 0 0 1px rgba(255,255,255,.07),
+    inset 0 1px 0 rgba(255,255,255,.5);
+}
+
+/* ═══ THE PHONE ═══════════════════════════════════════════════════════════
+   rotateY is NEGATIVE, so the LEFT flank turns toward the viewer. The stacked
+   -x box-shadows extrude that flank into a real side wall; the gradient on the
+   chassis is the machined rail catching the light. Everything else is glass
+   sitting on top of it.
+   Set --pw to resize the whole handset — the screen follows.                */
+.phone{
+  --pw:302px;
+  position:relative; z-index:2;
+  width:var(--pw); padding:calc(var(--pw) * .036);
+  border-radius:calc(var(--pw) * .132);
+  background:linear-gradient(128deg,#3A4048 0%,#191C21 22%,#0D0F12 55%,#22262C 88%,#43494F 100%);
+  transform:perspective(1500px) rotateY(-17deg) rotateX(6deg) rotateZ(.6deg);
+  transform-style:preserve-3d;
+  animation:ph-drift 11s ease-in-out infinite;
+  box-shadow:
+    -1px 0 0 #24282E,  -2px 0 0 #202429,  -3px 0 0 #1D2126,  -4px 0 0 #1A1D22,
+    -5px 0 0 #17191E,  -6px 0 0 #141619,  -7px 0 0 #111316,  -8px 0 0 #0F1114,
+    -9px 0 0 #0D0F11, -10px 0 0 #0B0C0E, -11px 0 0 #090A0C, -12px 0 0 #07080A,
+    -13px 0 0 #050608, -14px 1px 0 #030405,
+    -18px 10px 22px rgba(0,0,0,.5),
+    0 24px 44px rgba(0,0,0,.5),
+    0 56px 100px rgba(0,0,0,.68),
+    0 100px 170px rgba(0,0,0,.55),
+    inset 0 1px 1px rgba(255,255,255,.30),
+    inset -1px 0 1px rgba(255,255,255,.16),
+    inset 0 -1px 1px rgba(255,255,255,.10);
+}
+@keyframes ph-drift{
+  0%,100%{ transform:perspective(1500px) rotateY(-17deg)   rotateX(6deg) rotateZ(.6deg) translateY(0); }
+  50%    { transform:perspective(1500px) rotateY(-13.5deg) rotateX(4deg) rotateZ(0deg)  translateY(-9px); }
+}
+
+/* the handset buzzes when something lands on it */
+.phone.is-buzz{ animation: ph-buzz 460ms var(--ease) 1, ph-drift 11s ease-in-out infinite; }
+@keyframes ph-buzz{
+  0%   { transform:perspective(1500px) rotateY(-17deg) rotateX(6deg) rotateZ(.6deg) translate3d(0,0,0); }
+  14%  { transform:perspective(1500px) rotateY(-18.4deg) rotateX(6deg) rotateZ(-.3deg) translate3d(-3px,1px,0); }
+  30%  { transform:perspective(1500px) rotateY(-15.4deg) rotateX(6deg) rotateZ(1.4deg) translate3d(3px,-1px,0); }
+  46%  { transform:perspective(1500px) rotateY(-18deg)   rotateX(6deg) rotateZ(0deg)   translate3d(-2px,1px,0); }
+  62%  { transform:perspective(1500px) rotateY(-16deg)   rotateX(6deg) rotateZ(1.1deg) translate3d(2px,0,0); }
+  80%  { transform:perspective(1500px) rotateY(-17.4deg) rotateX(6deg) rotateZ(.4deg)  translate3d(-1px,0,0); }
+  100% { transform:perspective(1500px) rotateY(-17deg)   rotateX(6deg) rotateZ(.6deg)  translate3d(0,0,0); }
+}
+
+.phone .screen{
+  position:relative;
+  background:var(--ui-bg);
+  border-radius:calc(var(--pw) * .099);
+  overflow:hidden;
+  height:calc(var(--pw) * 1.735);
+  display:flex; flex-direction:column;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.55), inset 0 2px 10px rgba(0,0,0,.30);
+}
+
+/* glass — a raking highlight across the top-left, and a slow sweep */
+.phone .gloss{
+  position:absolute; inset:0; z-index:3; pointer-events:none;
+  border-radius:calc(var(--pw) * .099); overflow:hidden;
+  background:linear-gradient(133deg,
+    rgba(255,255,255,.20) 0%, rgba(255,255,255,.07) 16%,
+    rgba(255,255,255,0) 34%, rgba(255,255,255,0) 76%, rgba(255,255,255,.05) 100%);
+}
+.phone .gloss::after{
+  content:""; position:absolute; top:-60%; left:-40%; width:36%; height:220%;
+  background:linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.13), rgba(255,255,255,0));
+  transform:rotate(18deg); animation:ph-sweep 9s ease-in-out infinite;
+}
+@keyframes ph-sweep{ 0%,62%{ left:-45%; } 88%,100%{ left:118%; } }
+
+/* dynamic island — apps draw behind it, exactly like the real thing */
+.phone .island{
+  position:absolute; top:calc(var(--pw) * .036 + 4px); left:50%; transform:translateX(-50%); z-index:6;
+  width:calc(var(--pw) * .285); height:calc(var(--pw) * .083); border-radius:99px;
+  background:#050607;
+  box-shadow: inset 0 0 3px rgba(255,255,255,.10), 0 1px 2px rgba(0,0,0,.5);
+  display:flex; align-items:center; justify-content:flex-end; padding-right:8px;
+}
+.phone .island i{
+  width:8px; height:8px; border-radius:50%;
+  background:radial-gradient(circle at 32% 30%, #2C4763 0%, #14212E 55%, #070B0F 100%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.07);
+}
+
+/* machined side buttons on the flank that faces us */
+.phone .btn-vol, .phone .btn-pow{
+  position:absolute; left:-4px; width:4px; border-radius:2px; z-index:1;
+  background:linear-gradient(90deg,#0A0B0D,#2E3339);
+  box-shadow:-1px 0 1px rgba(0,0,0,.6);
+}
+.phone .btn-vol{ top:40%;  height:11%; }
+.phone .btn-vol.b2{ top:53%; height:11%; }
+.phone .btn-pow{
+  top:34%; left:auto; right:-3px; height:17%; width:3px;
+  background:linear-gradient(270deg,#0A0B0D,#2E3339);
+}
+
+/* ═══ THE WINDOW — flat product surface (call sheet, Pulse) ════════════════
+   The Call Sheet and Pulse are DESKTOP surfaces. They must stay LANDSCAPE at
+   every width — a spreadsheet reflowed into a phone-shaped column is a lie
+   about what the product is.
+
+   So the window keeps a FIXED 680px width, always. On a narrow screen it is
+   scaled down to fit by .win-fit (see leadly-components.js), which preserves
+   the aspect ratio exactly. It was previously width:min(680px,100%), which
+   squashed it into a portrait sliver on mobile. */
+.win{
+  position:relative; z-index:2;
+  width:680px; flex:none;
+  background:var(--ui-bg);
+  border-radius:12px; overflow:hidden;
+  transform:perspective(1800px) rotateY(-5deg) rotateX(2deg);
+}
+/* The wrapper that scales the window down. JS sets the scale and the height.
+
+   This is BLOCK layout with auto margins on the window — deliberately, not
+   flex. A centred flex container places the 680px layout box at a NEGATIVE
+   offset when the wrapper is narrower than 680px ((308-680)/2 = -186px). The
+   scale then runs from `top left` — which is now 186px off-screen — and the
+   first three columns of the call sheet disappear off the left edge.
+
+   In block layout, `margin: 0 auto` cannot go negative: an over-wide child
+   simply starts at 0. So the scale origin is the wrapper's own left edge and
+   the window lands exactly inside it. When the wrapper IS wide enough (desktop),
+   the auto margins centre it as you'd expect. One rule, both cases. */
+.win-fit{
+  position:relative; z-index:2;
+  width:100%; flex:1 1 auto; min-width:0;
+  display:block;
+}
+.win-fit > .win{ margin-left:auto; margin-right:auto; }
+.skel{ height:8px; border-radius:99px; background:var(--ui-skel); }
+.tick{ font-variant-numeric:tabular-nums; }
+
+/* The .readout stat columns that used to sit beside each device are GONE.
+   The demos are the device, and nothing else. */
+
+@media (max-width:860px){
+  .demo-stage{ padding:26px 8px; min-height:0; }
+  .demo-stage .pair{ flex-direction:column; gap:26px; }
+  /* the phone drops its 3D tilt on mobile; the WINDOW does not — it is scaled
+     by .win-fit instead, so it stays landscape */
+  .phone{ transform:none; animation:none;
+    box-shadow:0 24px 60px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.07); }
+  .win{ transform:none; }
+}
+@media (prefers-reduced-motion:reduce){
+  .phone, .phone.is-buzz{ animation:none; }
+  .phone .gloss::after{ animation:none; }
+}
+
+/* ── THE WINBACK THREAD ────────────────────────────────────────────────────
+   The thread grew from the TOP of a fixed 318px box, so once the conversation
+   passed three messages the newest one — the winback itself, the whole point of
+   the demo — fell off the bottom and was never seen. Three messages were being
+   clipped.
+
+   A real chat anchors to the BOTTOM. New messages arrive at the bottom and push
+   the old ones up and out. justify-content:flex-end does exactly that, and the
+   older messages now slide up out of frame instead of the new one falling out
+   of it. Each new message also rises in, so you SEE the push happen. */
+.leadly-demo .w-thread{
+  justify-content: flex-end !important;
+  min-height: 0;
+}
+.leadly-demo .w-thread > *{
+  flex: none;
+  animation: w-push .5s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes w-push{
+  from{ opacity:0; transform:translateY(14px) scale(.96); }
+  to  { opacity:1; transform:none; }
+}
+@media (prefers-reduced-motion: reduce){
+  .leadly-demo .w-thread > *{ animation:none; }
+}

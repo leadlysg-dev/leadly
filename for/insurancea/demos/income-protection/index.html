@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="color-scheme" content="only light">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>If you couldn't work tomorrow, how long would your family last?</title>
+<meta name="description" content="A 60-second check. See the gap between what your family would need and what they'd actually get — then a licensed adviser calls you with the real figure.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="If you couldn't work tomorrow, how long would your family last?">
+<meta property="og:description" content="A 60-second check. Most people are short by more than they think.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="/assets/lp/income-protection.webp">
+<link rel="stylesheet" href="/assets/brand.css">
+<link rel="stylesheet" href="/assets/funnel-page.css">
+<style>
+  /* the gap calculator's own furniture */
+  .gc-fields{ display:flex; flex-direction:column; gap:12px; }
+  .gc-money{ position:relative; }
+  .gc-money span{ position:absolute; left:15px; top:50%; transform:translateY(-50%);
+    color:var(--text-3-aa); font-size:16px; pointer-events:none; }
+  .gc-money input{ padding-left:44px; }
+  .gc-out{ margin-top:22px; }
+  .gc-row{ margin-bottom:12px; }
+  .gc-rl{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px; }
+  .gc-rl span{ font-size:13px; color:var(--text-2); }
+  .gc-rl b{ font-size:15px; font-weight:600; color:var(--text-1); font-variant-numeric:tabular-nums; }
+  .gc-track{ height:10px; border-radius:999px; background:var(--line); overflow:hidden; }
+  .gc-fill{ height:100%; width:0; border-radius:999px; transition:width 1s cubic-bezier(.4,0,.2,1); }
+  .gc-fill.need{ background:#CBD5E1; }
+  .gc-fill.have{ background:var(--accent); }
+  .gc-gap{ margin-top:18px; padding:16px 18px; border-radius:12px;
+    background:rgba(196,39,27,.06); border:1.5px solid rgba(196,39,27,.28); }
+  .gc-gap .gl{ font-size:11px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--danger); }
+  .gc-gap .gv{ font-size:clamp(30px,3.4vw,40px); font-weight:700; color:var(--danger); line-height:1.1;
+    margin-top:4px; font-variant-numeric:tabular-nums; letter-spacing:-.03em; }
+  .gc-note{ margin-top:14px; font-size:12px; line-height:1.55; color:var(--text-3-aa); }
+
+  /* the gap box lands — one beat, then it holds. It does not pulse forever;
+     a number that keeps flashing stops being read. */
+  .gc-gap{ transition:transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .4s ease; }
+  .gc-gap.landed{ animation:gc-land .55s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes gc-land{
+    0%   { transform:scale(1);    box-shadow:0 0 0 0 rgba(196,39,27,0); }
+    45%  { transform:scale(1.035);box-shadow:0 0 0 8px rgba(196,39,27,.10); }
+    100% { transform:scale(1);    box-shadow:0 0 0 0 rgba(196,39,27,0); }
+  }
+  .gc-gap .gv{ font-variant-numeric:tabular-nums; }
+  @media (prefers-reduced-motion:reduce){ .gc-gap.landed{ animation:none; } }
+</style>
+</head>
+<body>
+
+<!-- ═══ THE NETLIFY FORM ═══════════════════════════════════════════════════
+     Netlify registers form fields at BUILD time by parsing the static HTML. A
+     form assembled by JS at runtime is invisible to it and every submission is
+     silently dropped. So the real form lives here, hidden, and funnel-page.js
+     only fills it in. Do not move it into JS.                              -->
+<form name="lp-income-protection" method="POST" data-netlify="true"
+      netlify-honeypot="company" id="lp-form" hidden>
+  <input type="hidden" name="form-name" value="lp-income-protection">
+  <p hidden><label>Leave this empty <input name="company"></label></p>
+  <input type="hidden" name="name">
+  <input type="hidden" name="phone">
+  <input type="hidden" name="consent">
+  <input type="hidden" name="dependants">
+  <input type="hidden" name="cover_today">
+  <input type="hidden" name="runway">
+  <input type="hidden" name="timing">
+  <input type="hidden" name="monthly_income">
+  <input type="hidden" name="existing_cover">
+  <input type="hidden" name="calculated_gap">
+  <input type="hidden" name="lead_score">
+  <input type="hidden" name="priority">
+</form>
+
+<main class="lp">
+
+  <!-- ── the photograph ─────────────────────────────────────────────────── -->
+  <section class="lp-art" style="--focal:38% 42%">
+    <img src="/assets/lp/income-protection.webp"
+         srcset="/assets/lp/income-protection-sm.webp 640w, /assets/lp/income-protection.webp 1024w"
+         sizes="(max-width:900px) 100vw, 50vw"
+         alt="A worker resting with a cup of coffee, hard hat on the table beside him">
+
+    <header class="lp-brand">
+      <!-- KENNETH: swap the mark and the firm name for the client's. -->
+      <span class="lp-mark">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M2 14h4l2.5-7 3.5 12 3-9 2 4h5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="lp-brand-name">Meridian Advisory<small>Licensed financial advisers</small></span>
+      <span class="lp-secure">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 3v6c0 4.4-3 8-7 9-4-1-7-4.6-7-9V6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        Private &amp; secure
+      </span>
+    </header>
+
+    <div class="lp-say">
+      <span class="lp-eyebrow">Free 60-second check</span>
+      <h1 class="lp-h1">If you couldn't work tomorrow, <span class="em">how long would your family last?</span></h1>
+      <p class="lp-sub">Most people have never worked it out. Take the check and see the gap between what your family would need and what they'd actually get — then an adviser calls you with the real figure.</p>
+      <div class="lp-trust">
+        <span class="lp-chip"><i></i>60 seconds</span>
+        <span class="lp-chip"><i></i>No obligation</span>
+        <span class="lp-chip"><i></i>You get your number either way</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── the funnel ─────────────────────────────────────────────────────── -->
+  <section class="lp-panel">
+    <div class="lp-progress">
+      <div class="lp-track"><i></i></div>
+      <div class="lp-count">1 of 7</div>
+    </div>
+    <div class="lp-steps"></div>
+    <div class="lp-actions">
+      <button type="button" class="lp-back" style="display:none">Back</button>
+      <button type="button" class="lp-next">Continue</button>
+    </div>
+    <p class="lp-foot">
+      Meridian Advisory — licensed financial advisers. Your details are collected and used in line with the
+      <a href="/pdpa">PDPA</a>. This check is general guidance, not financial advice.
+    </p>
+  </section>
+
+</main>
+
+<script>
+/* ═══ THE GAP CALCULATOR ══════════════════════════════════════════════════
+   Rule of thumb: ten years of income, less what you already have. It is stated
+   on screen as a rule of thumb, because that is exactly what it is — not an
+   actuarial figure, and it must never pretend to be one.                    */
+var YEARS = 10;
+
+window.FUNNEL = {
+  name: 'income-protection',
+  submitLabel: 'Show me my number',
+
+  consent: 'I agree to be contacted by Meridian Advisory by phone or WhatsApp about this check. ' +
+           'I understand my details are handled in line with the PDPA and I can opt out at any time.',
+
+  steps: [
+    { type:'choice', name:'dependants',
+      q:'Who depends on your income?',
+      hint:'The people who would feel it if the money stopped.',
+      opts:[
+        { label:'Just me',                 value:'Just me',              score:1 },
+        { label:'My partner',              value:'Partner',              score:2 },
+        { label:'My partner and children', value:'Partner and children', score:4 },
+        { label:'Children and parents',    value:'Children and parents', score:4 }
+      ] },
+
+    { type:'choice', name:'runway',
+      q:'If your income stopped tomorrow, how long could you cover the bills?',
+      hint:'Mortgage, school fees, everything. Best guess is fine.',
+      opts:[
+        { label:'Less than a month',   value:'<1 month',   score:4 },
+        { label:'One to three months', value:'1-3 months', score:3 },
+        { label:'Three to six months', value:'3-6 months', score:2 },
+        { label:'More than six months',value:'6+ months',  score:1 }
+      ] },
+
+    { type:'choice', name:'cover_today',
+      q:'What income protection do you have today?',
+      hint:'Beyond whatever your employer provides.',
+      opts:[
+        { label:'None that I know of',    value:'None',           score:4 },
+        { label:'Only through my employer',value:'Employer only', score:3 },
+        { label:'A private policy',        value:'Private policy',score:1 },
+        { label:"I'm not sure",            value:'Not sure',      score:3 }
+      ] },
+
+    /* ── THE CALCULATOR — TWO STEPS, NOT ONE ─────────────────────────────
+       As a single step this needed ~470px of content in a panel that is only
+       ~430px tall on a phone, so it scrolled inside its own little box and
+       felt broken. Inputs first, answer second. Each half fits. The reveal is
+       also simply better: they type their numbers, THEN the gap lands.      */
+    { type:'calc', name:'monthly_income',
+      render: function () {
+        return '<h2 class="lp-q">Two numbers, and we\u2019ll show you the gap.</h2>' +
+               '<p class="lp-hint">Rough figures are fine. Nothing is stored until you ask us to call.</p>' +
+               '<div class="gc-fields">' +
+                 '<div class="lp-field" style="margin:0">' +
+                   '<label for="gc-income">Your monthly income</label>' +
+                   '<div class="gc-money"><span>S$</span>' +
+                     '<input id="gc-income" type="number" inputmode="numeric" min="0" step="100" placeholder="8,500">' +
+                   '</div>' +
+                 '</div>' +
+                 '<div class="lp-field" style="margin:0">' +
+                   '<label for="gc-cover">Cover you already have</label>' +
+                   '<div class="gc-money"><span>S$</span>' +
+                     '<input id="gc-cover" type="number" inputmode="numeric" min="0" step="1000" placeholder="0">' +
+                   '</div>' +
+                 '</div>' +
+               '</div>' +
+               '<p class="gc-note" style="margin-top:16px">If you\u2019re not sure about existing cover, leave it at zero \u2014 ' +
+               'your adviser will check it with you.</p>';
+      },
+      onShow: function (el, api) {
+        var inc = el.querySelector('#gc-income');
+        var cov = el.querySelector('#gc-cover');
+        function calc() {
+          var income = parseFloat(inc.value) || 0;
+          var cover  = parseFloat(cov.value) || 0;
+          if (income <= 0) { api.enable(false); return; }
+          var needV = income * 12 * YEARS;
+          var gapN  = Math.max(0, needV - cover);
+          api.set('monthly_income', income);
+          api.set('existing_cover', cover);
+          api.set('calculated_gap', gapN);
+          api.set('gap_score', gapN > 500000 ? 4 : gapN > 200000 ? 3 : gapN > 0 ? 2 : 0);
+          api.enable(true);
+        }
+        inc.addEventListener('input', calc);
+        cov.addEventListener('input', calc);
+        api.enable(false);
+        calc();
+      } },
+
+    /* the answer, on its own */
+    { type:'calc', name:'calculated_gap',
+      render: function () {
+        return '<h2 class="lp-q">Here\u2019s your gap.</h2>' +
+               '<p class="lp-hint">What your family would need, against what they\u2019d actually get.</p>' +
+               '<div class="gc-out">' +
+                 '<div class="gc-row">' +
+                   '<div class="gc-rl"><span>What your family would need</span><b id="gc-need">\u2014</b></div>' +
+                   '<div class="gc-track"><div class="gc-fill need" id="gc-fneed"></div></div>' +
+                 '</div>' +
+                 '<div class="gc-row">' +
+                   '<div class="gc-rl"><span>What they\u2019d actually get</span><b id="gc-have">\u2014</b></div>' +
+                   '<div class="gc-track"><div class="gc-fill have" id="gc-fhave"></div></div>' +
+                 '</div>' +
+                 '<div class="gc-gap"><div class="gl">Your gap</div><div class="gv" id="gc-gap">\u2014</div></div>' +
+                 '<p class="gc-note">Rule of thumb: ten years of income, less what you already have. ' +
+                 'It is a starting point, not a quote \u2014 an adviser works out the real figure with you.</p>' +
+               '</div>';
+      },
+      onShow: function (el, api) {
+        /* ── THE SIGNATURE MOMENT ────────────────────────────────────────
+           The whole funnel exists to show this one number, so it does not
+           simply appear. The two bars race, then the gap counts up out of
+           them. The prospect watches their own shortfall being assembled.
+           Everything else on these pages stays quiet so this can land.   */
+        var money = function (n) { return 'S$' + Math.round(n).toLocaleString('en-SG'); };
+        var income = api.answers.monthly_income || 0;
+        var cover  = api.answers.existing_cover || 0;
+        var needV  = income * 12 * YEARS;
+        var gapN   = api.answers.calculated_gap || 0;
+
+        var needB = el.querySelector('#gc-need');
+        var haveB = el.querySelector('#gc-have');
+        var gapV  = el.querySelector('#gc-gap');
+        var fN    = el.querySelector('#gc-fneed');
+        var fH    = el.querySelector('#gc-fhave');
+        var box   = el.querySelector('.gc-gap');
+
+        /* reset, so coming Back and forward again replays it */
+        fN.style.width = '0'; fH.style.width = '0';
+        needB.textContent = 'S$0'; haveB.textContent = 'S$0'; gapV.textContent = 'S$0';
+        box.classList.remove('landed');
+
+        var pct = needV ? Math.min(100, (cover / needV) * 100) : 0;
+
+        requestAnimationFrame(function () {
+          fN.style.width = '100%';                       /* what they'd need   */
+          api.countUp(needB, needV, 900, money);
+          setTimeout(function () {
+            fH.style.width = pct.toFixed(1) + '%';       /* what they'd get    */
+            api.countUp(haveB, cover, 700, money);
+          }, 320);
+          setTimeout(function () {
+            if (gapN > 0) {
+              api.countUp(gapV, gapN, 1100, money);      /* ...and the gap     */
+            } else {
+              gapV.textContent = 'None \u2014 you\u2019re covered';
+            }
+            box.classList.add('landed');
+          }, 900);
+        });
+
+        api.enable(true);
+      } },
+
+    { type:'choice', name:'timing',
+      q:'When would you want this sorted?',
+      hint:'Be honest — it decides who calls you, and how quickly.',
+      opts:[
+        { label:'As soon as possible', value:'ASAP',        score:4 },
+        { label:'Within a month',      value:'This month',  score:3 },
+        { label:'Within a few months', value:'This quarter',score:2 },
+        { label:'Just looking for now',value:'Researching', score:1 }
+      ] },
+
+    { type:'form',
+      q:'Where should we send your number?',
+      hint:'A licensed adviser calls within one working day and walks you through it. No sequence, no spam.' }
+  ],
+
+  extra: function (form, a) {
+    form.querySelector('[name="monthly_income"]').value = a.monthly_income || '';
+    form.querySelector('[name="existing_cover"]').value = a.existing_cover || '';
+    form.querySelector('[name="calculated_gap"]').value = a.calculated_gap || '';
+  },
+
+  done: {
+    title: 'Your number is on its way.',
+    body: 'A licensed adviser will call you within <b>one working day</b> to go through your gap and what it would actually take to close it.',
+    steps: [
+      '<b>What happens next.</b> A real person calls — not a sequence.',
+      '<b>What it costs.</b> Nothing. The call is free and there is nothing to buy on it.',
+      '<b>What you keep.</b> Your number is yours, whether or not you go any further.'
+    ]
+  }
+};
+</script>
+<script src="/assets/funnel-page.js"></script>
+</body>
+</html>
