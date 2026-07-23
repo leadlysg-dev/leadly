@@ -70,6 +70,15 @@ function page(d) {
        <div><b>${esc(l.title)}</b><p>${esc(l.detail)}</p></div>
      </div>`).join('');
 
+  /* ── THE FRAMEWORK — deterministic market cross-reference. Only cited
+     2023-2026 figures; their own answers supply the volumes. Nothing invented. */
+  const leadsN = Number(f.leadsN) || 0;
+  const silent = Math.round(leadsN * 0.635);
+  const reached = Math.max(0, leadsN - silent);
+  const hasPiece = (i) => (f.features || []).includes(PIECES[i][0]);
+  const speedPos = hasPiece(1) ? 4 : 78;   /* % along the response-time scale: instant vs market avg */
+  const speedLabel = hasPiece(1) ? 'Your machine: seconds' : 'You today \u2014 with no instant delivery, market behaviour is the default';
+
   const plan = (a.plan || []).map((m) =>
     `<div class="ms"><div class="when">${esc(m.when)}</div>
        <div class="what">${esc(m.what)}</div>
@@ -82,7 +91,7 @@ function page(d) {
 <meta name="color-scheme" content="only light">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Your lead-generation analysis \u00b7 Leadly</title>
+<title>Your Leadly AI Guide \u00b7 Leadly</title>
 <meta property="og:title" content="${esc(a.verdict || 'Your lead-generation analysis')}">
 <meta property="og:description" content="Prepared for ${esc(c.name || 'you')} by Leadly.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,7 +110,6 @@ function page(d) {
     <span class="rp-when">Prepared for <b>${esc(c.name || '')}</b>${c.company ? ' \u00b7 ' + esc(c.company) : ''}</span>
   </div>
   <div class="rp-in rp-say">
-    <span class="rp-badge"><i></i>${d.analysed_by === 'claude' ? 'Analysed by Claude' : 'Instant analysis'}</span>
     <h1>${esc(a.verdict || '')}</h1>
     <p>${esc(a.diagnosis || '')}</p>
   </div>
@@ -116,13 +124,13 @@ function page(d) {
        human should answer, it says so and offers the meeting. -->
   <section class="rp-ask">
     <div class="ask-h">
-      <span class="ask-dot"></span>
+      <img class="ask-avatar" src="/assets/morgan.webp" alt="Morgan" width="48" height="48">
       <div>
-        <h2>Ask about any of this.</h2>
-        <p>It has read your analysis. Ask it anything \u2014 what a number means, what we\u2019d do differently, what it would cost.</p>
+        <h2>Ask Morgan about any of this.</h2>
+        <p>She's read your analysis. Ask her anything \u2014 what a number means, what we\u2019d do differently, what it would cost.</p>
       </div>
     </div>
-    <div class="ask-log" id="log"><div class="msg ai">Hi${c.name ? ' ' + esc(c.name.split(' ')[0]) : ''} \u2014 I've read your whole report. I'm here to walk you through it: what the numbers mean, where the leaks are, and what we'd build first. Pick a question below or ask me anything.</div></div>
+    <div class="ask-log" id="log"><div class="msg ai">Hi${c.name ? ' ' + esc(c.name.split(' ')[0]) : ''} \u2014 Morgan here. I've read your whole guide. I'm here to walk you through it: what the numbers mean, where the leaks are, and what we'd build first. Pick a question below or ask me anything.</div></div>
     <div class="ask-chips" id="chips">
       <button data-q="Walk me through my report \u2014 what matters most?">Walk me through my report</button>
       <button data-q="Why is my cost per lead so high?">Why is my cost per lead so high?</button>
@@ -148,12 +156,48 @@ function page(d) {
     <div class="key">${key}</div>
   </section>` : ''}
 
-  <section>
-    <h2>The five pieces</h2>
-    <div class="pieces">${pieces}</div>
+  <section class="rp-card">
+    <h2>Your machine today</h2>
+    <div class="mch">${PIECES.map(([full, short], i) => {
+      const have = (f.features || []).includes(full);
+      return `<div class="mch-chip ${have ? 'have' : 'miss'}" title="${esc(full)}">
+        <span class="mch-ic">${have
+          ? '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><path d="M7 12.5l3.2 3.2L17 8.5"/></svg>'
+          : '<svg viewBox="0 0 24 24" class="x"><path d="M7 7l10 10M17 7L7 17"/></svg>'}</span>
+        <span>${esc(short)}</span></div>`;
+    }).join('')}</div>
+    ${f.gaps ? `<p class="mch-sum">${esc(f.gaps)} of 5 pieces missing \u2014 that's where the analysis below starts.</p>` : ''}
   </section>
 
-  ${leaks ? `<section><h2>What we can see leaking</h2><div class="leaks">${leaks}</div></section>` : ''}
+  <!-- ── THE FRAMEWORK — their answers crossed with the market's measured
+       behaviour. Every figure is cited; their numbers supply the volume. ── -->
+  <section class="rp-card rp-frame">
+    <h2>Your numbers, against how this market actually behaves</h2>
+
+    <div class="fr-block">
+      <div class="fr-h"><b>Speed to lead</b><span>Of 1,000 companies sent a genuine enquiry, the ones that replied took 29 hours on average \u2014 only 17.2% answered inside two minutes.</span></div>
+      <div class="fr-scale">
+        <div class="fr-track">
+          <span class="fr-pin fast" style="left:4%"><i></i><em>2 min \u00b7 top 17.2%</em></span>
+          <span class="fr-pin avg" style="left:78%"><i></i><em>29 hrs \u00b7 market average</em></span>
+          <span class="fr-pin you" style="left:${speedPos}%"><i></i><em>${speedLabel}</em></span>
+        </div>
+      </div>
+      <p class="fr-src">RevenueHero, 1,000-company lead response test, 2024</p>
+    </div>
+
+    ${leadsN > 0 ? `<div class="fr-block">
+      <div class="fr-h"><b>What market behaviour does to ${esc(String(leadsN))} leads a month</b><span>63.5% of businesses sent a genuine enquiry never replied at all. At market-average follow-up, that's what silence costs \u2014 paid for, never spoken to.</span></div>
+      <div class="fr-wf">
+        <div class="fr-row"><span class="fr-l">Leads you pay for</span><div class="fr-bar"><i style="--w:100%" class="full"></i></div><b>${esc(String(leadsN))}</b></div>
+        <div class="fr-row"><span class="fr-l">Reached, at market behaviour</span><div class="fr-bar"><i style="--w:${(reached / leadsN * 100).toFixed(0)}%" class="ok"></i></div><b>~${esc(String(reached))}</b></div>
+        <div class="fr-row"><span class="fr-l">Lost to silence</span><div class="fr-bar"><i style="--w:${(silent / leadsN * 100).toFixed(0)}%" class="bad"></i></div><b>~${esc(String(silent))}</b></div>
+      </div>
+      <p class="fr-src">RevenueHero, 2024. Volumes are yours; the rate is the market's, not a prediction about you.</p>
+    </div>` : ''}
+
+    ${a.diagnosis ? `<div class="fr-read"><span class="fr-read-l">Morgan's read</span><p>${esc(a.diagnosis)}</p></div>` : ''}
+  </section>
 
   ${a.priority ? `<section>
     <h2>Fix this first</h2>
@@ -164,32 +208,28 @@ function page(d) {
     </div>
   </section>` : ''}
 
-  <section><h2>Setup: live in under 5 working days</h2><div class="plan">
-    <div class="ms"><div class="when">Day 1</div><div class="what">Tracking wired in</div><div class="detail">Pixel, server-side events and per-ad tagging \u2014 every dollar measured from the first click.</div></div>
-    <div class="ms"><div class="when">Day 2</div><div class="what">Your qualifier goes live</div><div class="detail">The branching check your leads answer \u2014 like the one you just did \u2014 so every lead arrives pre-qualified.</div></div>
-    <div class="ms"><div class="when">Day 3</div><div class="what">Instant delivery to WhatsApp</div><div class="detail">New leads land in your team\u2019s WhatsApp in seconds, with the live call sheet everyone works from.</div></div>
-    <div class="ms"><div class="when">Day 4\u20135</div><div class="what">Ads on, Pulse on</div><div class="detail">First creative rotation starts and your Leadly Pulse dashboard is live. From here it is optimisation, not setup.</div></div>
-  </div>
-  <div class="prio tex-dark" style="margin-top:14px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
-    <div style="min-width:220px">
-      <span class="l">This guide is live until</span>
-      <h3 id="rp-countdown" style="font-variant-numeric:tabular-nums">7d 00:00:00</h3>
-      <p>Join within these 7 days and your setup fee is 20% off \u2014 the discount expires when this link does.</p>
+  <!-- ── THE OFFER — the only CTA block. Big, honest, deadline-real. ── -->
+  <section class="rp-offer tex-dark">
+    <div class="of-burst">50<span>%</span></div>
+    <div class="of-copy">
+      <span class="of-k">While this guide is live</span>
+      <h3>Half off your first monthly fee.</h3>
+      <p>Join within the window below and your first month is 50% off \u2014 the discount expires the moment this link does. No extensions, no fake urgency.</p>
+      <div class="of-count"><span class="of-cl">This guide is live for</span><b id="rp-countdown">7d 00:00:00</b></div>
     </div>
-    <a class="btn btn-primary" href="https://www.leadly.sg/for/insurance"><span>Book a demo</span></a>
-  </div></section>
+    <a class="btn btn-primary of-cta" href="https://www.leadly.sg/for/insurance"><span>Book a demo</span></a>
+  </section>
 
 
 
   <section class="rp-cta">
     <p>${esc(a.closing || '')}</p>
-    <a class="btn btn-primary" href="https://www.leadly.sg/for/insurance#pricing"><span>See what it costs</span></a>
-    <a class="btn btn-secondary" href="https://www.leadly.sg/for/insurance" id="bookbtn"><span>Book a demo</span></a>
+    <a class="btn btn-secondary" href="https://www.leadly.sg/for/insurance#pricing"><span>See what it costs</span></a>
   </section>
 
   <footer class="rp-foot">
     <p>The judgement in this report was written by a model reading your answers. Every figure comes from what you told us. Nothing here is a promise.</p>
-    <p>Leadly \u00b7 Elephant &amp; Ostrich LLP \u00b7 One flat S$1,500/month plus your own ad spend, which we never mark up.</p>
+    <p>Leadly \u00b7 Elephant &amp; Ostrich LLP \u00b7 Managed for You S$1,500/mo \u00b7 100% Compliant S$1,200/mo + one-time setup \u00b7 your ad spend is never marked up.</p>
   </footer>
 </main>
 

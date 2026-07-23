@@ -129,3 +129,203 @@ body{ background:var(--canvas); }
   .leak{ flex-direction:column; gap:9px; }
   .rp-cta .btn{ display:flex; width:100%; justify-content:center; margin:0 0 9px; }
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   REWORK 24 Jul 2026 — depth, micro-interactions, the framework, the offer
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* every section becomes a lifted card with a hover breath */
+.rp-body section{ background:var(--surface); border:1px solid var(--line); border-radius:var(--r-lg);
+  padding:clamp(20px,2.6vw,30px); box-shadow:var(--shadow-sm);
+  transition:transform .28s cubic-bezier(.16,1,.3,1), box-shadow .28s cubic-bezier(.16,1,.3,1); }
+.rp-body section:hover{ transform:translateY(-2px); box-shadow:var(--shadow-md); }
+.rp-body .rp-ask{ box-shadow:var(--shadow-md); }
+
+/* reveal-on-scroll */
+.rp-body section{ opacity:0; transform:translateY(12px); }
+.rp-body section.in{ opacity:1; transform:none; }
+.rp-body section.in:hover{ transform:translateY(-2px); }
+
+/* chat chips: livelier */
+.ask-chips button{ transition:transform .18s cubic-bezier(.16,1,.3,1), border-color .18s, color .18s, box-shadow .18s; }
+.ask-chips button:hover{ transform:translateY(-2px); border-color:var(--accent); color:var(--accent-ink);
+  box-shadow:var(--shadow-md); }
+
+/* ── compact machine strip ── */
+.mch{ display:flex; flex-wrap:wrap; gap:10px; }
+.mch-chip{ display:inline-flex; align-items:center; gap:9px; padding:10px 15px;
+  border-radius:999px; font-size:13.5px; font-weight:600; border:1px solid var(--line);
+  background:var(--surface); transition:transform .18s cubic-bezier(.16,1,.3,1), box-shadow .18s; cursor:default; }
+.mch-chip:hover{ transform:translateY(-2px); box-shadow:var(--shadow-md); }
+.mch-chip.have{ background:var(--tint); border-color:var(--tint-line); color:var(--accent-strong); }
+.mch-chip.miss{ color:var(--text-3-aa); }
+.mch-ic svg{ width:17px; height:17px; display:block; }
+.mch-chip.have .mch-ic circle{ fill:var(--accent); }
+.mch-chip.have .mch-ic path{ stroke:#fff; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round;
+  stroke-dasharray:16; stroke-dashoffset:16; }
+section.in .mch-chip.have .mch-ic path{ animation:rp-tick .45s cubic-bezier(.16,1,.3,1) .15s forwards; }
+@keyframes rp-tick{ to{ stroke-dashoffset:0; } }
+.mch-chip.miss .mch-ic path{ stroke:var(--text-3); stroke-width:2.2; fill:none; stroke-linecap:round; }
+.mch-sum{ margin-top:14px; font-size:13px; color:var(--text-3-aa); }
+
+/* ── the framework ── */
+.fr-block{ margin-top:22px; padding-top:22px; border-top:1px solid var(--line); }
+.fr-block:first-of-type{ margin-top:8px; padding-top:0; border-top:0; }
+.fr-h b{ display:block; font-size:15.5px; margin-bottom:4px; }
+.fr-h span{ font-size:13px; color:var(--text-2); line-height:1.55; display:block; max-width:70ch; }
+.fr-src{ margin-top:10px; font-size:11.5px; color:var(--text-3-aa); }
+
+/* speed scale */
+.fr-scale{ margin-top:34px; padding:0 6px 34px; }
+.fr-track{ position:relative; height:8px; border-radius:999px;
+  background:linear-gradient(90deg, var(--accent) 0%, var(--tint-line) 34%, var(--line-strong) 100%); }
+.fr-pin{ position:absolute; top:50%; transform:translate(-50%,-50%); }
+.fr-pin i{ display:block; width:16px; height:16px; border-radius:50%; border:3px solid var(--surface);
+  box-shadow:0 1px 4px rgba(16,24,40,.25); }
+.fr-pin.fast i{ background:var(--accent); }
+.fr-pin.avg i{ background:var(--text-3); }
+.fr-pin.you i{ background:var(--danger); width:20px; height:20px; animation:rp-pulse 2.2s ease-in-out infinite; }
+@keyframes rp-pulse{ 0%,100%{ box-shadow:0 0 0 0 color-mix(in srgb, var(--danger) 35%, transparent);} 50%{ box-shadow:0 0 0 9px transparent;} }
+.fr-pin em{ position:absolute; top:22px; left:50%; transform:translateX(-50%); white-space:nowrap;
+  font-style:normal; font-size:11px; font-weight:600; color:var(--text-2); }
+.fr-pin.fast em{ color:var(--accent-strong); }
+.fr-pin.you em{ top:auto; bottom:22px; color:var(--danger); max-width:230px; white-space:normal; text-align:center; line-height:1.35; }
+
+/* waterfall */
+.fr-wf{ margin-top:16px; display:grid; gap:11px; }
+.fr-row{ display:grid; grid-template-columns:minmax(150px,220px) 1fr 48px; gap:14px; align-items:center; }
+.fr-l{ font-size:12.5px; font-weight:600; color:var(--text-2); }
+.fr-row b{ font-size:14px; font-variant-numeric:tabular-nums; text-align:right; }
+.fr-bar{ height:22px; border-radius:8px; background:var(--surface-2); overflow:hidden; }
+.fr-bar i{ display:block; height:100%; width:0; border-radius:8px;
+  transition:width 1s cubic-bezier(.16,1,.3,1) .2s; }
+section.in .fr-bar i{ width:var(--w); }
+.fr-bar i.full{ background:var(--accent); }
+.fr-bar i.ok{ background:var(--tint-line); }
+.fr-bar i.bad{ background:repeating-linear-gradient(-45deg, var(--danger-soft) 0 8px, color-mix(in srgb, var(--danger) 38%, #fff) 8px 16px); }
+
+.fr-read{ margin-top:22px; padding:16px 18px; border-radius:12px; background:var(--tint);
+  border:1px solid var(--tint-line); }
+.fr-read-l{ display:block; font-size:11px; font-weight:700; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--accent-strong); margin-bottom:6px; }
+.fr-read p{ margin:0; font-size:14px; line-height:1.6; color:var(--text-1); }
+
+/* ── the offer ── */
+.rp-body .rp-offer{ display:flex; flex-wrap:wrap; align-items:center; gap:clamp(18px,3vw,36px);
+  padding:clamp(26px,3.4vw,40px); border:0; position:relative; overflow:hidden;
+  background:var(--panel); border-radius:var(--r-stage, 26px);
+  box-shadow:var(--shadow-stage); }
+.rp-body section.rp-offer:hover{ transform:none; box-shadow:var(--shadow-stage); }
+.rp-body .rp-offer::before{ content:''; position:absolute; inset:-40%;
+  background:radial-gradient(ellipse 42% 55% at 22% 30%, color-mix(in srgb, var(--accent) 50%, transparent), transparent 70%);
+  pointer-events:none; animation:rp-glow 6s ease-in-out infinite alternate; }
+@keyframes rp-glow{ from{ opacity:.5; } to{ opacity:1; } }
+.of-burst{ font-size:clamp(64px,8vw,104px); font-weight:800; line-height:.9; letter-spacing:-.04em;
+  color:#fff; flex:none; position:relative;
+  text-shadow:0 4px 30px color-mix(in srgb, var(--accent) 60%, transparent); }
+.of-burst span{ font-size:.42em; vertical-align:top; color:var(--panel-accent, #4D8CF0); }
+.of-copy{ flex:1; min-width:240px; position:relative; }
+.of-k{ display:block; font-size:11.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--panel-accent, #4D8CF0); margin-bottom:8px; }
+.of-copy h3{ margin:0 0 8px; font-size:clamp(19px,2.2vw,25px); color:#fff; }
+.of-copy p{ margin:0; font-size:13.5px; line-height:1.6; color:rgba(255,255,255,.72); max-width:52ch; }
+.of-count{ margin-top:16px; display:inline-flex; align-items:baseline; gap:10px;
+  padding:10px 16px; border-radius:12px; background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.14); }
+.of-cl{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.6); }
+.of-count b{ font-size:clamp(20px,2.4vw,27px); color:#fff; font-variant-numeric:tabular-nums; letter-spacing:.01em; }
+.of-cta{ flex:none; position:relative; }
+@media (max-width:640px){ .rp-body .rp-offer{ flex-direction:column; align-items:flex-start; } }
+
+@media (prefers-reduced-motion:reduce){
+  .rp-body section{ opacity:1; transform:none; transition:none; }
+  .fr-bar i{ transition:none; width:var(--w); }
+  .fr-pin.you i, .rp-body .rp-offer::before{ animation:none; }
+  .mch-chip.have .mch-ic path{ stroke-dashoffset:0; animation:none !important; }
+}
+
+
+/* ── Morgan's avatar (24 Jul 2026) ── */
+.ask-avatar{ width:48px; height:48px; border-radius:50%; object-fit:cover; flex:none;
+  border:2px solid var(--surface); box-shadow:0 0 0 2px var(--accent), var(--shadow-sm);
+  margin-top:2px; }
+@media (max-width:640px){
+  .ask-avatar{ width:42px; height:42px; }
+}
+
+/* ── Motion pass (24 Jul 2026) — entrances, hovers, life ── */
+
+/* key figures: pop in staggered, lift on hover */
+.rp-figs .fig{ opacity:0; transform:translateY(10px) scale(.97);
+  transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1),
+             box-shadow .2s, border-color .2s; }
+section.in .rp-figs .fig, .rp-figs.in .fig{ opacity:1; transform:none; }
+.rp-figs .fig:nth-child(2){ transition-delay:.08s; }
+.rp-figs .fig:nth-child(3){ transition-delay:.16s; }
+.rp-figs .fig:hover{ transform:translateY(-3px); box-shadow:var(--shadow-md); border-color:var(--tint-line); }
+
+/* cost bar: segments grow from the left, staggered */
+.bar .seg{ transform:scaleX(0); transform-origin:left center;
+  transition:transform .9s cubic-bezier(.16,1,.3,1); }
+section.in .bar .seg{ transform:scaleX(1); }
+section.in .bar .seg:nth-child(2){ transition-delay:.12s; }
+section.in .bar .seg:nth-child(3){ transition-delay:.24s; }
+section.in .bar .seg:nth-child(4){ transition-delay:.36s; }
+.key span{ transition:color .18s; cursor:default; }
+.key span:hover{ color:var(--text-1); }
+
+/* machine chips: staggered rise */
+.mch-chip{ opacity:0; transform:translateY(8px); }
+section.in .mch-chip{ opacity:1; transform:none;
+  transition:opacity .45s cubic-bezier(.16,1,.3,1), transform .45s cubic-bezier(.16,1,.3,1),
+             box-shadow .18s; }
+section.in .mch-chip:nth-child(1){ transition-delay:.05s; }
+section.in .mch-chip:nth-child(2){ transition-delay:.12s; }
+section.in .mch-chip:nth-child(3){ transition-delay:.19s; }
+section.in .mch-chip:nth-child(4){ transition-delay:.26s; }
+section.in .mch-chip:nth-child(5){ transition-delay:.33s; }
+section.in .mch-chip:hover{ transform:translateY(-2px); }
+
+/* framework pins: drop in after the track draws */
+.fr-pin{ opacity:0; transform:translate(-50%,-140%); }
+section.in .fr-pin{ opacity:1; transform:translate(-50%,-50%);
+  transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.34,1.4,.4,1); }
+section.in .fr-pin.fast{ transition-delay:.15s; }
+section.in .fr-pin.avg{ transition-delay:.3s; }
+section.in .fr-pin.you{ transition-delay:.5s; }
+
+/* waterfall rows: label + number fade with their bar */
+.fr-row{ opacity:0; transform:translateX(-6px);
+  transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1); }
+section.in .fr-row{ opacity:1; transform:none; }
+section.in .fr-row:nth-child(2){ transition-delay:.15s; }
+section.in .fr-row:nth-child(3){ transition-delay:.3s; }
+.fr-row:hover .fr-l{ color:var(--text-1); }
+
+/* offer: the burst pops, the CTA breathes on hover, a shine sweeps the stage */
+.of-burst{ opacity:0; transform:scale(.82); }
+section.in .of-burst{ opacity:1; transform:scale(1);
+  transition:opacity .5s cubic-bezier(.16,1,.3,1), transform .65s cubic-bezier(.3,1.6,.4,1) .1s; }
+.rp-offer::after{ content:''; position:absolute; top:0; bottom:0; width:40%; left:-60%;
+  background:linear-gradient(105deg, transparent, rgba(255,255,255,.06), transparent);
+  transform:skewX(-18deg); transition:left 1.1s cubic-bezier(.16,1,.3,1); pointer-events:none; }
+.rp-offer:hover::after{ left:130%; }
+.of-cta{ transition:transform .2s cubic-bezier(.16,1,.3,1), box-shadow .2s; }
+.of-cta:hover{ transform:translateY(-2px) scale(1.02);
+  box-shadow:0 8px 24px color-mix(in srgb, var(--accent) 45%, transparent); }
+.of-count{ transition:border-color .2s, background .2s; }
+.rp-offer:hover .of-count{ border-color:rgba(255,255,255,.28); background:rgba(255,255,255,.1); }
+
+/* chat: messages slide in as they land (applies to streamed replies too) */
+.msg{ animation:rp-msg .38s cubic-bezier(.16,1,.3,1); }
+@keyframes rp-msg{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
+.ask-form .btn{ transition:transform .18s cubic-bezier(.16,1,.3,1), background .18s; }
+.ask-form .btn:hover{ transform:translateY(-1px); }
+
+@media (prefers-reduced-motion:reduce){
+  .rp-figs .fig, .mch-chip, .fr-pin, .fr-row, .of-burst{ opacity:1 !important; transform:none !important; transition:none !important; }
+  .fr-pin{ transform:translate(-50%,-50%) !important; }
+  .bar .seg{ transform:scaleX(1); transition:none; }
+  .msg{ animation:none; }
+  .rp-offer::after{ display:none; }
+}

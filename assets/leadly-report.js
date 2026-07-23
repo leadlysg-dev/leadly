@@ -69,3 +69,43 @@
   });
   form.addEventListener('submit', function (e) { e.preventDefault(); ask(input.value); });
 })();
+
+/* ── section reveal-on-scroll (rework 24 Jul 2026) ── */
+(function(){
+  var secs = document.querySelectorAll('.rp-body section');
+  if (!secs.length) return;
+  if (!('IntersectionObserver' in window)){ secs.forEach(function(s){ s.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:.2 });
+  secs.forEach(function(s){ io.observe(s); });
+})();
+
+/* ── key figures count up when revealed (24 Jul 2026) ── */
+(function(){
+  var figs = document.querySelectorAll('.rp-figs .fig .v');
+  if (!figs.length) return;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run(el){
+    var txt = el.textContent;
+    var m = txt.match(/([\d,]+)/);
+    if (!m || reduced) return;
+    var target = parseInt(m[1].replace(/,/g, ''), 10);
+    if (!target || target < 2) return;
+    var pre = txt.slice(0, m.index), post = txt.slice(m.index + m[1].length);
+    var t0 = null, dur = 900;
+    function frame(ts){
+      if (!t0) t0 = ts;
+      var p = Math.min(1, (ts - t0) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = pre + Math.round(target * eased).toLocaleString('en-SG') + post;
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting){ run(e.target); io.unobserve(e.target); } });
+  }, { threshold:.6 });
+  figs.forEach(function(f){ io.observe(f); });
+})();

@@ -466,8 +466,19 @@ body.calc-lock{ overflow:hidden; }
   .q-main{ padding:20px 18px; }
 }
 
-.q-money{ display:grid; gap:13px; }
-.q-money label{ font-size:13px; color:var(--text-3-aa); display:block; margin-bottom:5px; }
+.q-money{ display:grid; gap:16px; }
+.q-money label{ font-size:13px; font-weight:600; color:var(--text-2); display:block; margin-bottom:7px; letter-spacing:.01em; }
+/* refined fields: white fill on the grey panel, taller touch targets, roomier padding */
+.q-money input[type="text"], .q-money input[type="tel"], .q-money input[type="email"]{
+  background:var(--surface); border:1px solid var(--line-strong); border-radius:12px;
+  padding:14px 16px; min-height:50px; font-size:16px; box-shadow:var(--shadow-sm); }
+.q-money input::placeholder{ color:var(--text-3); }
+.q-money input:hover{ border-color:var(--text-3); }
+.q-money input:focus{ border-color:var(--accent); box-shadow:0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent); }
+.q-consent{ background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:14px 16px; display:flex; gap:12px; align-items:flex-start; box-shadow:var(--shadow-sm); }
+.q-money .btn{ min-height:52px; font-size:15.5px; border-radius:12px; }
+.q-fine{ margin-top:12px; }
 .q-in{ position:relative; }
 .q-in span{ position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--text-3-aa); font-size:15px; pointer-events:none; }
 .q-in input{ padding-left:38px; }
@@ -1096,7 +1107,7 @@ body.calc-lock{ overflow:hidden; }
               <span>Send my live link on WhatsApp. I agree to be contacted by Leadly about this analysis — PDPA-compliant, opt out any time.</span>
             </label>
             <button type="submit" class="btn btn-primary" style="margin-top:4px;justify-content:center"><span>Get my AI Guide</span></button>
-            <p class="q-fine">The link arrives in under a minute and expires in 7 days. Join while it’s live and your setup fee is 20% off — the discount ends when the link does.</p>
+            <p class="q-fine">The link arrives in under a minute and expires in 7 days. Join while it’s live and your first monthly fee is 50% off — the discount ends when the link does.</p>
           </form>
         </div>
 
